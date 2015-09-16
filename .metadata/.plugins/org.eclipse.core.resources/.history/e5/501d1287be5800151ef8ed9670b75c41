@@ -1,0 +1,13 @@
+package jfslkdjfsd;
+
+public class main {
+	public static void main(String[] args) {
+		int room = 1;
+		System.out.println("Hello World");
+		switch (room) {
+		case 1:
+			System.out.println("Hello World");
+			break;
+		}
+	}
+}

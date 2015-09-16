@@ -1,0 +1,28 @@
+package Main;
+
+import java.awt.Graphics;
+import java.util.Random;
+import Objects.ObjectHandler;
+import Objects.Player;
+
+public class Screen {
+	private static ObjectHandler OH;
+	Random random = new Random();
+	private static final short Width = MainComponent.WIDTH;
+	private static final short Height = MainComponent.HEIGHT;
+
+	public Screen() {
+		OH = new ObjectHandler();
+		OH.addObject(new Player(200, 200, ID.Player));
+		OH.addObject(new Player(0, 0, ID.Player));
+	}
+
+	public void Render(Graphics g) {
+		g.clearRect(0, 0, Width, Height);
+		OH.Render(g);
+	}
+
+	public void Update() {
+		OH.Update();
+	}
+}

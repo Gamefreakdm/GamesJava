@@ -1,0 +1,18 @@
+package Main;
+
+import java.awt.Graphics;
+import Objects.Player;
+
+public class Screen {
+	private Player player;
+	private static final short Width = MainComponent.WIDTH;
+	private static final short Height = MainComponent.HEIGHT;
+
+	public Screen() {
+		player = new Player();
+	}
+
+	public static void Render(Graphics g) {
+		g.clearRect(0, 0, Width, Height);
+	}
+}

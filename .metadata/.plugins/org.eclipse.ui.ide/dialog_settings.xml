@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="ExternalProjectImportWizard">
+		<item value="false" key="WizardProjectsImportPage.STORE_NESTED_PROJECTS"/>
+		<item value="false" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
+		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
+		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="C:\Users\Dylan\Google Drive\Work\Programming\Games in Java\Tutorial (Advanced)"/>
+			<item value="C:\Users\Dylan\Google Drive\Work\Programming\Games\Evenote"/>
+			<item value="C:\Users\Dylan\Google Drive\Work\Programming\Games\Tutorial (Advanced)"/>
+			<item value="C:\Users\Dylan\Google Drive\Work\Programming\Games\Tublia"/>
+			<item value="C:\Users\Dylan\Google Drive\Work\Programming\Games\Squared"/>
+		</list>
+		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
+			<item value=""/>
+		</list>
+	</section>
+	<section name="ResourceNavigator">
+		<item value="Aggregate for window 1410981922878" key="ResourceWorkingSetFilter.STORE_WORKING_SET"/>
+		<item value="1" key="ResourceViewer.STORE_SORT_TYPE"/>
+		<item value="true" key="LINK_NAVIGATOR_TO_EDITOR"/>
+	</section>
+</section>

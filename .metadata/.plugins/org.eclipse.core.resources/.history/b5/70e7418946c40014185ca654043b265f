@@ -1,0 +1,9 @@
+package Object;
+
+public class Collision {
+
+	public Collision() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

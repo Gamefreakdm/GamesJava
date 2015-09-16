@@ -1,0 +1,8 @@
+package Objects;
+
+public class ObjectHandler {
+
+	public ObjectHandler() {
+		LinkedList<Object> object = new LinkedList<Object>();
+	}
+}

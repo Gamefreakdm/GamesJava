@@ -1,0 +1,19 @@
+package Objects;
+
+import java.util.LinkedList;
+
+public class ObjectHandler {
+	LinkedList<Object> objectlist = new LinkedList<Object>();
+
+	public static void Update() {
+	}
+
+	public static void Render() {
+	}
+
+	public static void addObject(Object object) {
+	}
+
+	public static void removeObject() {
+	}
+}

@@ -1,0 +1,20 @@
+package Main;
+
+import java.awt.Graphics;
+import Objects.ObjectHandler;
+import Objects.Player;
+
+public class Screen {
+	private Player player;
+	private ObjectHandler handler;
+	private static final short Width = MainComponent.WIDTH;
+	private static final short Height = MainComponent.HEIGHT;
+
+	public Screen() {
+		player = new Player(0, 0, ID.Player);
+	}
+
+	public static void Render(Graphics g) {
+		g.clearRect(0, 0, Width, Height);
+	}
+}

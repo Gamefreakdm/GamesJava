@@ -1,0 +1,22 @@
+package Objects;
+
+import java.util.LinkedList;
+
+public class ObjectHandler {
+	LinkedList<Object> objectlist = new LinkedList<Object>();
+
+	public void Update() {
+		for (int i = 0; i < objectlist.size(); i++) {
+			Object TempObject = objectlist.get(i);
+		}
+	}
+
+	public void Render() {
+	}
+
+	public void addObject(Object object) {
+	}
+
+	public void removeObject(Object object) {
+	}
+}

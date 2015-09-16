@@ -1,0 +1,67 @@
+package Objects;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.util.Random;
+
+import Main.ID;
+
+public class Enemy extends Object {
+	protected int Timer = 0;
+	protected boolean IsAlive;
+	Random random = new Random();
+
+	public Enemy(int x, int y, ID id) {
+		super(x, y, id);
+		IsAlive = true;
+		move = 5;
+	}
+
+	public void Update() {
+		if (IsAlive) {
+			x += getVelX();
+			y += getVelY();
+			Timer++;
+			if (Timer >= 40) {
+				move = random.nextInt(4);
+				Timer = 0;
+			}
+			switch (move) {
+			case 0:
+				setVelY(-2);
+				break;
+			case 1:
+				setVelY(2);
+				break;
+			case 2:
+				setVelX(2);
+				break;
+			case 3:
+				setVelX(-2);
+				break;
+			case 5:
+				setVelY(0);
+				setVelX(0);
+				break;
+			}
+			if (y <= 0) {
+				y++;
+				move = 5;
+			} else if (y >= 520) {
+				y--;
+				move = 5;
+			} else if (x <= 0) {
+				x++;
+				move = 5;
+			} else if (x >= 760) {
+				x--;
+				move = 5;
+			}
+		}
+	}
+
+	public void Render(Graphics g) {
+		g.setColor(Color.red);
+		g.fillRect(x, y, 40, 40);
+	}
+}

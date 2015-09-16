@@ -1,0 +1,36 @@
+package Graphics;
+
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import Main.ID;
+import Object.Bit;
+import Object.ObjectHandler;
+
+public class Screen {
+	private SpriteSheet Chars1;
+	private BufferedImage Chars1img;
+	private ImageLoader IL;
+	private BufferedImage BitG;
+	private ObjectHandler OBH;
+	private final short WIDTH, HEIGHT;
+
+	public Screen(short Width, short Height) {
+		WIDTH = Width;
+		HEIGHT = Height;
+		OBH = new ObjectHandler();
+		IL = new ImageLoader();
+		Chars1img = IL.BufferedImageLoader("Resources/Textures/Chars1.png", "Chars1");
+		Chars1 = new SpriteSheet(Chars1img);
+		BitG = Chars1.GrabImage(1, 1, 32, 32, 32);
+		OBH.addObject(new Bit(0, 0, 100, 100, BitG, ID.Bit));
+	}
+
+	public final void Render(Graphics g) {
+		g.clearRect(0, 0, WIDTH, HEIGHT);
+		OBH.Render(g);
+	}
+
+	public final void Update() {
+		OBH.Update();
+	}
+}

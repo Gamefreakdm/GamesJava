@@ -1,0 +1,47 @@
+package Main;
+
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import Objects.Player;
+
+public class KeyHandler implements KeyListener {
+
+	public void keyPressed(KeyEvent KP) {
+		short keyCode = (short) KP.getKeyCode();
+		if (keyCode == KeyEvent.VK_ESCAPE)
+			System.exit(0);
+		if (keyCode == KeyEvent.VK_A && Player.Gravitys != 1 && Player.Gravitys != 0)
+			Player.movement = 0;
+		if (keyCode == KeyEvent.VK_D && Player.Gravitys != 2 && Player.Gravitys != 3)
+			Player.movement = 1;
+		if (keyCode == KeyEvent.VK_W && Player.Gravitys != 1 && Player.Gravitys != 0)
+			Player.movement = 3;
+		if (keyCode == KeyEvent.VK_S && Player.Gravitys != 1 && Player.Gravitys != 0)
+			Player.movement = 2;
+		if (keyCode == KeyEvent.VK_UP)
+			Player.Gravitys = 2;
+		if (keyCode == KeyEvent.VK_DOWN)
+			Player.Gravitys = 3;
+		if (keyCode == KeyEvent.VK_LEFT)
+			Player.Gravitys = 0;
+		if (keyCode == KeyEvent.VK_RIGHT)
+			Player.Gravitys = 1;
+	}
+
+	public void keyReleased(KeyEvent KR) {
+		short keyCode = (short) KR.getKeyCode();
+		if (keyCode == KeyEvent.VK_A)
+			Player.movement = 5;
+		if (keyCode == KeyEvent.VK_D)
+			Player.movement = 5;
+		if (keyCode == KeyEvent.VK_W)
+			Player.movement = 5;
+		if (keyCode == KeyEvent.VK_S)
+			Player.movement = 5;
+	}
+
+	public void keyTyped(KeyEvent KT) {
+		@SuppressWarnings("unused")
+		short keyCode = (short) KT.getKeyCode();
+	}
+}

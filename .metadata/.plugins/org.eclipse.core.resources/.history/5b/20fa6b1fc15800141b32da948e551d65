@@ -1,0 +1,10 @@
+package Objects;
+
+import java.util.LinkedList;
+
+public class ObjectHandler {
+
+	public ObjectHandler() {
+		LinkList<Object> object = new LinkedList<Object>();
+	}
+}

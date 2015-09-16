@@ -1,0 +1,30 @@
+package Graphics;
+
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+
+public class SpriteSheet {
+	private String Path;
+	public final int SIZE;
+	public int[] Pixels;
+	public static SpriteSheet Tiles = new SpriteSheet("/Textures/Tiles.png", 257);
+
+	public SpriteSheet(String path, int size) {
+		Path = path;
+		SIZE = size;
+		Pixels = new int[SIZE * SIZE];
+		Load();
+	}
+
+	private void Load() {
+		try {
+			BufferedImage img = ImageIO.read(SpriteSheet.class.getResource(Path));
+			int w = 257;
+			int h = 257;
+			img.getRGB(0, 0, w, h, Pixels, 0, w);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+}

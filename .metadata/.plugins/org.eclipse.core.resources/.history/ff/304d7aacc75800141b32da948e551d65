@@ -1,0 +1,98 @@
+package Main;
+
+import java.awt.Canvas;
+import java.awt.Graphics;
+import java.awt.image.BufferStrategy;
+import javax.swing.JFrame;
+import Main.Screen;
+
+public class MainComponent extends Canvas implements Runnable {
+	private JFrame Frame;
+	private Thread Thread;
+	private Screen screen;
+	private boolean Running;
+	private static final long serialVersionUID = 1L;
+	public static final short WIDTH = 800, HEIGHT = 600;
+
+	public MainComponent() {
+		Frame = new JFrame();
+	}
+
+	public void Start() {
+		System.out.println("[System] Starting...");
+		Thread = new Thread(this);
+		Thread.start();
+		Init();
+		Running = true;
+		if (Running) {
+			System.out.println("[System] Started Successfully");
+		} else {
+			System.out.println("[System] Failed to start: Could not start Running boolean!");
+			Stop();
+		}
+	}
+
+	public void Stop() {
+		System.out.println("[System] Stopping...");
+		if (Running != true) {
+			System.out.println("[System] Stopped Successfully");
+		} else {
+			System.out.println("[System] Failed to stop: Could not stop Running boolean");
+		}
+	}
+
+	public void Init() {
+		System.out.println("[System] Initilizated");
+	}
+
+	public void Render() {
+		BufferStrategy BS = getBufferStrategy();
+		if (BS == null) {
+			createBufferStrategy(3);
+			return;
+		}
+		Graphics g = BS.getDrawGraphics();
+		Screen.Render(g);
+		BS.show();
+		g.dispose();
+	}
+
+	public void Update() {
+		Render();
+	}
+
+	public void run() {
+		long lastTime = System.nanoTime();
+		long Timer = System.currentTimeMillis();
+		final double NS = 1000000000.0 / 120.0;
+		double Delta = 0;
+		byte Frames = 0;
+		while (Running) {
+			long nowTime = System.nanoTime();
+			Delta += (nowTime - lastTime) / NS;
+			lastTime = nowTime;
+			while (Delta >= 1) {
+				Update();
+				Frames++;
+				Delta--;
+			}
+			if (System.currentTimeMillis() - Timer > 1000) {
+				Timer += 1000;
+				Frame.setTitle("Tutorial" + "   |   " + Frames + " fps");
+				Frames = 0;
+			}
+		}
+		Stop();
+	}
+
+	public static void main(String[] args) {
+		MainComponent MC = new MainComponent();
+		MC.Frame.add(MC);
+		MC.Frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		MC.Frame.setResizable(false);
+		MC.Frame.setSize(WIDTH, HEIGHT);
+		MC.Frame.setLocationRelativeTo(null);
+		MC.Frame.setVisible(true);
+		MC.Start();
+	}
+}

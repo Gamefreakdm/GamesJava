@@ -1,0 +1,12 @@
+package Main;
+
+import java.awt.Graphics;
+
+public class Screen {
+	private static final short Width = MainComponent.WIDTH;
+	private static final short Height = MainComponent.HEIGHT;
+
+	public static void Render(Graphics g) {
+		g.clearRect(0, 0, Width, Height);
+	}
+}

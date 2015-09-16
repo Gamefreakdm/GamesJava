@@ -1,0 +1,7 @@
+package Object;
+
+public class Collision {
+	
+	public static void colliosnww() {
+	}
+}

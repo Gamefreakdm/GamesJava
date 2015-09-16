@@ -1,0 +1,36 @@
+package Main;
+
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import Graphics.ImageLoader;
+import Graphics.SpriteSheet;
+import Objects.ObjectsHandler;
+
+public class Screen {
+	public int[] Pixels;
+	private BufferedImage Pixelimg;
+	public static BufferedImage Grass;
+	private static ObjectsHandler handler;
+	private static BufferedImage Sprite_Sheet;
+
+	public Screen() {
+		handler = new ObjectsHandler();
+		ImageLoader ImageLoader = new ImageLoader();
+		getSpriteSheet();
+		Sprite_Sheet = ImageLoader.BufferedImageLoader("Resources/Textures/SpriteSheet.png");
+		SpriteSheet SS = new SpriteSheet(Sprite_Sheet);
+		Grass = SS.GrabImage(1, 1, 32, 32);
+	}
+
+	public void Update() {
+		handler.Update();
+	}
+
+	public void Render(Graphics g) {
+		handler.Render(g);
+	}
+
+	public static BufferedImage getSpriteSheet() {
+		return Sprite_Sheet;
+	}
+}

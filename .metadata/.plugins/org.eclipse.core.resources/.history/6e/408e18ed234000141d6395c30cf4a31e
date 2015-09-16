@@ -1,0 +1,18 @@
+package Objects.Walls;
+
+import java.awt.Color;
+import java.awt.Graphics;
+
+import Objects.Entities.Player;
+
+public class DeathWall {
+
+	public DeathWall(double X, double Y, double Width, double Height, Graphics g) {
+		g.setColor(Color.yellow);
+		g.fillRect((int) X, (int) Y, (int) Width, (int) Height);
+		if (Player.getX() <= X + 20 && Player.getX() >= X - 20
+				&& Player.getY() <= Y && Player.getY() >= Y - 40) {
+			Player.setY(Player.getY() - 3);
+		}
+	}
+}

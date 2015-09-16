@@ -1,0 +1,112 @@
+package Main;
+
+import java.awt.Canvas;
+import java.awt.Graphics;
+import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferInt;
+import javax.swing.JFrame;
+import Entity.Mob.Player;
+import Graphics.Screen;
+import Level.Level;
+
+public class Main extends Canvas implements Runnable {
+	private Level level;
+	private int[] Pixels;
+	private Screen screen;
+	private Player player;
+	public static int MapSize;
+	private BufferStrategy BS;
+	private BufferedImage bimg;
+	private final JFrame Frame;
+	private final KeyHandler KH;
+	private final int Width, Height;
+	private static final long serialVersionUID = 1L;
+
+	public Main() {
+		Frame = new JFrame("Loading...");
+		Width = 800;
+		Height = 600;
+		KH = new KeyHandler();
+		player = new Player(Width / 2, Height / 2, KH, "Farm");
+	}
+
+	public static void main(String[] args) {
+		Main M = new Main();
+		M.Frame.add(M);
+		M.Frame.addKeyListener(M.KH);
+		M.Frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		M.Frame.setResizable(false);
+		M.Frame.setSize(M.Width, M.Height);
+		M.Frame.setLocationRelativeTo(null);
+		M.Frame.setVisible(true);
+		M.Start();
+	}
+
+	private void Start() {
+		Thread mainThread = new Thread(this);
+		mainThread.start();
+	}
+
+	public void run() {
+		boolean Running = true;
+		long lastTime = System.nanoTime();
+		long Timer = System.currentTimeMillis();
+		final double NS = 1000000000.0 / 120.0;
+		double Delta = 0;
+		int Frames = 0;
+		int Updates = 0;
+		while (Running) {
+			long nowTime = System.nanoTime();
+			Delta += (nowTime - lastTime) / NS;
+			lastTime = nowTime;
+			while (Delta >= 1) {
+				Update();
+				Updates++;
+				Delta--;
+			}
+			Render();
+			Frames++;
+			if (System.currentTimeMillis() - Timer >= 1000) {
+				Timer += 1000;
+				Frame.setTitle("Final" + "   |   " + Frames + " Fps" + "  |  " + Updates + " UPS");
+				Frames = 0;
+				Updates = 0;
+			}
+		}
+		System.out.println("Main Boolean stopped");
+		System.exit(-1);
+	}
+
+	private void KeyUpdate() {
+		Frame.requestFocus();
+		KH.Update();
+	}
+
+	private void Update() {
+		KeyUpdate();
+		player.Update();
+	}
+
+	private void Render() {
+		BS = getBufferStrategy();
+		if (BS == null) {
+			screen = new Screen(Width, Height);
+			bimg = new BufferedImage(Width, Height, BufferedImage.TYPE_INT_RGB);
+			Pixels = ((DataBufferInt) bimg.getRaster().getDataBuffer()).getData();
+			MapSize = 64;
+			level = new Level(MapSize);
+			createBufferStrategy(3);
+			return;
+		}
+		Graphics g = BS.getDrawGraphics();
+		level.Render(player.getX() - ((Width / 2) - 20), player.getY() - ((Height / 2) - 20), screen, "Grass");
+		player.Render(screen);
+		for (int i = 0; i < Pixels.length; i++) {
+			Pixels[i] = screen.Pixels[i];
+		}
+		g.drawImage(bimg, 0, 0, Width, Height, null);
+		g.dispose();
+		BS.show();
+	}
+}

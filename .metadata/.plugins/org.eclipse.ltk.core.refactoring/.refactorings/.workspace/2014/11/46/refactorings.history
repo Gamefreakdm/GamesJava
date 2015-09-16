@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;Code-Day/Resources/Textures/.BridgeSort&apos;" deleteContents="false" description="Delete resource &apos;Code-Day/Resources/Textures/.BridgeSort&apos;" element1="/Code-Day/Resources/Textures/.BridgeSort" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1415514943947"/>
+</session>

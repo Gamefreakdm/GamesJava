@@ -1,0 +1,35 @@
+package Graphics;
+
+public class Screen {
+	public int[] Pixels;
+	private final int mapWH;
+	private final int Width, Height;
+
+	public Screen(int w, int h) {
+		Width = w;
+		Height = h;
+		mapWH = 4096;
+		Pixels = new int[Width * Height];
+	}
+
+	private void clearPixels() {
+		for (int i = 0; i < Pixels.length; i++) {
+			Pixels[i] = 0;
+		}
+	}
+
+	public void Render(int xp, int yp) {
+		clearPixels();
+		for (int y = 0; y < Height; y++) {
+			int ya = yp + y;
+			if (ya < 0 || ya > mapWH)
+				continue;
+			for (int x = 0; x < Width; x++) {
+				int xa = xp + x;
+				if (xa < 0 || xa > mapWH)
+					continue;
+				Pixels[xa + ya * Width] = 0x0ff0ff;
+			}
+		}
+	}
+}

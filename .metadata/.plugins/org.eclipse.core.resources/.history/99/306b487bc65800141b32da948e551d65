@@ -1,0 +1,21 @@
+package Main;
+
+import java.awt.Graphics;
+import Objects.ObjectHandler;
+import Objects.Player;
+
+public class Screen {
+	private Player player;
+	private ObjectHandler OH;
+	private static final short Width = MainComponent.WIDTH;
+	private static final short Height = MainComponent.HEIGHT;
+
+	public Screen() 
+		OH = new ObjectHandler();
+		OH.addObject(player);
+	}
+
+	public static void Render(Graphics g) {
+		g.clearRect(0, 0, Width, Height);
+	}
+}

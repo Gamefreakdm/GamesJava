@@ -1,0 +1,20 @@
+package Objects;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import Main.ID;
+
+public class Player extends Object {
+
+	public Player(int x, int y, ID id) {
+		super(x, y, id);
+	}
+
+	public void Update() {
+	}
+
+	public void Render(Graphics g) {
+		g.setColor(Color.blue);
+		g.fillRect(x, y, 40, 40);
+	}
+}

@@ -1,0 +1,70 @@
+package Main;
+
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+
+import javax.swing.JPanel;
+
+import Graphics.ImageLoader;
+import Graphics.SpriteSheet;
+import Level.TileHandler;
+import Objects.ObjectsHandler;
+import Objects.Tile.Tile_Grass;
+
+public class Screen extends JPanel {
+	private static int Chunks = 1;
+	private static boolean RenderTiles;
+	private static TileHandler TH;
+	private static int ChunkTimer = 0;
+	public static BufferedImage Grass;
+	private static ObjectsHandler handler;
+	private static BufferedImage Sprite_Sheet;
+	private static final long serialVersionUID = 1L;
+
+	public Screen() {
+		TH = new TileHandler();
+		handler = new ObjectsHandler();
+		ImageLoader ImageLoader = new ImageLoader();
+		getSpriteSheet();
+		Sprite_Sheet = ImageLoader.BufferedImageLoader("Resources/Textures/SpriteSheet.png");
+		SpriteSheet SS = new SpriteSheet(Sprite_Sheet);
+		Grass = SS.GrabImage(1, 1, 32, 32);
+		createChunk();
+	}
+
+	public void Update() {
+		handler.Update();
+		if (RenderTiles == true) {
+			TH.Update();
+			ChunkTimer++;
+		}
+	}
+
+	public void Render(Graphics g) {
+		handler.Render(g);
+		if (RenderTiles == true) {
+			TH.Render(g);
+		}
+	}
+
+	private static void createChunk() {
+		RenderTiles = false;
+		for (int c = 0; c < Chunks; c++) {
+			for (short y = 0; y < 565; y++) {
+				if (y > 565)
+					break;
+				if (y <= 565) {
+					for (short x = 0; x < c * 10 + 1; x += 10) {
+						TH.addTile(new Tile_Grass(x, y, ID.Grass, Grass));
+					}
+				}
+			}
+		}
+		RenderTiles = true;
+		Chunks++;
+	}
+
+	public static BufferedImage getSpriteSheet() {
+		return Sprite_Sheet;
+	}
+}
