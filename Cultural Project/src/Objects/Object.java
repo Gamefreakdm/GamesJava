@@ -27,16 +27,12 @@ public class Object {
 	}
 
 	public boolean CheckCol(int x, int y, int w, int h) {
-		if (this.sprite != Sprite.Star) {
-			if (this.getX() + 32 >= x && this.getX() <= x + w && this.getY() + 32 >= y && this.getY() <= y + h) {
+		if (this.sprite == Sprite.Star) {
+			if (this.getX() + 32 >= x + 7 && this.getX() <= x + w - 7 && this.getY() + 32 >= y + 15 && this.getY() <= y + h - 15) {
 				return true;
 			}
-		} else if (this.sprite != Sprite.Coin) {
-			if (this.getX() + 32 >= x && this.getX() <= x + w && this.getY() + 32 >= y && this.getY() <= y + h) {
-				return true;
-			}
-		} else {
-			if (this.getX() + 32 >= x + 15 && this.getX() <= x + w - 15 && this.getY() + 32 >= y + 15 && this.getY() <= y + h - 15) {
+		} else if (this.sprite == Sprite.Coin) {
+			if (this.getX() + 32 >= x + 15 && this.getX() <= x + w - 15 && this.getY() + 32 >= y && this.getY() <= y + h) {
 				return true;
 			}
 		}

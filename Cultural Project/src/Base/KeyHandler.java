@@ -4,7 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class KeyHandler implements KeyListener {
-	public boolean LEFT, RIGHT, ESC, SPACE, L;
+	public boolean LEFT, RIGHT, ESC, SPACE, L, ENTER;
 	private boolean[] Codes = new boolean[300];
 
 	public void Update() {
@@ -13,6 +13,7 @@ public class KeyHandler implements KeyListener {
 		ESC = Codes[KeyEvent.VK_ESCAPE];
 		SPACE = Codes[KeyEvent.VK_SPACE];
 		L = Codes[KeyEvent.VK_L];
+		ENTER = Codes[KeyEvent.VK_ENTER];
 	}
 
 	public void keyPressed(KeyEvent KP) {

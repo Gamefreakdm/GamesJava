@@ -14,6 +14,8 @@ public class Level {
 	public static void createLevel(int l) {
 		Clean();
 		level = l;
+		Main.player.setX(10);
+		Main.player.setY(Main.Height - 140);
 		switch (level) {
 		case 0:
 			for (int i = 0; i < 8; i++) {
@@ -30,7 +32,17 @@ public class Level {
 			Objects.add(new Object(210, Main.Height - 255, 'c', Sprite.Coin));
 			break;
 		case 2:
-
+			Objects.add(new Object(130, Main.Height - 150, 'c', Sprite.Star));
+			Objects.add(new Object(400, Main.Height - 100, 'c', Sprite.Star));
+			Objects.add(new Object(265, Main.Height - 180, 'c', Sprite.Star));
+			Walls.add(new Wall(100, Main.Height - 120, 50, 10));
+			Walls.add(new Wall(200, Main.Height - 140, 50, 10));
+			Walls.add(new Wall(300, Main.Height - 190, 50, 10));
+			Objects.add(new Object(312, Main.Height - 212, 'c', Sprite.Coin));
+			Walls.add(new Wall(0, Main.Height - 68, Main.Width, 10));
+			break;
+		case 4:
+			Walls.add(new Wall(0, Main.Height - 68, Main.Width, 10));
 			break;
 		}
 	}
@@ -44,6 +56,10 @@ public class Level {
 		case 1:
 			if (Main.Score == 9)
 				Main.player.LevelUp(2);
+			break;
+		case 2:
+			if (Main.Score == 10)
+				Main.player.LevelUp(3);
 			break;
 		}
 	}
@@ -64,6 +80,7 @@ public class Level {
 					Objects.remove(i);
 					Main.Score++;
 				} else if (Objects.get(i).getSprite() == Sprite.Star) {
+					Objects.remove(i);
 					Main.player.setLives(Main.player.getLives() - 1);
 				}
 			}

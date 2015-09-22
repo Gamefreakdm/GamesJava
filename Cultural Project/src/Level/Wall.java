@@ -28,9 +28,11 @@ public class Wall {
 		return y;
 	}
 
+	public void Update() {
+	}
+
 	public boolean CheckCol(int x, int y, int w, int h) {
 		if (x + 27 >= this.getX() && x + 5 <= this.getX() + this.getWidth() && y + 32 >= this.getY() && y + 32 <= this.getY()) {
-			System.out.println("col");
 			Main.player.setGravity(false);
 			return true;
 		} else {

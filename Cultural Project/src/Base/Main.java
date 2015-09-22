@@ -43,7 +43,7 @@ public class Main extends Canvas implements Runnable {
 			thread.start();
 			Running = true;
 			return;
-			
+
 		} else
 			return;
 	}
@@ -60,9 +60,9 @@ public class Main extends Canvas implements Runnable {
 			Delta += ((NowTime - LastTime) / NS);
 			LastTime = NowTime;
 			while (Delta >= 1) {
-				Update();
 				Render();
 				Frames++;
+				Update();
 				Delta--;
 			}
 			if (System.currentTimeMillis() - Timer >= 1000) {
@@ -87,9 +87,12 @@ public class Main extends Canvas implements Runnable {
 		KH.Update();
 		if (KH.ESC)
 			Stop();
-		if (KH.L) {
-			KH.L = false;
-			player.LevelUp(2);
+		if (KH.L)
+			player.LevelUp(4);
+		if (Level.level == 3 && KH.ENTER) {
+			player.setLives(3);
+			Score = 0;
+			player.LevelUp(4);
 		}
 	}
 
@@ -116,10 +119,25 @@ public class Main extends Canvas implements Runnable {
 		case 2:
 			g.drawString("Avoid The Stars", 115, 300);
 			break;
+		case 3:
+			g.setFont(new Font("TimesRoman", Font.PLAIN, 30));
+			g.drawString("Now that I have introduced you to some of the game machanics, ", 10, 30);
+			g.drawString("I will explain to you the theme of this game. In this game", 10, 60);
+			g.drawString("you will solve puzzles in order to find picures of my culture.", 10, 90);
+			g.drawString("Each picture will give your character some trait like hair", 10, 120);
+			g.drawString("color or eye color. As you go futher in the game the level of", 10, 150);
+			g.drawString("difficulty will increase, thanks for playing!! Have fun!", 10, 180);
+			g.drawString("P.S Sorry for bad graphics I am not very good at art!! Also,", 10, 310);
+			g.drawString("I didn't have enough time to create better sprites.", 10, 340);
+			g.drawString("Press ENTER to continue...", 10, 440);
+			break;
 		}
-		g.setFont(new Font("TimesRoman", Font.PLAIN, 20));
-		g.drawString("Score: " + Score, 20, 20);
-		player.Render();
+		if (Level.level != 3) {
+			g.setFont(new Font("TimesRoman", Font.PLAIN, 20));
+			g.drawString("Score: " + Score, 20, 20);
+			g.drawString("Lives: " + player.getLives(), 200, 20);
+			player.Render();
+		}
 		BS.show();
 		g.dispose();
 	}

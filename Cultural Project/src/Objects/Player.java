@@ -7,12 +7,13 @@ import Graphics.Sprite;
 import Level.Level;
 
 public class Player extends Entity {
-	protected int level = -1;
 	protected int Timer = 0;
-	protected boolean Jumping;
-	protected boolean Gravity = true;
-	protected KeyHandler Input;
 	protected int Lives = 3;
+	protected double GV = 0;
+	protected int level = -1;
+	protected boolean Jumping;
+	protected KeyHandler Input;
+	protected boolean Gravity = true;
 
 	public Player(int x, int y, char Chart, KeyHandler Input) {
 		super(x, y, Chart);
@@ -20,9 +21,16 @@ public class Player extends Entity {
 		sprite = Sprite.P1S;
 	}
 
-	public void Anim() {
-		if (Gravity)
-			y += 2.5;
+	private void Gravity() {
+		if (Gravity) {
+			this.GV = 2.5;
+			this.y += GV;
+			GV += 1.5;
+		} else
+			GV = 0;
+	}
+
+	private void Anim() {
 		if (Input.RIGHT || Input.LEFT || Input.SPACE)
 			IsMoving = true;
 		else
@@ -35,7 +43,7 @@ public class Player extends Entity {
 			Jumping = true;
 		if (Jumping) {
 			Gravity = false;
-			if (Timer <= 30) {
+			if (Timer <= 17) {
 				y -= 3.5;
 				Timer++;
 			} else {
@@ -44,8 +52,7 @@ public class Player extends Entity {
 			}
 		} else
 			Timer = 0;
-		switch (level) {
-		case 0:
+		if (level < 7) {
 			if (!IsMoving)
 				sprite = Sprite.P1S;
 			else {
@@ -62,27 +69,13 @@ public class Player extends Entity {
 						sprite = Sprite.P1SL;
 				}
 			}
-			break;
-		case 1:
-			if (!IsMoving)
-				sprite = Sprite.P1S;
-			else {
-				if (Input.RIGHT) {
-					if (AnimN % 25 > 15)
-						sprite = Sprite.P1MR;
-					else
-						sprite = Sprite.P1SR;
-				}
-				if (Input.LEFT) {
-					System.out.println("sdsad");
-					if (AnimN % 25 > 15)
-						sprite = Sprite.P1ML;
-					else
-						sprite = Sprite.P1SL;
-				}
-			}
-			break;
 		}
+	}
+
+	public void Hit() {
+		Lives--;
+		this.x = 10;
+		this.y = 10;
 	}
 
 	public void Render() {
@@ -91,6 +84,12 @@ public class Player extends Entity {
 	}
 
 	public void Update() {
+		if (Lives <= 0) {
+			Main.Score = 0;
+			LevelUp(level = 0);
+			Lives = 3;
+		}
+		Gravity();
 		if (AnimN < 7500)
 			AnimN++;
 		else
@@ -112,6 +111,14 @@ public class Player extends Entity {
 
 	public int getY() {
 		return this.y;
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public void setY(int y) {
+		this.y = y;
 	}
 
 	public boolean getJumping() {
