@@ -47,4 +47,5 @@
 <fullyQualifiedTypeName name="Base.Main"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="Level.Level"/>
+<fullyQualifiedTypeName name="java.awt.image.DataBufferFloat"/>
 </qualifiedTypeNameHistroy>

@@ -4,7 +4,7 @@ import Graphics.Sprite;
 import Level.Level;
 
 public class Entity {
-	private int x, y;
+	private float x, y;
 	private int Dir = 1;
 	private Level level;
 	protected Sprite sprite;
@@ -15,7 +15,7 @@ public class Entity {
 	public void Render() {
 	}
 
-	public int getX() {
+	public float getX() {
 		return x;
 	}
 
@@ -23,7 +23,7 @@ public class Entity {
 		this.x = x;
 	}
 
-	public int getY() {
+	public float getY() {
 		return y;
 	}
 

@@ -1,0 +1,36 @@
+package Objects;
+
+import Level.Wall;
+
+public class Moving_Wall extends Wall {
+	protected int Time = 0, Timer = 0;
+	protected char MovePos = 'a';
+	protected double Movspeed = 0;
+
+	public Moving_Wall(int x, int y, int w, int h, char m, double speed, int time) {
+		super(x, y, w, h);
+		MovePos = m;
+		Time = time;
+		Movspeed = speed;
+	}
+
+	public void Update() {
+		Timer++;
+		if (MovePos == 'v') {
+			if (Timer <= Time)
+				this.y -= Movspeed;
+			else {
+				this.y += Movspeed;
+				if (Timer >= Time * 2)
+					Timer = 0;
+			}
+		} else if (MovePos == 'h') {
+			this.x -= Movspeed;
+			if (Timer >= Time) {
+				this.x += Movspeed;
+				if (Timer >= Time * 2)
+					Timer = 0;
+			}
+		}
+	}
+}

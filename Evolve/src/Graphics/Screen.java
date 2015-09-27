@@ -25,13 +25,13 @@ public class Screen {
 		}
 	}
 
-	public static void RenderPlayer(int xp, int yp, Sprite sprite) {
+	public static void RenderPlayer(float xp, float yp, Sprite sprite) {
 		xp -= xOffset;
 		yp -= yOffset;
 		for (int y = 0; y < 32; y++) {
-			int ya = y + yp;
+			int ya = (int) (y + yp);
 			for (int x = 0; x < 32; x++) {
-				int xa = x + xp;
+				int xa = (int) (x + xp);
 				if (xa < 0 || xa >= Main.WIDTH || ya < 0 || ya >= Main.HEIGHT)
 					break;
 				if (xa < 0)
@@ -43,11 +43,11 @@ public class Screen {
 		}
 	}
 
-	public static void RenderEntity(int xp, int yp, Sprite sprite) {
+	public static void RenderEntity(float xp, float yp, Sprite sprite) {
 		for (int y = 0; y < 32; y++) {
-			int ya = y + yp;
+			int ya = (int) (y + yp);
 			for (int x = 0; x < 32; x++) {
-				int xa = x + xp;
+				int xa = (int) (x + xp);
 				if (xa < 0 || xa >= Main.WIDTH || ya < 0 || ya >= Main.HEIGHT)
 					break;
 				if (xa < 0)
@@ -59,9 +59,9 @@ public class Screen {
 		}
 	}
 
-	public static void setOffset(int xOf, int yOf) {
-		xOffset = xOf;
-		yOffset = yOf;
+	public static void setOffset(float xOf, float yOf) {
+		xOffset = (int) xOf;
+		yOffset = (int) yOf;
 	}
 
 	public static void Clear() {

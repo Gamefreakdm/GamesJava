@@ -3,22 +3,20 @@ package Objects;
 import Graphics.Sprite;
 
 public class Object {
-	protected int x, y;
-	protected char Cart;
+	protected float x, y;
 	protected Sprite sprite;
 
-	public Object(int x, int y, char c, Sprite sp) {
+	public Object(float x, float y, Sprite sp) {
 		this.x = x;
 		this.y = y;
 		this.sprite = sp;
-		this.Cart = c;
 	}
 
-	public int getX() {
+	public float getX() {
 		return x;
 	}
 
-	public int getY() {
+	public float getY() {
 		return y;
 	}
 
@@ -26,7 +24,7 @@ public class Object {
 		return sprite;
 	}
 
-	public boolean CheckCol(int x, int y, int w, int h) {
+	public boolean CheckCol(float x, float y, float w, float h) {
 		if (this.sprite == Sprite.Star) {
 			if (this.getX() + 32 >= x + 7 && this.getX() <= x + w - 7 && this.getY() + 32 >= y + 15 && this.getY() <= y + h - 15) {
 				return true;

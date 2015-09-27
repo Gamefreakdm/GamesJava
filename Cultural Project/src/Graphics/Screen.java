@@ -26,13 +26,13 @@ public class Screen {
 		}
 	}
 
-	public static void RenderP(int xp, int yp, Sprite sp) {
+	public static void RenderP(float xp, float yp, Sprite sp) {
 		for (int y = 0; y < 32; y++) {
-			int ya = y + yp;
+			int ya = (int) (y + yp);
 			if (ya >= Main.Height)
 				break;
 			for (int x = 0; x < 32; x++) {
-				int xa = x + xp;
+				int xa = (int) (x + xp);
 				if (xa >= Main.Width)
 					continue;
 				int col = sp.Pixels[x + y * 32];
@@ -44,9 +44,9 @@ public class Screen {
 
 	public static void RenderWall(Wall w) {
 		for (int y = 0; y < w.getHeight(); y++) {
-			int ya = y + w.getY();
+			int ya = (int) (y + w.getY());
 			for (int x = 0; x < w.getWidth(); x++) {
-				int xa = x + w.getX();
+				int xa = (int) (x + w.getX());
 				Main.Pixels[xa + ya * Main.Width] = 0x0;
 			}
 		}
@@ -54,11 +54,11 @@ public class Screen {
 
 	public static void RenderObjects(Object ob) {
 		for (int y = 0; y < 32; y++) {
-			int ya = y + ob.getY();
+			int ya = (int) (y + ob.getY());
 			if (ya >= Main.Height)
 				break;
 			for (int x = 0; x < 32; x++) {
-				int xa = x + ob.getX();
+				int xa = (int) (x + ob.getX());
 				if (xa >= Main.Width)
 					continue;
 				int col = ob.getSprite().Pixels[x + y * 32];

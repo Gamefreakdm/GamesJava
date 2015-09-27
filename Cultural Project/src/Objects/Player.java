@@ -15,7 +15,7 @@ public class Player extends Entity {
 	protected KeyHandler Input;
 	protected boolean Gravity = true;
 
-	public Player(int x, int y, char Chart, KeyHandler Input) {
+	public Player(float x, float y, char Chart, KeyHandler Input) {
 		super(x, y, Chart);
 		this.Input = Input;
 		sprite = Sprite.P1S;
@@ -38,7 +38,7 @@ public class Player extends Entity {
 		if (Input.RIGHT && x < Main.Width - 40)
 			x += 2.5;
 		if (x > 0 && Input.LEFT)
-			x -= 2;
+			x -= 2.5;
 		if (Input.SPACE && y > 1 && !Jumping && Gravity == false)
 			Jumping = true;
 		if (Jumping) {
@@ -85,8 +85,13 @@ public class Player extends Entity {
 
 	public void Update() {
 		if (Lives <= 0) {
-			Main.Score = 0;
-			LevelUp(level = 0);
+			if (level <= 3) {
+				Main.Score = 0;
+				LevelUp(level = 0);
+			} else if (level > 3) {
+				Main.Score = 13;
+				LevelUp(level = 4);
+			}
 			Lives = 3;
 		}
 		Gravity();
@@ -105,24 +110,28 @@ public class Player extends Entity {
 		return this.level;
 	}
 
-	public int getX() {
+	public float getX() {
 		return this.x;
 	}
 
-	public int getY() {
+	public float getY() {
 		return this.y;
 	}
 
-	public void setX(int x) {
+	public void setX(float x) {
 		this.x = x;
 	}
 
-	public void setY(int y) {
+	public void setY(float y) {
 		this.y = y;
 	}
 
 	public boolean getJumping() {
 		return Jumping;
+	}
+
+	public void setJumping(boolean j) {
+		Jumping = j;
 	}
 
 	public void setGravity(boolean g) {

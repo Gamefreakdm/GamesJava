@@ -78,6 +78,7 @@ public class Main extends Canvas implements Runnable {
 		KeyUpdate();
 		player.Update();
 		Level.UpdateLevel();
+		Level.Update();
 		Level.WallCollision(player.getX(), player.getY(), 32, 32);
 		Level.ObjectCollision(player.getX(), player.getY(), 32, 32);
 	}
@@ -91,7 +92,6 @@ public class Main extends Canvas implements Runnable {
 			player.LevelUp(4);
 		if (Level.level == 3 && KH.ENTER) {
 			player.setLives(3);
-			Score = 0;
 			player.LevelUp(4);
 		}
 	}
@@ -130,6 +130,10 @@ public class Main extends Canvas implements Runnable {
 			g.drawString("P.S Sorry for bad graphics I am not very good at art!! Also,", 10, 310);
 			g.drawString("I didn't have enough time to create better sprites.", 10, 340);
 			g.drawString("Press ENTER to continue...", 10, 440);
+			break;
+		case 6:
+			g.setFont(new Font("TimesRoman", Font.PLAIN, 80));
+			g.drawString("Get the picture", 140, 150);
 			break;
 		}
 		if (Level.level != 3) {

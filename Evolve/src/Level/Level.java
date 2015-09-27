@@ -11,7 +11,7 @@ public class Level {
 		mapSIZE = ms;
 	}
 
-	public void Render(int xscroll, int yscroll, String Map) {
+	public void Render(float xscroll, float yscroll, String Map) {
 		Screen.setOffset(xscroll, yscroll);
 		for (int y = 0; y < mapSIZE; y++)
 			for (int x = 0; x < mapSIZE; x++)
