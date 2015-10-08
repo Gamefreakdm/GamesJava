@@ -10,7 +10,7 @@ public class Player extends Mob {
 	private int anim = 0;
 	private KeyHandler Input;
 
-	public Player(int x, int y, KeyHandler input, String Char) {
+	public Player(float x, float y, KeyHandler input, String Char) {
 		this.setX(x);
 		this.setY(y);
 		this.Input = input;

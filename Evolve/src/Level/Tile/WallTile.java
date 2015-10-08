@@ -14,7 +14,7 @@ public class WallTile extends Tile {
 	}
 
 	public boolean getIsSolid() {
-		System.out.println("Foor");
+		System.out.println("Wall");
 		return true;
 	}
 }

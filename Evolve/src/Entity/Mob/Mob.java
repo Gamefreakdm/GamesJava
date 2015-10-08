@@ -15,8 +15,8 @@ public abstract class Mob extends Entity {
 		if (ya < 0)
 			setDir(0);
 		if (!Collision(xa, ya)) {
-			setX((int) (getX() + xa));
-			setY((int) (getY() + ya));
+			setX((getX() + xa));
+			setY((getY() + ya));
 		}
 	}
 

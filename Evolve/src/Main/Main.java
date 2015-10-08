@@ -17,10 +17,10 @@ public class Main extends Canvas {
 	public static int[] Pixels;
 	private BufferedImage bimg;
 	private final String Title = "Title";
-	private final Level level = new RandomLevel(45);
 	private final KeyHandler KH = new KeyHandler();
 	private static final long serialVersionUID = 1L;
-	public static final int WIDTH = 794, HEIGHT = 594;
+	public static final int Width = 794, Height = 594;
+	public static final Level level = new RandomLevel(45);
 	private final Player player = new Player(400, 300, KH, "Farm");
 
 	public static void main(String[] args) {
@@ -29,7 +29,7 @@ public class Main extends Canvas {
 		M.Frame = new JFrame("Loading...");
 		M.Frame.add(M);
 		M.Frame.addKeyListener(M.KH);
-		M.Frame.setSize(WIDTH + 6, HEIGHT + 6);
+		M.Frame.setSize(Width + 6, Height + 6);
 		M.Frame.setResizable(false);
 		M.Frame.setLocationRelativeTo(null);
 		M.Frame.setUndecorated(false);
@@ -90,7 +90,7 @@ public class Main extends Canvas {
 	private void Render() {
 		BufferStrategy BS = getBufferStrategy();
 		if (BS == null) {
-			bimg = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
+			bimg = new BufferedImage(Width, Height, BufferedImage.TYPE_INT_RGB);
 			Pixels = ((DataBufferInt) bimg.getRaster().getDataBuffer()).getData();
 			createBufferStrategy(3);
 			return;
@@ -99,7 +99,7 @@ public class Main extends Canvas {
 		level.Render((player.getX() - 365), (player.getY() - 265), "Grass");
 		player.Render();
 		Graphics g = BS.getDrawGraphics();
-		g.drawImage(bimg, 0, 0, WIDTH, HEIGHT, null);
+		g.drawImage(bimg, 0, 0, Width, Height, null);
 		g.dispose();
 		BS.show();
 	}
