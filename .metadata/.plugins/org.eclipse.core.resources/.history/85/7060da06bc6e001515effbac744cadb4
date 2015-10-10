@@ -33,7 +33,7 @@ public class Screen {
 	}
 
 	public static void RenderPaddle(Sprite Paddle) {
-		for (int y = 0; y < 110; y++) {
+		for (int y = 0; y < 32; y++) {
 			for (int x = 0; x < 32; x++) {
 				Main.Pixels[x + y * Main.WIDTH] = Paddle.getPixels()[x + y * 32];
 			}

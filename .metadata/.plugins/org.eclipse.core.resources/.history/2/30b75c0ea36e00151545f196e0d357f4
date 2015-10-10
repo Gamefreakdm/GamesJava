@@ -81,7 +81,7 @@ public class Main extends Canvas implements Runnable {
 		Graphics g = BS.getDrawGraphics();
 		g.drawImage(BIMG, 0, 0, WIDTH, HEIGHT, null);
 		Screen.RenderBack();
-		Screen.RenderPaddle(Sprite.Paddle1);
+		Screen.RenderBall(Sprite.Ball);
 		BS.show();
 		g.dispose();
 	}
