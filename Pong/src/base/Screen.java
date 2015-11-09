@@ -8,18 +8,17 @@ public class Screen {
 			for (int i = 0; i < Main.Pixels.length; i++) {
 				Main.Pixels[i] = 0;
 			}
-		;
 	}
 
 	public static void RenderBack() {
 		Clear();
-		for (int y = 0; y < Main.HEIGHT; y++) {
-			if (y > Main.HEIGHT)
+		for (int y = 0; y < Main.Height; y++) {
+			if (y > Main.Height)
 				continue;
-			for (int x = 0; x < Main.WIDTH; x++) {
-				if (x > Main.WIDTH)
+			for (int x = 0; x < Main.Width; x++) {
+				if (x > Main.Width)
 					continue;
-				Main.Pixels[x + y * Main.WIDTH] = 0x0;
+				Main.Pixels[x + y * Main.Width] = 0x0;
 			}
 		}
 	}
@@ -27,7 +26,7 @@ public class Screen {
 	public static void RenderBall(Sprite Ball) {
 		for (int y = 0; y < 32; y++) {
 			for (int x = 0; x < 32; x++) {
-				Main.Pixels[x + y * Main.WIDTH] = Ball.getPixels()[x + y * 32];
+				Main.Pixels[x + y * Main.Width] = Ball.getPixels()[x + y * 32];
 			}
 		}
 	}
@@ -35,7 +34,7 @@ public class Screen {
 	public static void RenderPaddle(Sprite Paddle) {
 		for (int y = 0; y < 110; y++) {
 			for (int x = 0; x < 32; x++) {
-				Main.Pixels[x + y * Main.WIDTH] = Paddle.getPixels()[x + y * 32];
+				Main.Pixels[x + y * Main.Width] = Paddle.getPixels()[x + y * 32];
 			}
 		}
 	}

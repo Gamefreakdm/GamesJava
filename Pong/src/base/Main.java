@@ -12,10 +12,10 @@ public class Main extends Canvas implements Runnable {
 	private KeyHandler KH;
 	public static int[] Pixels;
 	private BufferedImage BIMG;
-	private static boolean Running;
+	private boolean Running;
 	private final String Title = "Pong! | ";
 	private static final long serialVersionUID = 1L;
-	public static final int WIDTH = 800, HEIGHT = 600;
+	public static final int Width = 800, Height = 600;
 	private final JFrame Frame = new JFrame("Loading...");
 
 	public static void main(String[] args) {
@@ -26,10 +26,10 @@ public class Main extends Canvas implements Runnable {
 		M.Frame.addKeyListener(M.KH);
 		M.Frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		M.Frame.setResizable(false);
-		M.Frame.setSize(WIDTH, HEIGHT);
+		M.Frame.setSize(Width, Height);
 		M.Frame.setLocationRelativeTo(null);
 		M.Frame.setVisible(true);
-		Running = true;
+		M.Running = true;
 		M.run();
 	}
 
@@ -73,13 +73,13 @@ public class Main extends Canvas implements Runnable {
 	private void Render() {
 		BufferStrategy BS = getBufferStrategy();
 		if (BS == null) {
-			BIMG = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
+			BIMG = new BufferedImage(Width, Height, BufferedImage.TYPE_INT_RGB);
 			Pixels = ((DataBufferInt) BIMG.getRaster().getDataBuffer()).getData();
 			createBufferStrategy(3);
 			return;
 		}
 		Graphics g = BS.getDrawGraphics();
-		g.drawImage(BIMG, 0, 0, WIDTH, HEIGHT, null);
+		g.drawImage(BIMG, 0, 0, Width, Height, null);
 		Screen.RenderBack();
 		Screen.RenderPaddle(Sprite.Paddle1);
 		BS.show();
@@ -87,11 +87,12 @@ public class Main extends Canvas implements Runnable {
 	}
 
 	public static void Stop() {
-		if (!Running) {
+		Main M = new Main();
+		if (!M.Running) {
 			System.out.println("[System] Unknown Error!");
 			System.exit(-1);
 		} else {
-			Running = false;
+			M.Running = false;
 			CleanUp();
 		}
 	}
