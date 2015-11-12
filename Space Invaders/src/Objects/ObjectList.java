@@ -1,8 +1,10 @@
 package Objects;
 
 import java.util.LinkedList;
+import java.util.Random;
 
 public class ObjectList {
+	private static Random random = new Random();
 	public static LinkedList<Bullet> gBullets = new LinkedList<Bullet>();
 	public static LinkedList<Bullet> bBullets = new LinkedList<Bullet>();
 	public static LinkedList<Enemy> Enemys = new LinkedList<Enemy>();
@@ -58,6 +60,9 @@ public class ObjectList {
 					removeEnemy(Enemys.get(i));
 					Main.Main.setScore(1);
 					Main.Main.ScoreUp();
+					addEnemy(new Enemy(random.nextInt(400) * 2 + 500, random.nextInt(400) * 2));
+					i = 0;
+					b = 0;
 				}
 			}
 		}
