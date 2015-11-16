@@ -23,7 +23,6 @@
 <fullyQualifiedTypeName name="Main.Story"/>
 <fullyQualifiedTypeName name="java.awt.Toolkit"/>
 <fullyQualifiedTypeName name="java.awt.GraphicsEnvironment"/>
-<fullyQualifiedTypeName name="javax.swing.JFrame"/>
 <fullyQualifiedTypeName name="Entity.Mob.Player"/>
 <fullyQualifiedTypeName name="Entity.Entity"/>
 <fullyQualifiedTypeName name="javax.imageio.ImageIO"/>
@@ -48,4 +47,5 @@
 <fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="Level.Level"/>
 <fullyQualifiedTypeName name="java.awt.image.DataBufferFloat"/>
+<fullyQualifiedTypeName name="javax.swing.JFrame"/>
 </qualifiedTypeNameHistroy>

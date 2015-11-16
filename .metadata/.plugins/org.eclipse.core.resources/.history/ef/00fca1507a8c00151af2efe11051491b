@@ -1,0 +1,17 @@
+import java.awt.Canvas;
+import javax.swing.JFrame;
+
+public class Display extends Canvas {
+	public static final int Width = 800, Height = 600;
+
+	public static void main(String[] args) {
+		Display Dis = new Display();
+		JFrame Frame = new JFrame("Loading...");
+		Frame.add(Dis);
+		Frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		Frame.setResizable(false);
+		Frame.setSize(Width, Height);
+		Frame.setLocationRelativeTo(null);
+		Frame.setVisible(true);
+	}
+}

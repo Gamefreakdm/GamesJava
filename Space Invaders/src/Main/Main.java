@@ -54,13 +54,14 @@ public class Main extends Canvas implements Runnable {
 	public static void main(String[] args) {
 		Main M = new Main();
 		M.Frame.add(M);
-		M.Frame.addKeyListener(M.KH);
+		M.Frame.addKeyListener(KH);
 		M.Frame.setSize(M.Width, M.Height);
 		M.Frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		M.Frame.setResizable(false);
 		M.Frame.setLocationRelativeTo(null);
 		M.Frame.setUndecorated(false);
 		M.Frame.setVisible(true);
+		M.Frame.pack();
 		M.Start();
 	}
 

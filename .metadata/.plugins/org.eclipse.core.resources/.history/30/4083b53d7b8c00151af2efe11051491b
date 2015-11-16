@@ -54,7 +54,7 @@ public class Main extends Canvas implements Runnable {
 	public static void main(String[] args) {
 		Main M = new Main();
 		M.Frame.add(M);
-		M.Frame.addKeyListener(M.KH);
+		M.Frame.addKeyListener(Main.KH);
 		M.Frame.setSize(M.Width, M.Height);
 		M.Frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		M.Frame.setResizable(false);
@@ -130,26 +130,13 @@ public class Main extends Canvas implements Runnable {
 			clip.open(audioIn);
 			clip.start();
 			clip.loop(clip.LOOP_CONTINUOUSLY);
-		} catch (
-
-		UnsupportedAudioFileException e)
-
-		{
+		} catch (UnsupportedAudioFileException e) {
 			e.printStackTrace();
-		} catch (
-
-		IOException e)
-
-		{
+		} catch (IOException e) {
 			e.printStackTrace();
-		} catch (
-
-		LineUnavailableException e)
-
-		{
+		} catch (LineUnavailableException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	public static void ScoreUp() {
@@ -160,23 +147,11 @@ public class Main extends Canvas implements Runnable {
 			audioIn = AudioSystem.getAudioInputStream(Main.class.getResource("/Sounds/Score.wav"));
 			clip.open(audioIn);
 			clip.start();
-		} catch (
-
-		UnsupportedAudioFileException e)
-
-		{
+		} catch (UnsupportedAudioFileException e) {
 			e.printStackTrace();
-		} catch (
-
-		IOException e)
-
-		{
+		} catch (IOException e) {
 			e.printStackTrace();
-		} catch (
-
-		LineUnavailableException e)
-
-		{
+		} catch (LineUnavailableException e) {
 			e.printStackTrace();
 		}
 	}

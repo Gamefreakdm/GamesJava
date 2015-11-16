@@ -1,0 +1,19 @@
+public class Main {
+	public static void main() {
+	}
+
+	private void Start() {
+	}
+
+	private void Stop() {
+	}
+
+	private void Run() {
+	}
+
+	private void Update() {
+	}
+
+	private void Render() {
+	}
+}
