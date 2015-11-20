@@ -5,9 +5,9 @@ import java.util.Random;
 
 public class ObjectList {
 	private static Random random = new Random();
+	public static LinkedList<Enemy> Enemys = new LinkedList<Enemy>();
 	public static LinkedList<Bullet> gBullets = new LinkedList<Bullet>();
 	public static LinkedList<Bullet> bBullets = new LinkedList<Bullet>();
-	public static LinkedList<Enemy> Enemys = new LinkedList<Enemy>();
 	public static LinkedList<Explosion> EXPS = new LinkedList<Explosion>();
 
 	public static void Update() {

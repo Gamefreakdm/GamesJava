@@ -3,7 +3,6 @@ package Objects;
 public abstract class Entity {
 	private int X, Y;
 	private double Vel;
-	private int Width, Height;
 	private boolean IsAlive, IsMoving;
 
 	protected abstract void Render();
@@ -24,22 +23,6 @@ public abstract class Entity {
 
 	public void setY(int y) {
 		Y = y;
-	}
-
-	public int getWidth() {
-		return Width;
-	}
-
-	public void setWidth(int width) {
-		Width = width;
-	}
-
-	public int getHeight() {
-		return Height;
-	}
-
-	public void setHeight(int height) {
-		Height = height;
 	}
 
 	public boolean isIsAlive() {

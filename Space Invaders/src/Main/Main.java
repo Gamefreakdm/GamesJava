@@ -18,7 +18,6 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JFrame;
 import Graphics.Screen;
-import Objects.Bullet;
 import Objects.Enemy;
 import Objects.ObjectList;
 import Objects.Player;
@@ -27,26 +26,25 @@ public class Main extends Canvas implements Runnable {
 	private boolean Running;
 	private final JFrame Frame;
 	private BufferedImage bimg;
-	private static KeyHandler KH = new KeyHandler();;
 	private final String Title;
 	public static Player player;
 	private static int Score = 0;
-	private int BulletTimer = 0;
-	private static Random random = new Random();
 	private final int Width, Height;
 	public static int HEight, WIdth;
 	private final Dimension screenSize;
-	public static final Screen screen = new Screen();
+	private static Random random = new Random();
 	private static final long serialVersionUID = 1L;
+	private static KeyHandler KH = new KeyHandler();
+	public static final Screen screen = new Screen();
 
 	private Main() {
 		System.out.println("[System] Starting...");
 		screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		Width = (int) screenSize.getWidth();
 		Height = (int) screenSize.getHeight();
-		Title = "Apple Mutation!!!!";
+		Title = "Space Invaders";
 		Frame = new JFrame("Loading...");
-		player = new Player(10, 200, KH);
+		player = new Player(10, 0, KH);
 		HEight = Height - 30;
 		WIdth = Width - 30;
 	}
@@ -106,17 +104,10 @@ public class Main extends Canvas implements Runnable {
 	}
 
 	private void KeyUpdate() {
-		BulletTimer++;
 		Frame.requestFocus();
 		KH.Update();
 		if (KH.Keys[1])
 			Stop();
-		if (KH.Keys[4]) {
-			if (BulletTimer > 65) {
-				ObjectList.addBullet(new Bullet(player.getX(), player.getY() + 12, 'g'));
-				BulletTimer = 0;
-			}
-		}
 		if (KH.Keys[0])
 			return;
 	}
@@ -181,8 +172,8 @@ public class Main extends Canvas implements Runnable {
 		g.drawImage(bimg, 0, 0, Width, Height, null);
 		g.setColor(Color.WHITE);
 		g.setFont(new Font("TimesRoman", Font.PLAIN, 80));
-		g.drawString("Score: " + Score, Width - 400, 100);
-		g.drawString("Health: " + player.getHealth(), 0, 100);
+		g.drawString("Score: " + Score, Width - 400, 60);
+		g.drawString("Health: " + player.getHealth(), 0, 60);
 		g.dispose();
 		BS.show();
 	}

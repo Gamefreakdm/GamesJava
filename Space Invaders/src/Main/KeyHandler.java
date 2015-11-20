@@ -5,7 +5,7 @@ import java.awt.event.KeyListener;
 
 public class KeyHandler implements KeyListener {
 	public boolean[] Keys = new boolean[5];
-	private final boolean[] Codes = new boolean[129];
+	private final boolean[] Codes = new boolean[192];
 
 	public void Update() {
 		Keys[1] = Codes[KeyEvent.VK_ESCAPE];

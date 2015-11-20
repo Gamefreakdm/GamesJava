@@ -5,10 +5,10 @@ import Graphics.Sprite;
 
 public class Enemy extends Entity {
 	protected int Dir;
-	protected Random random = new Random();
-	protected int FireTimer = 0;
 	protected int FireTick = 0;
+	protected int FireTimer = 0;
 	protected Sprite sps, spu, spd, spf;
+	protected Random random = new Random();
 
 	public Enemy(int X, int Y) {
 		this.setX(X);
@@ -42,7 +42,7 @@ public class Enemy extends Entity {
 			break;
 		case 1:
 			spf = spu;
-			if (this.getY() > 0)
+			if (this.getY() > 101)
 				this.setY((int) (this.getY() - this.getVel()));
 			else
 				Dir = 0;
