@@ -1,7 +1,7 @@
 package Objects;
 
 public abstract class Entity {
-	private int X, Y;
+	private float X, Y;
 	private double Vel;
 	private boolean IsAlive, IsMoving;
 
@@ -9,19 +9,19 @@ public abstract class Entity {
 
 	protected abstract void Update();
 
-	public int getX() {
+	public float getX() {
 		return X;
 	}
 
-	public void setX(int x) {
+	public void setX(float x) {
 		X = x;
 	}
 
-	public int getY() {
+	public float getY() {
 		return Y;
 	}
 
-	public void setY(int y) {
+	public void setY(float y) {
 		Y = y;
 	}
 

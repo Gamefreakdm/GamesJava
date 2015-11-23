@@ -4,13 +4,13 @@ import Graphics.Sprite;
 import Main.Main;
 
 public class Bullet extends Entity {
-	protected char GB;
-	protected Sprite sp;
+	private char GB;
+	private Sprite sp;
 
-	public Bullet(int x, int y, char gb) {
+	public Bullet(float f, float g, char gb) {
 		GB = gb;
-		setX(x);
-		setY(y);
+		setX(f);
+		setY(g);
 		switch (GB) {
 		case 'g':
 			sp = Sprite.Player_Bullet;
@@ -28,14 +28,18 @@ public class Bullet extends Entity {
 	protected void Update() {
 		switch (GB) {
 		case 'g':
-			if (this.getX() + this.getVel() > Main.WIdth)
+			if (this.getX() + this.getVel() > Main.WIdth) {
 				ObjectList.removeBullet(this);
+				return;
+			}
 			this.setVel(6.0);
 			this.setX((int) (this.getX() + getVel()));
 			break;
 		case 'b':
-			if (this.getX() - this.getVel() < 0)
+			if (this.getX() - this.getVel() < 0) {
 				ObjectList.removeBulletb(this);
+				return;
+			}
 			this.setVel(4.0);
 			this.setX((int) (this.getX() - getVel()));
 			break;

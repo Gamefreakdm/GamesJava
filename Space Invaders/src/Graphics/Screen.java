@@ -21,11 +21,11 @@ public class Screen {
 		}
 	}
 
-	public void RenderPlayer(int X, int Y, Sprite sp) {
+	public void RenderPlayer(float f, float g, Sprite sp) {
 		for (int y = 0; y < 32; y++) {
-			int Ya = y + Y;
+			int Ya = (int) (y + g);
 			for (int x = 0; x < 32; x++) {
-				int Xa = x + X;
+				int Xa = (int) (x + f);
 				int col = sp.Pixels[x + (y * 32)];
 				if (col != 0XFFFF00FF)
 					Pixels[Xa + (Ya * Width)] = sp.Pixels[x + (y * 32)];
@@ -33,11 +33,11 @@ public class Screen {
 		}
 	}
 
-	public void RenderBullet(int X, int Y, Sprite sp) {
+	public void RenderBullet(float f, float g, Sprite sp) {
 		for (int y = 0; y < 32; y++) {
-			int Ya = y + Y;
+			int Ya = (int) (y + g);
 			for (int x = 0; x < 32; x++) {
-				int Xa = x + X;
+				int Xa = (int) (x + f);
 				int Col = sp.Pixels[x + (y * 32)];
 				if (Col != 0XFFFF00FF)
 					Pixels[Xa + (Ya * Width)] = sp.Pixels[x + (y * 32)];
@@ -45,13 +45,13 @@ public class Screen {
 		}
 	}
 
-	public void RenderEnemy(int X, int Y, Sprite sp) {
+	public void RenderEnemy(float f, float g, Sprite sp) {
 		for (int y = 0; y < 32; y++) {
-			int Ya = y + Y;
+			int Ya = (int) (y + g);
 			if (Ya > Height || Ya < 0)
 				continue;
 			for (int x = 0; x < 32; x++) {
-				int Xa = x + X;
+				int Xa = (int) (x + f);
 				if (Xa > Width || Xa < 0)
 					continue;
 				int col = sp.Pixels[x + (y * 32)];
@@ -61,11 +61,11 @@ public class Screen {
 		}
 	}
 
-	public void DrawExlosion(int X, int Y) {
+	public void DrawExlosion(float f, float g) {
 		for (int y = 0; y < 32; y++) {
-			int Ya = y + Y;
+			int Ya = (int) (y + g);
 			for (int x = 0; x < 32; x++) {
-				int Xa = x + X;
+				int Xa = (int) (x + f);
 				int Col = Sprite.Explosion.Pixels[x + (y * 32)];
 				if (Col != 0XFFFF00FF) {
 					Pixels[Xa + (Ya * Width)] = Sprite.Explosion.Pixels[x + (y * 32)];

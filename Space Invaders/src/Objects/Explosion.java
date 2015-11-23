@@ -3,9 +3,9 @@ package Objects;
 public class Explosion extends Entity {
 	protected int Timer = 0;
 
-	public Explosion(int x, int y) {
-		this.setX(x);
-		this.setY(y);
+	public Explosion(float f, float g) {
+		this.setX(f);
+		this.setY(g);
 	}
 
 	protected void Render() {

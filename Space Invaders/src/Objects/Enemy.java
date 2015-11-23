@@ -4,11 +4,11 @@ import java.util.Random;
 import Graphics.Sprite;
 
 public class Enemy extends Entity {
-	protected int Dir;
-	protected int FireTick = 0;
-	protected int FireTimer = 0;
-	protected Sprite sps, spu, spd, spf;
-	protected Random random = new Random();
+	private int Dir;
+	private int FireTick = 0;
+	private int FireTimer = 0;
+	private Sprite sps, spu, spd, spf;
+	private Random random = new Random();
 
 	public Enemy(int X, int Y) {
 		this.setX(X);
