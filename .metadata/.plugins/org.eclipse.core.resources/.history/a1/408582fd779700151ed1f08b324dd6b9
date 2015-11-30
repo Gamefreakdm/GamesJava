@@ -1,0 +1,13 @@
+package Graphics;
+
+public class Render {
+	private float x, y;
+	private int ObjectWidth, ObjectHeight;
+	private Demension screenSize;
+
+	private void render(int xoffset, int yoffset, int OW, int OH) {
+		for (int y = 0; y < OH; y++) {
+			if (y)
+		}
+	}
+}

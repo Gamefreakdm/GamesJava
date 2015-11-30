@@ -7,12 +7,11 @@ public class Player extends Entity {
 	protected KeyHandler KH;
 	protected int Health = 100;
 	protected int BulletTimer = 0;
-	protected Sprite sps, spu, spd, spf;
+	protected Sprite sps, spm, spf;
 
 	public Player(int x, int y, KeyHandler KH) {
 		this.sps = Sprite.Player_Still;
-		this.spd = Sprite.Player_Down;
-		this.spu = Sprite.Player_Up;
+		this.spm = Sprite.Player_Moving;
 		this.spf = sps;
 		this.setVel(3.5);
 		this.KH = KH;
@@ -24,11 +23,11 @@ public class Player extends Entity {
 		BulletTimer++;
 		if (KH.Keys[2] && this.getY() > 101) {
 			this.setY((int) (this.getY() - this.getVel()));
-			spf = spu;
+			spf = spm;
 		}
 		if (KH.Keys[3] && this.getY() + 32 < Main.Main.HEight) {
 			this.setY((int) (this.getY() + this.getVel()));
-			spf = spd;
+			spf = spm;
 		}
 		if (!KH.Keys[2] && !KH.Keys[3])
 			spf = sps;

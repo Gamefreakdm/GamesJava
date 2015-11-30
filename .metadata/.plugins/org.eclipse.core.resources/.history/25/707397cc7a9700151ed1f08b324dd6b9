@@ -1,0 +1,24 @@
+package Graphics;
+
+import java.awt.Dimension;
+
+public class Render {
+
+	public Render(float x, float y, int Width, int Height, Dimension ss) {
+		int[] Pixels = new int[Width * Height];
+		render(x, y, Width, Height, Pixels, ss);
+	}
+
+	private void render(float xoffset, float yoffset, int OW, int OH, int[] p, Dimension ss) {
+		for (int y = 0; y < OH; y++) {
+			int ya = (int) (y + yoffset);
+			if (ya > ss.getHeight() || y < 0)
+				break;
+			for (int x = 0; x < OW; x++) {
+				int xa = (int) (x + xoffset);
+				if (xa < 0 || xa > ss.getWidth())
+					break;
+			}
+		}
+	}
+}

@@ -7,16 +7,16 @@ public class Enemy extends Entity {
 	private int Dir;
 	private int FireTick = 0;
 	private int FireTimer = 0;
-	private Sprite sps, spu, spd, spf;
+	private Sprite sps, spm, spf;
 	private Random random = new Random();
 
 	public Enemy(int X, int Y) {
 		this.setX(X);
 		this.setY(Y);
 		this.setVel(3.0);
-		spu = Sprite.Enemy_Up;
-		spd = Sprite.Enemy_Down;
-		spf = Sprite.Enemy_Still;
+		this.spm = Sprite.Enemy_Moving;
+		this.sps = Sprite.Enemy_Still;
+		this.spf = sps;
 		FireTick = random.nextInt(1200);
 		if (FireTick < 400)
 			FireTick += 200;
@@ -34,14 +34,14 @@ public class Enemy extends Entity {
 		}
 		switch (Dir) {
 		case 0:
-			spf = spd;
+			spf = spm;
 			if (this.getY() < Main.Main.HEight - 32)
 				this.setY((int) (this.getY() + this.getVel()));
 			else
 				Dir = 1;
 			break;
 		case 1:
-			spf = spu;
+			spf = spm;
 			if (this.getY() > 101)
 				this.setY((int) (this.getY() - this.getVel()));
 			else

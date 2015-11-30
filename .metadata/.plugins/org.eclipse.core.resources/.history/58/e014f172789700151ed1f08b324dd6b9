@@ -1,0 +1,20 @@
+package Graphics;
+
+import java.awt.Dimension;
+
+public class Render {
+	@SuppressWarnings("unused")
+	private float x, y;
+	@SuppressWarnings("unused")
+	private Dimension screenSize;
+	@SuppressWarnings("unused")
+	private int ObjectWidth, ObjectHeight;
+
+	private void render(int xoffset, int yoffset, int OW, int OH, Dimension ss) {
+		for (int y = 0; y < OH; y++) {
+			if (y > ss.getHeight() || y < 0) {
+				break;
+			}
+		}
+	}
+}

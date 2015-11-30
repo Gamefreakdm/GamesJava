@@ -5,14 +5,12 @@ public class Sprite {
 	public final int SIZE;
 	public static Sprite Star = new Sprite(0, 0, 32, SpriteSheet.Main);
 	public static Sprite Player_Still = new Sprite(1, 0, 32, SpriteSheet.Main);
-	public static Sprite Player_Up = new Sprite(2, 0, 32, SpriteSheet.Main);
-	public static Sprite Player_Down = new Sprite(3, 0, 32, SpriteSheet.Main);
-	public static Sprite Enemy_Still = new Sprite(4, 0, 32, SpriteSheet.Main);
-	public static Sprite Enemy_Up = new Sprite(5, 0, 32, SpriteSheet.Main);
-	public static Sprite Enemy_Down = new Sprite(6, 0, 32, SpriteSheet.Main);
-	public static Sprite Player_Bullet = new Sprite(7, 0, 32, SpriteSheet.Main);
-	public static Sprite Enemy_Bullet = new Sprite(0, 1, 32, SpriteSheet.Main);
-	public static Sprite Explosion = new Sprite(1, 1, 32, SpriteSheet.Main);
+	public static Sprite Player_Moving = new Sprite(2, 0, 32, SpriteSheet.Main);
+	public static Sprite Enemy_Still = new Sprite(3, 0, 32, SpriteSheet.Main);
+	public static Sprite Enemy_Moving = new Sprite(4, 0, 32, SpriteSheet.Main);
+	public static Sprite Player_Bullet = new Sprite(5, 0, 32, SpriteSheet.Main);
+	public static Sprite Enemy_Bullet = new Sprite(6, 0, 32, SpriteSheet.Main);
+	public static Sprite Explosion = new Sprite(7, 0, 32, SpriteSheet.Main);
 
 	public Sprite(int x, int y, int size, SpriteSheet sheet) {
 		Pixels = new int[size * size];

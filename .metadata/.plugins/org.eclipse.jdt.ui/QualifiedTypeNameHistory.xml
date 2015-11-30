@@ -48,4 +48,6 @@
 <fullyQualifiedTypeName name="Level.Level"/>
 <fullyQualifiedTypeName name="java.awt.image.DataBufferFloat"/>
 <fullyQualifiedTypeName name="javax.swing.JFrame"/>
+<fullyQualifiedTypeName name="Graphics.Render"/>
+<fullyQualifiedTypeName name="Input.KeyHandler"/>
 </qualifiedTypeNameHistroy>

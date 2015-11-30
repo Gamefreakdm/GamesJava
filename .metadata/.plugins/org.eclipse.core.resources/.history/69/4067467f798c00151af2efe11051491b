@@ -1,6 +1,0 @@
-public class Display {
-	private final int Width = 600, Height = 800;
-
-	public static void main(String[] args) {
-	}
-}
