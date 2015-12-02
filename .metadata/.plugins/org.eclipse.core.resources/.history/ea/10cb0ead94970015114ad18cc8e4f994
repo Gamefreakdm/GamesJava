@@ -1,0 +1,51 @@
+package Graphics;
+
+public class Screen {
+	private int[] Pixels;
+	private int Width, Height;
+
+	public void clearPixels() {
+		for (int i = 0; i < Pixels.length; i++)
+			Pixels[i] = 0;
+	}
+
+	public void Render() {
+		for (int y = 0; y < Height; y++) {
+			if (y < 0 || y >= Height)
+				break;
+			for (int x = 0; x < Width; x++) {
+				if (x < 0 || x >= Width)
+					break;
+				Pixels[x + (y * Width)] = 0x0;
+			}
+		}
+	}
+
+	public void Rendertest(float xoffset, float yoffset, int W, int H) {
+		for (int y = 0; y < H; y++) {
+			int ya = (int) (y + yoffset);
+			if (y < 0 || y >= Height)
+				break;
+			for (int x = 0; x < W; x++) {
+				int xa = (int) (x + xoffset);
+				if (x < 0 || x >= Width)
+					break;
+				Pixels[xa + (ya * Width)] = 0x0FF00FF;
+			}
+		}
+	}
+
+	public void setWHP(int w, int h, int[] p) {
+		Width = w;
+		Height = h;
+		Pixels = p;
+	}
+
+	public void setPixels(int[] p) {
+		Pixels = p;
+	}
+
+	public int[] getPixels() {
+		return Pixels;
+	}
+}

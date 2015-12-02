@@ -69,7 +69,8 @@ public class Screen {
 	}
 
 	public static void Clear() {
-		for (int i = 0; i < Main.Pixels.length; i++)
+		for (int i = 0; i < Main.Pixels.length; i++) {
 			Main.Pixels[i] = 0;
+		}
 	}
 }

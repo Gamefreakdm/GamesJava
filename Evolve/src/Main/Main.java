@@ -92,7 +92,7 @@ public class Main extends Canvas {
 		if (BS == null) {
 			bimg = new BufferedImage(Width, Height, BufferedImage.TYPE_INT_RGB);
 			Pixels = ((DataBufferInt) bimg.getRaster().getDataBuffer()).getData();
-			createBufferStrategy(3);
+			createBufferStrategy(1);
 			return;
 		}
 		Screen.Clear();

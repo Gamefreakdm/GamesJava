@@ -23,12 +23,13 @@ public class Main extends Canvas implements Runnable {
 	private Main() {
 		System.out.println("[System] Starting...");
 		screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		Width = 800;
-		Height = 600;
+		Width = (int) screenSize.getWidth();
+		Height = (int) screenSize.getHeight();
 		Title = "Title";
 		KH = new KeyHandler();
 		Frame = new JFrame("Loading...");
 		screen = new Screen();
+		screen.setWHP(Width, Height);
 	}
 
 	public static void main(String[] args) {
@@ -54,7 +55,6 @@ public class Main extends Canvas implements Runnable {
 
 	public void run() {
 		int Frames = 0;
-		int Updates = 0;
 		long Timer = System.currentTimeMillis();
 		long lastTime = System.nanoTime();
 		double Delta = 0;
@@ -66,17 +66,17 @@ public class Main extends Canvas implements Runnable {
 			Delta += (nowTime - lastTime) / NS;
 			lastTime = nowTime;
 			while (Delta >= 1) {
-				Update();
-				Updates++;
+				if (Frame.getTitle() != Title)
+					Update();
 				Delta--;
 			}
-			Render();
+			if (Frame.getTitle() != Title)
+				Render();
 			Frames++;
 			if (System.currentTimeMillis() - Timer >= 1000) {
 				Timer += 1000;
-				Frame.setTitle(Title + "   |   " + Frames + " Fps" + "   |   " + Updates + " Updates");
+				Frame.setTitle(Title + "   |   " + Frames + " Fps");
 				Frames = 0;
-				Updates = 0;
 			}
 		}
 		Stop();
@@ -85,10 +85,8 @@ public class Main extends Canvas implements Runnable {
 	private void KeyUpdate() {
 		Frame.requestFocus();
 		KH.Update();
-		if (!KH.Keys[0])
-			return;
-		if (KH.Keys[1])
-			Stop();
+		if (KH.Keys[0])
+			Running = false;
 	}
 
 	private void Update() {
@@ -101,27 +99,24 @@ public class Main extends Canvas implements Runnable {
 			bimg = new BufferedImage(Width, Height, BufferedImage.TYPE_INT_RGB);
 			screen.setPixels(((DataBufferInt) bimg.getRaster().getDataBuffer()).getData());
 			createBufferStrategy(3);
-			screen.setWHP(Width, Height, screen.getPixels());
 			return;
 		}
-		screen.Render();
+		screen.clearPixels();
+		screen.Rendertest(100, 100, 200, 200);
 		Graphics g = BS.getDrawGraphics();
 		g.drawImage(bimg, 0, 0, Width, Height, null);
 		g.dispose();
 		BS.show();
 	}
 
-	public void Stop() {
-		if (!Running)
-			System.exit(0);
+	private void Stop() {
+		if (Running)
+			return;
 		System.out.println("[System] Stopping...");
 		CleanUp();
-		Running = false;
 	}
 
 	private void CleanUp() {
-		if (Running)
-			return;
 		screen.clearPixels();
 		Frame.dispose();
 	}

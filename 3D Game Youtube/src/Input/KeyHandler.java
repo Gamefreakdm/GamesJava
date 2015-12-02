@@ -8,13 +8,7 @@ public class KeyHandler implements KeyListener {
 	private final boolean[] Codes = new boolean[129];
 
 	public void Update() {
-		Keys[1] = Codes[KeyEvent.VK_ESCAPE];
-		for (int i = 0; i < Keys.length; i++) {
-			if (Keys[i] == true)
-				Keys[0] = true;
-			else
-				Keys[0] = false;
-		}
+		Keys[0] = Codes[KeyEvent.VK_ESCAPE];
 	}
 
 	public void keyPressed(KeyEvent KP) {
