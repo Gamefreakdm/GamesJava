@@ -13,7 +13,7 @@ public class Main extends Canvas implements Runnable {
 	private boolean Running;
 	private final JFrame Frame;
 	private BufferedImage bimg;
-	private final Screen screen;
+	private Screen screen;
 	private final KeyHandler KH;
 	private final String Title;
 	private final int Width, Height;
@@ -25,11 +25,9 @@ public class Main extends Canvas implements Runnable {
 		screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		Width = (int) screenSize.getWidth();
 		Height = (int) screenSize.getHeight();
-		Title = "Title";
+		Title = "Pre-Alpha 1.0.0";
 		KH = new KeyHandler();
 		Frame = new JFrame("Loading...");
-		screen = new Screen();
-		screen.setWHP(Width, Height);
 	}
 
 	public static void main(String[] args) {
@@ -66,12 +64,10 @@ public class Main extends Canvas implements Runnable {
 			Delta += (nowTime - lastTime) / NS;
 			lastTime = nowTime;
 			while (Delta >= 1) {
-				if (Frame.getTitle() != Title)
-					Update();
+				Update();
 				Delta--;
 			}
-			if (Frame.getTitle() != Title)
-				Render();
+			Render();
 			Frames++;
 			if (System.currentTimeMillis() - Timer >= 1000) {
 				Timer += 1000;
@@ -97,12 +93,14 @@ public class Main extends Canvas implements Runnable {
 		BufferStrategy BS = getBufferStrategy();
 		if (BS == null) {
 			bimg = new BufferedImage(Width, Height, BufferedImage.TYPE_INT_RGB);
-			screen.setPixels(((DataBufferInt) bimg.getRaster().getDataBuffer()).getData());
+			screen = new Screen(Width, Height);
+			screen.Pixels = ((DataBufferInt) bimg.getRaster().getDataBuffer()).getData();
 			createBufferStrategy(3);
 			return;
 		}
 		screen.clearPixels();
-		screen.Rendertest(100, 100, 200, 200);
+		if (Frame.getTitle() != "Loading...")
+			screen.Render();
 		Graphics g = BS.getDrawGraphics();
 		g.drawImage(bimg, 0, 0, Width, Height, null);
 		g.dispose();

@@ -38,7 +38,6 @@
 <fullyQualifiedTypeName name="Objects.Entity"/>
 <fullyQualifiedTypeName name="java.awt.event.KeyListener"/>
 <fullyQualifiedTypeName name="java.util.LinkedList"/>
-<fullyQualifiedTypeName name="Graphics.Screen"/>
 <fullyQualifiedTypeName name="Graphics.SpriteSheet"/>
 <fullyQualifiedTypeName name="Objects.Object"/>
 <fullyQualifiedTypeName name="Graphics.Sprite"/>
@@ -50,4 +49,5 @@
 <fullyQualifiedTypeName name="javax.swing.JFrame"/>
 <fullyQualifiedTypeName name="Graphics.Render"/>
 <fullyQualifiedTypeName name="Input.KeyHandler"/>
+<fullyQualifiedTypeName name="Graphics.Screen"/>
 </qualifiedTypeNameHistroy>

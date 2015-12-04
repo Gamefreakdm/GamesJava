@@ -78,7 +78,7 @@ org.eclipse.jdt.ui.text.custom_code_templates=<?xml version\="1.0" encoding\="UT
 org.eclipse.jdt.ui.text.custom_templates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates/>
 org.eclipse.jdt.ui.text.templates_migrated=true
 org.eclipse.jdt.ui.visibility.order=B,V,R,D,
-org.eclipse.jface.textfont=1|Courier New|20.25|0|WINDOWS|1|-27|0|0|0|400|0|0|0|0|3|2|1|49|Courier New;
+org.eclipse.jface.textfont=1|Courier New|9.75|0|WINDOWS|1|-13|0|0|0|400|0|0|0|0|3|2|1|49|Courier New;
 outlinesortoption=T,SF,SI,SM,F,I,C,M,
 proposalOrderMigrated=true
 sourceHoverBackgroundColor=41,41,41

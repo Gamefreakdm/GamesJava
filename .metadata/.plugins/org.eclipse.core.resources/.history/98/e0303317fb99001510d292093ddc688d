@@ -1,0 +1,12 @@
+package Graphics;
+
+public class Render {
+	private int[] Pixels;
+	private int Width, Height;
+	public int[] getPixels() {
+		return Pixels;
+	}
+	public void setPixels(int[] pixels) {
+		Pixels = pixels;
+	}
+}

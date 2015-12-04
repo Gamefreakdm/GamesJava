@@ -1,0 +1,10 @@
+package Graphics;
+
+public class Screen extends Render {
+	private final Render3D R3D;
+
+	public Screen(int w, int h) {
+		super(w, h);
+		R3D = new Render3D(w, h);
+	}
+}

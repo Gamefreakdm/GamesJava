@@ -1,0 +1,15 @@
+package Graphics;
+
+public class Screen extends Render {
+	public void clearPixels() {
+		for (int i = 0; i < getPixels().length; i++) {
+			if (getPixels()[i] != 0)
+				getPixels()[i] = 0;
+		}
+	}
+
+	public void setWHP(int w, int h) {
+		setWidth(w);
+		setHeight(h);
+	}
+}

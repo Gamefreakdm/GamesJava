@@ -1,0 +1,6 @@
+package Graphics;
+
+public class Render {
+	private int[] Pixels;
+	private int Width, Height;
+}
