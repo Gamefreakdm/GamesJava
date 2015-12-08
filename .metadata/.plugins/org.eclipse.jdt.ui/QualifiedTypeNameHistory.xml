@@ -34,7 +34,6 @@
 <fullyQualifiedTypeName name="Level.Tile.Tile"/>
 <fullyQualifiedTypeName name="Entity.Mob.Mob"/>
 <fullyQualifiedTypeName name="java.awt.image.BufferedImage"/>
-<fullyQualifiedTypeName name="Main.Main"/>
 <fullyQualifiedTypeName name="Objects.Entity"/>
 <fullyQualifiedTypeName name="java.awt.event.KeyListener"/>
 <fullyQualifiedTypeName name="java.util.LinkedList"/>
@@ -50,4 +49,5 @@
 <fullyQualifiedTypeName name="Graphics.Render"/>
 <fullyQualifiedTypeName name="Input.KeyHandler"/>
 <fullyQualifiedTypeName name="Graphics.Screen"/>
+<fullyQualifiedTypeName name="Main.Main"/>
 </qualifiedTypeNameHistroy>

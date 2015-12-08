@@ -1,0 +1,20 @@
+package Graphics;
+
+public class Render {
+	public int[] Pixels;
+	private final int Width, Height;
+
+	public Render(int w, int h) {
+		Width = w;
+		Height = h;
+		Pixels = new int[Width * Height];
+	}
+
+	public int getWidth() {
+		return Width;
+	}
+
+	public int getHeight() {
+		return Height;
+	}
+}
