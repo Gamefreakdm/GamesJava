@@ -1,0 +1,21 @@
+package Entity.Mob;
+
+import Graphics.Sprite;
+
+public class HappyPerson extends Mob {
+	private Sprite sbu;
+
+	public HappyPerson(float x, float y, String skin) {
+		setX(x);
+		setY(y);
+	}
+
+	private void Animate() {
+	}
+
+	public void Update() {
+	}
+
+	public void Render() {
+	}
+}

@@ -11,8 +11,7 @@ public class Screen extends Render {
 
 	public void clearPixels() {
 		for (int i = 0; i < Pixels.length; i++) {
-			if (Pixels[i] != 0)
-				Pixels[i] = 0;
+			Pixels[i] = 0;
 		}
 	}
 

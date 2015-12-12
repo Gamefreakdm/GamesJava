@@ -5,7 +5,10 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
+
 import javax.swing.JFrame;
+
+import Entity.Mob.MobHandler;
 import Entity.Mob.Player;
 import Graphics.Screen;
 import Level.Level;
@@ -17,6 +20,7 @@ public class Main extends Canvas {
 	public static int[] Pixels;
 	private BufferedImage bimg;
 	private final String Title = "Title";
+	private MobHandler MH = new MobHandler();
 	private final KeyHandler KH = new KeyHandler();
 	private static final long serialVersionUID = 1L;
 	public static final int Width = 794, Height = 594;
@@ -85,6 +89,7 @@ public class Main extends Canvas {
 	private void Update() {
 		KeyUpdate();
 		player.Update();
+		MH.Update();
 	}
 
 	private void Render() {
@@ -93,11 +98,16 @@ public class Main extends Canvas {
 			bimg = new BufferedImage(Width, Height, BufferedImage.TYPE_INT_RGB);
 			Pixels = ((DataBufferInt) bimg.getRaster().getDataBuffer()).getData();
 			createBufferStrategy(1);
+			for (int i = 0; i < 11; i++) {
+				MH.addHappyPerson();
+				MH.addSadPerson();
+			}
 			return;
 		}
 		Screen.Clear();
 		level.Render((player.getX() - 365), (player.getY() - 265), "Grass");
 		player.Render();
+		MH.Render();
 		Graphics g = BS.getDrawGraphics();
 		g.drawImage(bimg, 0, 0, Width, Height, null);
 		g.dispose();
@@ -115,5 +125,15 @@ public class Main extends Canvas {
 	private void CleanUp() {
 		Screen.Clear();
 		Frame.dispose();
+	}
+
+	public static float getPlayerX() {
+		Main M = new Main();
+		return M.player.getX();
+	}
+
+	public static float getPlayerY() {
+		Main M = new Main();
+		return M.player.getY();
 	}
 }

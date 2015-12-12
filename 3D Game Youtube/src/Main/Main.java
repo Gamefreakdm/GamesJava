@@ -27,7 +27,7 @@ public class Main extends Canvas implements Runnable {
 		screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		Width = (int) screenSize.getWidth();
 		Height = (int) screenSize.getHeight();
-		Title = "Pre-Alpha 1.0.0";
+		Title = "Pre-Alpha 1.0.1";
 		KH = new KeyHandler();
 		Frame = new JFrame("Loading...");
 	}
@@ -104,7 +104,6 @@ public class Main extends Canvas implements Runnable {
 			screen.Render();
 		Graphics g = BS.getDrawGraphics();
 		g.drawImage(bimg, 0, 0, Width, Height, null);
-		g.dispose();
 		BS.show();
 	}
 

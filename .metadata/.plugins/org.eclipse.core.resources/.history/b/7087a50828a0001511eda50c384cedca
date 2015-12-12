@@ -1,0 +1,8 @@
+package Entity.Mob;
+
+import java.util.LinkedList;
+
+public class MobHandler {
+	private LinkedList<HappyPerson> hplist = new LinkedList<HappyPerson>();
+	private LinkedList<SadPerson> splist = new LinkedList<SadPerson>();
+}

@@ -1,0 +1,33 @@
+package Entity.Mob;
+
+import java.util.LinkedList;
+
+public class MobHandler {
+	private LinkedList<HappyPerson> hplist = new LinkedList<HappyPerson>();
+	private LinkedList<SadPerson> splist = new LinkedList<SadPerson>();
+
+	public void addHappyPerson() {
+	}
+
+	public void Update() {
+		for (int i = 0; i < hplist.size(); i++) {
+			HappyPerson temp = hplist.get(i);
+			temp.Update();
+		}
+		for (int i = 0; i < splist.size(); i++) {
+			SadPerson temp = splist.get(i);
+			temp.Update();
+		}
+	}
+
+	public void Render() {
+		for (int i = 0; i < hplist.size(); i++) {
+			HappyPerson temp = hplist.get(i);
+			temp.Render();
+		}
+		for (int i = 0; i < splist.size(); i++) {
+			SadPerson temp = splist.get(i);
+			temp.Render();
+		}
+	}
+}
