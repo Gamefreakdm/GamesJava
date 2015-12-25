@@ -1,5 +1,0 @@
-package Entity.Mob;
-
-public class MobHandler {
-	private Linkedlist <HappyPerson> hplist = new Linkedlist<HappyPerson>;
-}

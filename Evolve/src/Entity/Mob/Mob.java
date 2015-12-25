@@ -1,8 +1,11 @@
 package Entity.Mob;
 
+import javax.sound.sampled.AudioInputStream;
+
 import Entity.Entity;
 
 public abstract class Mob extends Entity {
+	protected AudioInputStream AudioIn;
 	protected boolean Moving = false;
 
 	public void Move(int xa, int ya) {

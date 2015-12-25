@@ -1,6 +1,11 @@
 package Entity.Mob;
 
+import java.io.IOException;
 import java.util.Random;
+
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 import Graphics.Screen;
 import Graphics.Sprite;
@@ -158,8 +163,20 @@ public class HappyPerson extends Mob {
 			Moving = false;
 	}
 
+	public void Speak() {
+		Random random = new Random();
+		int ms = 0;// random.nextInt(2);
+		switch (ms) {
+		case 0:
+			break;
+		case 1:
+			break;
+		}
+	}
+
 	public void Render() {
 		Animate(Char);
-		Screen.RenderPlayer(getX(), getY(), sprite);
+		if (getY() > Main.Main.getPlayerY() - 300)
+			Screen.RenderPlayer(getX(), getY(), sprite);
 	}
 }

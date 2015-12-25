@@ -39,15 +39,18 @@
 <fullyQualifiedTypeName name="java.util.LinkedList"/>
 <fullyQualifiedTypeName name="Graphics.SpriteSheet"/>
 <fullyQualifiedTypeName name="Objects.Object"/>
-<fullyQualifiedTypeName name="Graphics.Sprite"/>
 <fullyQualifiedTypeName name="java.awt.Font"/>
 <fullyQualifiedTypeName name="Base.Main"/>
-<fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="Level.Level"/>
 <fullyQualifiedTypeName name="java.awt.image.DataBufferFloat"/>
 <fullyQualifiedTypeName name="javax.swing.JFrame"/>
 <fullyQualifiedTypeName name="Graphics.Render"/>
 <fullyQualifiedTypeName name="Input.KeyHandler"/>
 <fullyQualifiedTypeName name="Graphics.Screen"/>
+<fullyQualifiedTypeName name="Graphics.Sprite"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="javax.sound.sampled.AudioInputStream"/>
+<fullyQualifiedTypeName name="javax.sound.sampled.AudioSystem"/>
+<fullyQualifiedTypeName name="javax.sound.sampled.Clip"/>
 <fullyQualifiedTypeName name="Main.Main"/>
 </qualifiedTypeNameHistroy>

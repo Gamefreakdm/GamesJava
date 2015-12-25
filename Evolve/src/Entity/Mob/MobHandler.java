@@ -46,24 +46,41 @@ public class MobHandler {
 	}
 
 	public void Update() {
-		for (int i = 0; i < hplist.size(); i++) {
-			HappyPerson temp = hplist.get(i);
-			temp.Update();
-		}
-		for (int i = 0; i < splist.size(); i++) {
-			SadPerson temp = splist.get(i);
-			temp.Update();
-		}
+		if (hplist.size() != 0)
+			for (int i = 0; i < hplist.size(); i++) {
+				HappyPerson temp = hplist.get(i);
+				temp.Update();
+			}
+		if (splist.size() != 0)
+			for (int i = 0; i < splist.size(); i++) {
+				SadPerson temp = splist.get(i);
+				temp.Update();
+			}
 	}
 
 	public void Render() {
-		for (int i = 0; i < hplist.size(); i++) {
-			HappyPerson temp = hplist.get(i);
-			temp.Render();
+		if (hplist.size() != 0)
+			for (int i = 0; i < hplist.size(); i++) {
+				HappyPerson temp = hplist.get(i);
+				temp.Render();
+			}
+		if (splist.size() != 0)
+			for (int i = 0; i < splist.size(); i++) {
+				SadPerson temp = splist.get(i);
+				temp.Render();
+			}
+	}
+
+	public void CheckCol() {
+		for (int i = 0; i < 11; i++) {
+			if (hplist.get(i).getX() <= Main.Main.getPlayerX() + 32 && hplist.get(i).getX() + 32 >= Main.Main.getPlayerX() && hplist.get(i).getY() <= Main.Main.getPlayerY() + 32 && hplist.get(i).getY() + 32 >= Main.Main.getPlayerY())
+				hplist.get(i).Speak();
+			if (splist.get(i).getX() <= Main.Main.getPlayerX() + 32 && splist.get(i).getX() + 32 >= Main.Main.getPlayerX() && splist.get(i).getY() <= Main.Main.getPlayerY() + 32 && splist.get(i).getY() + 32 >= Main.Main.getPlayerY())
+				splist.get(i).Speak();
 		}
-		for (int i = 0; i < splist.size(); i++) {
-			SadPerson temp = splist.get(i);
-			temp.Render();
-		}
+	}
+
+	public int getListSize() {
+		return hplist.size();
 	}
 }
