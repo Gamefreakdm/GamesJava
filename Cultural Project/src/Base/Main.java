@@ -120,28 +120,15 @@ public class Main extends Canvas implements Runnable {
 			g.drawString("Avoid The Stars", 115, 300);
 			break;
 		case 3:
-			g.setFont(new Font("TimesRoman", Font.PLAIN, 30));
-			g.drawString("Now that I have introduced you to some of the game machanics, ", 10, 30);
-			g.drawString("I will explain to you the theme of this game. In this game", 10, 60);
-			g.drawString("you will solve puzzles in order to find picures of my culture.", 10, 90);
-			g.drawString("Each picture will give your character some trait like hair", 10, 120);
-			g.drawString("color or eye color. As you go futher in the game the level of", 10, 150);
-			g.drawString("difficulty will increase, thanks for playing!! Have fun!", 10, 180);
-			g.drawString("P.S Sorry for bad graphics I am not very good at art!! Also,", 10, 310);
-			g.drawString("I didn't have enough time to create better sprites.", 10, 340);
-			g.drawString("Press ENTER to continue...", 10, 440);
-			break;
-		case 6:
 			g.setFont(new Font("TimesRoman", Font.PLAIN, 80));
 			g.drawString("Get the picture", 140, 150);
+		case 4:
 			break;
 		}
-		if (Level.level != 3) {
-			g.setFont(new Font("TimesRoman", Font.PLAIN, 20));
-			g.drawString("Score: " + Score, 20, 20);
-			g.drawString("Lives: " + player.getLives(), 200, 20);
-			player.Render();
-		}
+		g.setFont(new Font("TimesRoman", Font.PLAIN, 20));
+		g.drawString("Score: " + Score, 20, 20);
+		g.drawString("Lives: " + player.getLives(), 200, 20);
+		player.Render();
 		BS.show();
 		g.dispose();
 	}

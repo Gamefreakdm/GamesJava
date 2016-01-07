@@ -17,10 +17,6 @@ public class Player extends Mob {
 		this.Char = Char;
 	}
 
-	public void Init(Level level) {
-		this.setLevel(level);
-	}
-
 	public void Update() {
 		int xa = 0, ya = 0;
 		if (anim < 7500)

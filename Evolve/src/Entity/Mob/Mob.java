@@ -1,12 +1,15 @@
 package Entity.Mob;
 
-import javax.sound.sampled.AudioInputStream;
+import java.awt.Graphics;
+import java.util.Random;
 
 import Entity.Entity;
 
 public abstract class Mob extends Entity {
-	protected AudioInputStream AudioIn;
 	protected boolean Moving = false;
+	protected boolean Speaking = false;
+	protected int SpeakTimer = 0;
+	protected int MovementTimer = 0;
 
 	public void Move(int xa, int ya) {
 		if (xa > 0)
@@ -28,8 +31,14 @@ public abstract class Mob extends Entity {
 	}
 
 	public void Update() {
+		Random random = new Random();
+		if (this.SpeakTimer == 0)
+			Speaking = random.nextBoolean();
 	}
 
 	public void Render() {
+	}
+
+	public void Speak(Graphics g) {
 	}
 }

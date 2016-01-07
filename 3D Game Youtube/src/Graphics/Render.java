@@ -2,10 +2,12 @@ package Graphics;
 
 public class Render {
 	private final int Width, Height;
+	protected final Screen screen;
 
-	public Render(int w, int h) {
+	public Render(int w, int h, Screen s) {
 		Width = w;
 		Height = h;
+		screen = s;
 	}
 
 	public int getWidth() {

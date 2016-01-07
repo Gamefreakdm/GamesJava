@@ -23,9 +23,8 @@ public class Player extends Entity {
 
 	private void Gravity() {
 		if (Gravity) {
-			this.GV = 2.5;
+			this.GV = 3.5;
 			this.y += GV;
-			GV += 1.5;
 		} else
 			GV = 0;
 	}

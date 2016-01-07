@@ -1,11 +1,7 @@
 package Entity.Mob;
 
-import java.io.IOException;
+import java.awt.Graphics;
 import java.util.Random;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 import Graphics.Screen;
 import Graphics.Sprite;
 
@@ -13,9 +9,6 @@ public class SadPerson extends Mob {
 	private Sprite sprite;
 	private int anim = 0;
 	private String Char;
-	private int Timer = 0;
-	private Clip SPHF;
-	private Clip SPSSN;
 
 	public SadPerson(float x, float y, String cHar) {
 		setX(x);
@@ -133,10 +126,10 @@ public class SadPerson extends Mob {
 	public void Update() {
 		int xa = 0, ya = 0;
 		Random random = new Random();
-		if (Timer == 0)
+		if (MovementTimer == 0)
 			setDir(random.nextInt(6));
-		Timer++;
-		if (Timer <= 300) {
+		MovementTimer++;
+		if (MovementTimer <= 300) {
 			if (getDir() == 0)
 				ya--;
 			else if (getDir() == 1)
@@ -150,7 +143,7 @@ public class SadPerson extends Mob {
 				ya = 0;
 			}
 		} else
-			Timer = 0;
+			MovementTimer = 0;
 		if (anim < 7500)
 			anim++;
 		else
@@ -163,39 +156,12 @@ public class SadPerson extends Mob {
 			Moving = false;
 	}
 
-	public void Speak() {
-		Random random = new Random();
-		int ms = 0;// random.nextInt(2);
-		switch (ms) {
-		case 0:
-			try {
-				try {
-					AudioIn = AudioSystem.getAudioInputStream(this.getClass().getResource("/Sounds/SPHF.wav"));
-				} catch (UnsupportedAudioFileException e) {
-					e.printStackTrace();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-				SPHF = AudioSystem.getClip();
-				try {
-					SPHF.open(AudioIn);
-					if (!SPHF.isActive())
-						SPHF.start();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			} catch (LineUnavailableException e) {
-				e.printStackTrace();
-			}
-			break;
-		case 1:
-			break;
-		}
-	}
-
 	public void Render() {
 		Animate(Char);
 		if (getY() > Main.Main.getPlayerY() - 300)
 			Screen.RenderPlayer(getX(), getY(), sprite);
+	}
+
+	public void Speak(Graphics g) {
 	}
 }

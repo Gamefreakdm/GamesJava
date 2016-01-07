@@ -50,7 +50,6 @@ public class Main extends Canvas {
 	}
 
 	private void Run() {
-		player.Init(level);
 		long Timer = System.currentTimeMillis();
 		long lastTime = System.nanoTime();
 		double Delta = 0;
@@ -90,7 +89,6 @@ public class Main extends Canvas {
 		KeyUpdate();
 		player.Update();
 		MH.Update();
-		MH.CheckCol();
 	}
 
 	private void Render() {
@@ -113,6 +111,7 @@ public class Main extends Canvas {
 			MH.Render();
 		Graphics g = BS.getDrawGraphics();
 		g.drawImage(bimg, 0, 0, Width, Height, null);
+		// MH.IsSpeaking(g);
 		g.dispose();
 		BS.show();
 	}

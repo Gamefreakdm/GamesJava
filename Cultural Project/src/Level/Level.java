@@ -46,7 +46,7 @@ public class Level {
 			Walls.add(new Moving_Wall(500, Main.Height - 300, 100, 10, 'v', 2, 100));
 			Walls.add(new Wall(0, Main.Height - 68, Main.Width, 10));
 			break;
-		case 4:
+		case 3:
 			Objects.add(new Object(95, Main.Height - 310, Sprite.Coin));
 			Objects.add(new Object(350, Main.Height - 270, Sprite.Coin));
 			Objects.add(new Object(228, Main.Height - 190, Sprite.Coin));
@@ -56,7 +56,7 @@ public class Level {
 			Walls.add(new Wall(370, Main.Height - 120, 100, 10));
 			Walls.add(new Wall(0, Main.Height - 68, Main.Width, 10));
 			break;
-		case 5:
+		case 4:
 			Objects.add(new Object(350, Main.Height - 470, Sprite.Coin));
 			Objects.add(new Object(400, Main.Height - 470, Sprite.Star));
 			Objects.add(new Object(400, Main.Height - 400, Sprite.Coin));
@@ -96,9 +96,9 @@ public class Level {
 			if (Main.Score == 13)
 				Main.player.LevelUp(3);
 			break;
-		case 4:
+		case 3:
 			if (Main.Score == 16)
-				Main.player.LevelUp(5);
+				Main.player.LevelUp(4);
 			break;
 		}
 	}

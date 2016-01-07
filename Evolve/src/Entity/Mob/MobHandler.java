@@ -1,5 +1,6 @@
 package Entity.Mob;
 
+import java.awt.Graphics;
 import java.util.LinkedList;
 import java.util.Random;
 
@@ -71,12 +72,11 @@ public class MobHandler {
 			}
 	}
 
-	public void CheckCol() {
-		for (int i = 0; i < 11; i++) {
-			if (hplist.get(i).getX() <= Main.Main.getPlayerX() + 32 && hplist.get(i).getX() + 32 >= Main.Main.getPlayerX() && hplist.get(i).getY() <= Main.Main.getPlayerY() + 32 && hplist.get(i).getY() + 32 >= Main.Main.getPlayerY())
-				hplist.get(i).Speak();
-			if (splist.get(i).getX() <= Main.Main.getPlayerX() + 32 && splist.get(i).getX() + 32 >= Main.Main.getPlayerX() && splist.get(i).getY() <= Main.Main.getPlayerY() + 32 && splist.get(i).getY() + 32 >= Main.Main.getPlayerY())
-				splist.get(i).Speak();
+	public void IsSpeaking(Graphics g) {
+		for (int i = 0; i < hplist.size(); i++) {
+			if (hplist.get(i).Speaking) {
+				hplist.get(i).Speak(g);
+			}
 		}
 	}
 
