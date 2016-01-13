@@ -1,0 +1,14 @@
+package Tiles;
+
+import Graphics.Sprite;
+
+public class Floor_Tile {
+	protected float X, Y;
+	protected int[] Pixels;
+	protected Sprite sprite;
+
+	public Floor_Tile(float x, float y, Sprite sp) {
+		X = x;
+		Y = y;
+	}
+}

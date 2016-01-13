@@ -1,0 +1,10 @@
+package Level;
+
+public class Level {
+	protected int[] Tiles;
+	protected String LevelName;
+
+	public Level(String ln) {
+		Tiles = new int[4 << 4];
+	}
+}

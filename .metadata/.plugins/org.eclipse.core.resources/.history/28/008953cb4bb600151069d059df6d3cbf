@@ -1,0 +1,36 @@
+package Entity.Mob;
+
+import java.awt.Graphics;
+import java.util.LinkedList;
+import java.util.Random;
+
+public class MobHandler {
+
+	public void Update() {
+	}
+
+	public void Render() {
+		if (hplist.size() != 0)
+			for (int i = 0; i < hplist.size(); i++) {
+				HappyPerson temp = hplist.get(i);
+				temp.Render();
+			}
+		if (splist.size() != 0)
+			for (int i = 0; i < splist.size(); i++) {
+				SadPerson temp = splist.get(i);
+				temp.Render();
+			}
+	}
+
+	public void IsSpeaking(Graphics g) {
+		for (int i = 0; i < hplist.size(); i++) {
+			if (hplist.get(i).Speaking) {
+				hplist.get(i).Speak(g);
+			}
+		}
+	}
+
+	public int getListSize() {
+		return hplist.size();
+	}
+}

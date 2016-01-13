@@ -1,0 +1,38 @@
+package Level.Tile;
+
+import Graphics.Sprite;
+
+public class Tile {
+	protected int x, y;
+	protected Sprite sprite;
+	public static Floor_Tile Grass = new Floor_Tile(Sprite.Grass_Floor);
+
+	public Tile(Sprite sprite) {
+		this.sprite = sprite;
+	}
+
+	public void Render(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+
+	public Sprite getSprite() {
+		return sprite;
+	}
+
+	public void setSprite(Sprite sprite) {
+		this.sprite = sprite;
+	}
+
+	public boolean getIsSolid() {
+		return false;
+	}
+
+	public int getX() {
+		return x;
+	}
+
+	public int getY() {
+		return y;
+	}
+}

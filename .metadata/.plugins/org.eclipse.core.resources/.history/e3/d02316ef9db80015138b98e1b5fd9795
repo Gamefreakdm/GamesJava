@@ -1,0 +1,37 @@
+package Level;
+
+import Graphics.Screen;
+import Level.Tile.Tile;
+
+public class Level {
+	protected int[] Tiles;
+	protected final int mapSIZE;
+
+	public Level(int ms) {
+		mapSIZE = ms;
+	}
+
+	public void Render(float xscroll, float yscroll, String Map) {
+		Screen.setOffset(xscroll, yscroll);
+		for (int y = 0; y < mapSIZE; y++)
+			for (int x = 0; x < mapSIZE; x++)
+				getRandomTile(x, y, this.mapSIZE).Render(x, y);
+	}
+
+	protected void generateLevel() {
+	}
+
+	public Tile getTile(int f, int g, String map) {
+		return null;
+	}
+
+	private Tile getRandomTile(int x, int y, int mapSize) {
+		if (this.Tiles[x + y * mapSize] >= 10 && this.Tiles[x + y * mapSize] <= 30)
+			return Tile.Grass;
+		return Tile.GrassPlain;
+	}
+
+	public int[] getTiles() {
+		return Tiles;
+	}
+}

@@ -1,0 +1,10 @@
+package Entity.Mob;
+
+public class MobHandler {
+
+	public void Update() {
+	}
+
+	public void Render() {
+	}
+}

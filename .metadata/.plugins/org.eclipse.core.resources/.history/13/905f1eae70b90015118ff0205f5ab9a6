@@ -1,0 +1,18 @@
+package Entity.Mob;
+
+import java.util.LinkedList;
+
+import Graphics.Screen;
+
+public class MobHandler {
+	private LinkedList<Glob> Globlist = new LinkedList<Glob>();
+
+	public void Update() {
+		for (int i = 0; i < Globlist.size(); i++) {
+			Glob temp = Globlist.get(i);
+		}
+	}
+
+	public void Render(Screen screen) {
+	}
+}

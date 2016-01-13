@@ -1,0 +1,7 @@
+package Entity.Mob;
+
+public class Glob extends Mob {
+	
+	public Glob() {
+	}
+}

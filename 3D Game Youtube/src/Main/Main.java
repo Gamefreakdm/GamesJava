@@ -18,16 +18,18 @@ public class Main extends Canvas implements Runnable {
 	private BufferedImage bimg;
 	public static Screen screen;
 	private final KeyHandler KH;
-	private final int Width, Height;
+	private int Width, Height;
 	private final Dimension screenSize;
-	private static double GameTime = 0;
+	private boolean Ticked = false;
+	public static double GameTime = 0;
+	private int keyTimer = 0;
 	private static final long serialVersionUID = 1L;
 
 	private Main() {
 		System.out.println("[System] Starting...");
 		screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		Width = (int) screenSize.getWidth();
-		Height = (int) screenSize.getHeight();
+		Width = 800;
+		Height = 600;
 		Title = "Pre-Alpha 1.0.1";
 		KH = new KeyHandler();
 		Frame = new JFrame("Loading...");
@@ -63,16 +65,20 @@ public class Main extends Canvas implements Runnable {
 		final double NS = 1000000000.0 / 60;
 		System.out.println("[System] Started");
 		while (Running) {
-			GameTime++;
 			nowTime = System.nanoTime();
 			Delta += (nowTime - lastTime) / NS;
 			lastTime = nowTime;
 			while (Delta >= 1) {
 				Update();
+				Ticked = true;
 				Delta--;
 			}
-			Render();
-			Frames++;
+			if (Ticked) {
+				Render();
+				Frames++;
+				GameTime++;
+				Ticked = false;
+			}
 			if (System.currentTimeMillis() - Timer >= 1000) {
 				Timer += 1000;
 				Frame.setTitle(Title + "   |   " + Frames + " Fps");
@@ -87,6 +93,14 @@ public class Main extends Canvas implements Runnable {
 		KH.Update();
 		if (KH.getKey(0))
 			Running = false;
+		if (KH.getKey(1)) {
+			keyTimer++;
+			if (keyTimer == 1) {
+				ScreenSize();
+				KH.setKey(1, false);
+			} else if (keyTimer >= 6)
+				keyTimer = 0;
+		}
 	}
 
 	private void Update() {
@@ -97,13 +111,12 @@ public class Main extends Canvas implements Runnable {
 		BufferStrategy BS = getBufferStrategy();
 		if (BS == null) {
 			bimg = new BufferedImage(Width, Height, BufferedImage.TYPE_INT_RGB);
-			screen = new Screen(Width, Height, screen);
+			screen = new Screen(Width, Height);
 			screen.setPixelsnew(((DataBufferInt) bimg.getRaster().getDataBuffer()).getData());
 			createBufferStrategy(3);
 			return;
 		}
-		if (Frame.getTitle() != "Loading...")
-			screen.Render();
+		screen.Render();
 		Graphics g = BS.getDrawGraphics();
 		g.drawImage(bimg, 0, 0, Width, Height, null);
 		BS.show();
@@ -121,7 +134,18 @@ public class Main extends Canvas implements Runnable {
 		Frame.dispose();
 	}
 
-	public static double getGameTimer() {
-		return GameTime;
+	private void ScreenSize() {
+		if (Width != 800) {
+			Width = 800;
+			Height = 600;
+		} else {
+			Width = (int) screenSize.getWidth();
+			Height = (int) screenSize.getHeight();
+		}
+		this.Frame.setVisible(false);
+		this.Frame.setSize(Width, Height);
+		this.Frame.setLocationRelativeTo(null);
+		screen.clearPixels();
+		this.Frame.setVisible(true);
 	}
 }

@@ -1,0 +1,31 @@
+package Level;
+
+import Graphics.Screen;
+import Level.Tile.Tile;
+
+public class Level {
+	protected int[] Tiles;
+	protected final int mapSIZE;
+
+	public Level(int ms) {
+		mapSIZE = ms;
+	}
+
+	public void Render(float xscroll, float yscroll, String Map) {
+		Screen.setOffset(xscroll, yscroll);
+		for (int y = 0; y < mapSIZE; y++)
+			for (int x = 0; x < mapSIZE; x++)
+				TileRender(x, y);
+	}
+
+	protected void generateLevel() {
+	}
+
+	public Tile getTile(int f, int g, String map) {
+		return null;
+	}
+
+	public int[] getTiles() {
+		return Tiles;
+	}
+}

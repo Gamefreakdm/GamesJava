@@ -1,0 +1,13 @@
+package Entity.Mob;
+
+import Graphics.Sprite;
+
+public class Glob extends Mob {
+
+	public Glob(float x, float y, char Color) {
+		switch (Color) {
+		case 'g':
+			this.sprite = Sprite.Green_Glob;
+		}
+	}
+}

@@ -1,0 +1,25 @@
+package Level;
+
+public class Level {
+	protected int[] Tiles;
+	protected String LevelName;
+
+	public Level(String ln, int w, int h) {
+		Tiles = new int[w << h];
+		LevelName = ln;
+	}
+
+	private void createRandomLevel() {
+		for (int i = 0; i < Tiles.length; i++) {
+		}
+	}
+
+	private void CreatePlain() {
+	}
+
+	public void Update() {
+	}
+
+	public void Render() {
+	}
+}
