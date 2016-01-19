@@ -42,16 +42,16 @@
 <fullyQualifiedTypeName name="Base.Main"/>
 <fullyQualifiedTypeName name="Level.Level"/>
 <fullyQualifiedTypeName name="java.awt.image.DataBufferFloat"/>
-<fullyQualifiedTypeName name="javax.swing.JFrame"/>
 <fullyQualifiedTypeName name="Graphics.Render"/>
 <fullyQualifiedTypeName name="Input.KeyHandler"/>
 <fullyQualifiedTypeName name="Graphics.Screen"/>
 <fullyQualifiedTypeName name="javax.sound.sampled.AudioInputStream"/>
 <fullyQualifiedTypeName name="javax.sound.sampled.AudioSystem"/>
 <fullyQualifiedTypeName name="javax.sound.sampled.Clip"/>
-<fullyQualifiedTypeName name="java.lang.System"/>
-<fullyQualifiedTypeName name="Main.Main"/>
 <fullyQualifiedTypeName name="java.awt.event.KeyEvent"/>
 <fullyQualifiedTypeName name="Graphics.SpriteSheet"/>
 <fullyQualifiedTypeName name="Graphics.Sprite"/>
+<fullyQualifiedTypeName name="javax.swing.JFrame"/>
+<fullyQualifiedTypeName name="Main.Main"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
 </qualifiedTypeNameHistroy>

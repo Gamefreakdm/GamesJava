@@ -6,6 +6,9 @@ public class Sprite {
 	public static Sprite Grass_Floor = new Sprite(1, 0, SpriteSheet.Tiles);
 	public static Sprite Water_Floor = new Sprite(2, 0, SpriteSheet.Tiles);
 	public static Sprite Green_Glob = new Sprite(0, 0, SpriteSheet.Chars1);
+	public static Sprite Blue_Glob = new Sprite(1, 0, SpriteSheet.Chars1);
+	public static Sprite Red_Glob = new Sprite(2, 0, SpriteSheet.Chars1);
+	public static Sprite Yellow_Glob = new Sprite(3, 0, SpriteSheet.Chars1);
 
 	public Sprite(int x, int y, SpriteSheet sheet) {
 		Pixels = new int[64 * 64];

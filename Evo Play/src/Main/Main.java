@@ -14,7 +14,7 @@ import Level.RandomLevel;
 public class Main extends Canvas {
 	private JFrame Frame;
 	private boolean Running;
-	private double VelX, VelY;
+	public double VelX, VelY;
 	public static int[] Pixels;
 	private BufferedImage bimg;
 	private Screen screen = new Screen();
@@ -45,7 +45,7 @@ public class Main extends Canvas {
 			return;
 		Sprite.LoadSprites();
 		Running = true;
-		MH.addGlob();
+		MH.addGlob(0, 0);
 		Run();
 	}
 
@@ -107,8 +107,8 @@ public class Main extends Canvas {
 			return;
 		}
 		screen.Clear();
-		MH.Render(screen);
 		level.Render((float) VelX, (float) VelY, "grass", screen);
+		MH.Render(screen);
 		Graphics g = BS.getDrawGraphics();
 		g.drawImage(bimg, 0, 0, Width, Height, null);
 		g.dispose();

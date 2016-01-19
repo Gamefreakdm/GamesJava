@@ -1,4 +1,0 @@
-package Entity.Mob;
-
-public class Glob extends Mob {
-}

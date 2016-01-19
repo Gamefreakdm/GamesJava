@@ -16,7 +16,7 @@ public class Screen {
 				ya = 0;
 			for (int x = 0; x < 64; x++) {
 				int xa = x + xp;
-				if (xa < -64 || xa >= Main.Width || ya < -128 || ya >= Main.Height)
+				if (xa < -64 || xa >= Main.Width || ya < -64 || ya >= Main.Height)
 					break;
 				if (xa < 0)
 					xa = 0;
@@ -26,13 +26,15 @@ public class Screen {
 	}
 
 	public void RenderEntity(float xp, float yp, Sprite sprite) {
+		xp -= xOffset;
+		yp -= yOffset;
 		for (int y = 0; y < 64; y++) {
 			int ya = (int) (y + yp);
 			if (ya < 0)
 				ya = 0;
 			for (int x = 0; x < 64; x++) {
 				int xa = (int) (x + xp);
-				if (xa < 0 || xa >= Main.Width || ya < 0 || ya >= Main.Height)
+				if (xa < -64 || xa >= Main.Width || ya < -64 || ya >= Main.Height)
 					break;
 				if (xa < 0)
 					xa = 0;
