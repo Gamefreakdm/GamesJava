@@ -27,11 +27,13 @@ public class Level {
 	}
 
 	private Tile getRandomTile(int x, int y, int mapSize) {
-		if (this.Tiles[x + y * mapSize] >= 10 && this.Tiles[x + y * mapSize] <= 20)
+		if (this.Tiles[x + y * mapSize] >= 1 && this.Tiles[x + y * mapSize] <= 4)
 			return Tile.Grass;
-		if (this.Tiles[x + y * mapSize] < 2 || this.Tiles[x + y * mapSize] > 38)
+		if (this.Tiles[x + y * mapSize] >= 5 && this.Tiles[x + y * mapSize] <= 7)
 			return Tile.Water_Floor;
-		return Tile.GrassPlain;
+		if (this.Tiles[x + y * mapSize] >= 8)
+			return Tile.GrassPlain;
+		return Tile.Grass;
 	}
 
 	public int[] getTiles() {

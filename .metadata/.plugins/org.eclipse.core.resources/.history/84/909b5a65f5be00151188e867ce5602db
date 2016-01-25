@@ -1,0 +1,10 @@
+package Entity.Mob;
+
+import Graphics.Sprite;
+
+public class Human extends Mob {
+
+	public Human(float x, float y, int Level) {
+		this.sprite = Sprite.Human_F;
+	}
+}

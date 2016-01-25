@@ -1,0 +1,7 @@
+package Entity.Mob;
+
+public class Player extends Mob {
+
+	public Player(Sprite sprite) {
+	}
+}

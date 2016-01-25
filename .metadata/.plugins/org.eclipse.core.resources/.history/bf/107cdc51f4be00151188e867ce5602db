@@ -1,0 +1,9 @@
+package Entity.Mob;
+
+public class Human extends Mob {
+
+	public Human() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

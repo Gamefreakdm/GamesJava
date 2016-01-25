@@ -5,22 +5,31 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
-import Graphics.Sprite;
+
 import javax.swing.JFrame;
+
 import Entity.Mob.MobHandler;
+import Entity.Mob.Player;
 import Graphics.Screen;
+import Graphics.Sprite;
 import Level.RandomLevel;
 
 public class Main extends Canvas {
 	private JFrame Frame;
+	@SuppressWarnings("unused")
+	private Player player;
 	private boolean Running;
+	private int charnumx = 0;
+	private int charnumy = 0;
 	public double VelX, VelY;
+	private int keyTimer = 0;
 	public static int[] Pixels;
 	private BufferedImage bimg;
 	private Screen screen = new Screen();
 	private final String Title = "Title";
 	private MobHandler MH = new MobHandler();
 	private final KeyHandler KH = new KeyHandler();
+	private String Game_State = "Choose Character";
 	private static final long serialVersionUID = 1L;
 	public static final int Width = 800, Height = 600;
 	public static final RandomLevel level = new RandomLevel(45);
@@ -45,7 +54,6 @@ public class Main extends Canvas {
 			return;
 		Sprite.LoadSprites();
 		Running = true;
-		MH.addGlob(0, 0);
 		Run();
 	}
 
@@ -83,18 +91,76 @@ public class Main extends Canvas {
 		KH.Update();
 		if (KH.ESC)
 			Stop();
-		if (KH.Up)
-			VelY -= 0.5;
-		if (KH.Down)
-			VelY += 0.5;
-		if (KH.Left)
-			VelX -= 0.5;
-		if (KH.Right)
-			VelX += 0.5;
+		switch (Game_State) {
+		case "Choose Character":
+			if (keyTimer == 0) {
+				if (KH.Left && charnumx > 0) {
+					charnumx--;
+					keyTimer = 1;
+				}
+				if (KH.Right && charnumx < 4) {
+					charnumx++;
+					keyTimer = 1;
+					break;
+				}
+				if (KH.Up && charnumy > 0) {
+					charnumy--;
+					keyTimer = 1;
+				}
+				if (KH.Down && charnumy < 2) {
+					charnumy++;
+					keyTimer = 1;
+					break;
+				}
+				if (KH.SPACE) {
+					switch (charnumy) {
+					case 0:
+						switch (charnumx) {
+						case 0:
+							player = new Player(Sprite.Blue_Glob);
+							break;
+						case 1:
+							player = new Player(Sprite.Green_Glob);
+							break;
+						case 2:
+							player = new Player(Sprite.Yellow_Glob);
+							break;
+						case 3:
+							player = new Player(Sprite.Red_Glob);
+							break;
+						case 4:
+							player = new Player(Sprite.Human_F);
+							break;
+						}
+						break;
+					}
+					keyTimer = 1;
+					break;
+				}
+			} else {
+				if (keyTimer >= 14)
+					keyTimer = 0;
+				else
+					keyTimer++;
+				break;
+			}
+			break;
+		case "Playing":
+			if (KH.Up)
+				VelY -= 0.5;
+			if (KH.Down)
+				VelY += 0.5;
+			if (KH.Left)
+				VelX -= 0.5;
+			if (KH.Right)
+				VelX += 0.5;
+			break;
+		}
 	}
 
 	private void Update() {
 		KeyUpdate();
+		screen.Update((float) VelX, (float) VelY);
 		MH.Update();
 	}
 
@@ -106,13 +172,20 @@ public class Main extends Canvas {
 			createBufferStrategy(1);
 			return;
 		}
-		screen.Clear();
-		level.Render((float) VelX, (float) VelY, "grass", screen);
-		MH.Render(screen);
+		switch (Game_State) {
+		case "Choose Character":
+			screen.RenderCC(charnumx, charnumy);
+			break;
+		case "Playing":
+			level.Render((float) VelX, (float) VelY, "grass", screen);
+			MH.Render(screen);
+			break;
+		}
 		Graphics g = BS.getDrawGraphics();
 		g.drawImage(bimg, 0, 0, Width, Height, null);
 		g.dispose();
 		BS.show();
+		screen.Clear();
 	}
 
 	public void Stop() {

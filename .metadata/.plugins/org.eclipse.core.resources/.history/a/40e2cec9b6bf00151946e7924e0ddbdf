@@ -1,0 +1,8 @@
+package Entity.Mob;
+
+public class Player extends Mob {
+
+	public Player() {
+		// TODO Auto-generated constructor stub
+	}
+}
