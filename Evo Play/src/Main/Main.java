@@ -5,7 +5,10 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
+import java.io.IOException;
+import java.util.Random;
 
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
 import Entity.Mob.MobHandler;
@@ -25,11 +28,12 @@ public class Main extends Canvas {
 	private int keyTimer = 0;
 	public static int[] Pixels;
 	private BufferedImage bimg;
+	private BufferedImage back1;
 	private Screen screen = new Screen();
 	private final String Title = "Title";
 	private MobHandler MH = new MobHandler();
 	private final KeyHandler KH = new KeyHandler();
-	private String Game_State = "Choose Character";
+	private String Game_State = "Home";
 	private static final long serialVersionUID = 1L;
 	public static final int Width = 800, Height = 600;
 	public static final RandomLevel level = new RandomLevel(45);
@@ -52,9 +56,23 @@ public class Main extends Canvas {
 	private void Start() {
 		if (Running)
 			return;
-		Sprite.LoadSprites();
 		Running = true;
+		getBack();
 		Run();
+	}
+
+	private void getBack() {
+		Random random = new Random();
+		int back = random.nextInt(10);
+		switch (back) {
+		default:
+			try {
+				back1 = ImageIO.read(Main.class.getResource("/Textures/Back1.png"));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			break;
+		}
 	}
 
 	private void Run() {
@@ -172,20 +190,26 @@ public class Main extends Canvas {
 			createBufferStrategy(1);
 			return;
 		}
+		Graphics g = BS.getDrawGraphics();
 		switch (Game_State) {
 		case "Choose Character":
+			screen.Clear();
 			screen.RenderCC(charnumx, charnumy);
+			g.drawImage(bimg, 0, 0, Width, Height, null);
 			break;
 		case "Playing":
+			screen.Clear();
 			level.Render((float) VelX, (float) VelY, "grass", screen);
 			MH.Render(screen);
+			g.drawImage(bimg, 0, 0, Width, Height, null);
+			break;
+		case "Home":
+			g.drawImage(back1, 0, 0, Width, Height, null);
 			break;
 		}
-		Graphics g = BS.getDrawGraphics();
-		g.drawImage(bimg, 0, 0, Width, Height, null);
 		g.dispose();
 		BS.show();
-		screen.Clear();
+		g.clearRect(0, 0, Width, Height);
 	}
 
 	public void Stop() {

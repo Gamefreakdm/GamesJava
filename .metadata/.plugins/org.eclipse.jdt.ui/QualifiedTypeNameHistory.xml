@@ -25,7 +25,6 @@
 <fullyQualifiedTypeName name="java.awt.GraphicsEnvironment"/>
 <fullyQualifiedTypeName name="Entity.Mob.Player"/>
 <fullyQualifiedTypeName name="Entity.Entity"/>
-<fullyQualifiedTypeName name="javax.imageio.ImageIO"/>
 <fullyQualifiedTypeName name="java.awt.Color"/>
 <fullyQualifiedTypeName name="Graphics.Map"/>
 <fullyQualifiedTypeName name="Entity.Mob.Bullet"/>
@@ -54,4 +53,5 @@
 <fullyQualifiedTypeName name="Main.Main"/>
 <fullyQualifiedTypeName name="Graphics.Sprite"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="javax.imageio.ImageIO"/>
 </qualifiedTypeNameHistroy>

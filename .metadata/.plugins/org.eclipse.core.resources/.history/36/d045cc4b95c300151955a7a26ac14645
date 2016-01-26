@@ -1,0 +1,40 @@
+package Graphics;
+
+import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferInt;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+
+public class Image {
+	private int[] Pixels;
+	private final int Width, Height;
+	public static Image back1;
+
+	public Image(int Width, int Height, String path) {
+		Pixels = new int[Width * Height];
+		Load(Width, Height, path);
+		this.Width = Width;
+		this.Height = Height;
+	}
+
+	private void Load(int Width, int Height, String path) {
+		try {
+			BufferedImage img = ImageIO.read(this.getClass().getResource(path));
+			img.setRGB(0, 0, Width, Height, Pixels, 0, Width);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public int getWidth() {
+		return this.Width;
+	}
+
+	public int getHeight() {
+		return this.Height;
+	}
+
+	public int[] getPixels() {
+		return Pixels;
+	}
+}

@@ -26,9 +26,6 @@ public class Sprite {
 		}
 	}
 
-	public static void LoadSprites() {
-	}
-
 	private void Load(SpriteSheet sp, int X, int Y, boolean xsf, boolean ysf) {
 		for (int y = 0; y < 64; y++) {
 			int yf = 63 - y;
