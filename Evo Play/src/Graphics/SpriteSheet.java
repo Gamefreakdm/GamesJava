@@ -10,7 +10,7 @@ public class SpriteSheet {
 	public static SpriteSheet Chars1 = new SpriteSheet("/Textures/Chars1.png");
 
 	public SpriteSheet(String path) {
-		Pixels = new int[1024 * 1024];
+		Pixels = new int[1048576];
 		Load(path);
 	}
 

@@ -4,6 +4,7 @@ import Graphics.Screen;
 import Graphics.Sprite;
 
 public class Entity {
+	private char car;
 	private float x, y;
 	private int Dir = 1;
 	protected Sprite sprite;
@@ -41,5 +42,13 @@ public class Entity {
 
 	public void setDir(int dir) {
 		Dir = dir;
+	}
+
+	public char getCar() {
+		return car;
+	}
+
+	public void setCar(char car) {
+		this.car = car;
 	}
 }

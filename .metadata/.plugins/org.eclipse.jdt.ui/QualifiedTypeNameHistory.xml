@@ -25,7 +25,6 @@
 <fullyQualifiedTypeName name="java.awt.GraphicsEnvironment"/>
 <fullyQualifiedTypeName name="Entity.Mob.Player"/>
 <fullyQualifiedTypeName name="Entity.Entity"/>
-<fullyQualifiedTypeName name="java.awt.Color"/>
 <fullyQualifiedTypeName name="Graphics.Map"/>
 <fullyQualifiedTypeName name="Entity.Mob.Bullet"/>
 <fullyQualifiedTypeName name="Entity.Mob.AlienHandler"/>
@@ -37,7 +36,6 @@
 <fullyQualifiedTypeName name="java.awt.event.KeyListener"/>
 <fullyQualifiedTypeName name="java.util.LinkedList"/>
 <fullyQualifiedTypeName name="Objects.Object"/>
-<fullyQualifiedTypeName name="java.awt.Font"/>
 <fullyQualifiedTypeName name="Base.Main"/>
 <fullyQualifiedTypeName name="Level.Level"/>
 <fullyQualifiedTypeName name="java.awt.image.DataBufferFloat"/>
@@ -50,8 +48,14 @@
 <fullyQualifiedTypeName name="java.awt.event.KeyEvent"/>
 <fullyQualifiedTypeName name="Graphics.SpriteSheet"/>
 <fullyQualifiedTypeName name="javax.swing.JFrame"/>
-<fullyQualifiedTypeName name="Main.Main"/>
-<fullyQualifiedTypeName name="Graphics.Sprite"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="javax.imageio.ImageIO"/>
+<fullyQualifiedTypeName name="Main.Input.KeyHandler"/>
+<fullyQualifiedTypeName name="java.awt.event.MouseAdapter"/>
+<fullyQualifiedTypeName name="java.awt.event.MouseMotionListener"/>
+<fullyQualifiedTypeName name="GuiObject.Button"/>
+<fullyQualifiedTypeName name="java.awt.Color"/>
+<fullyQualifiedTypeName name="java.awt.Font"/>
+<fullyQualifiedTypeName name="Graphics.Sprite"/>
+<fullyQualifiedTypeName name="Main.Main"/>
 </qualifiedTypeNameHistroy>

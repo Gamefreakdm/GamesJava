@@ -1,37 +1,63 @@
 package Graphics;
 
+import GuiObject.Button;
 import Level.Tile.Tile;
-import Main.Main;
 
 public class Screen {
+	private int[] Pixels;
+	private int Width, Height;
 	private static float xOffset;
 	private static float yOffset;
 
-	public void RenderCC(int charnumx, int charnumy) {
+	public Screen(int w, int h, int[] p) {
+		Width = w;
+		Height = h;
+		Pixels = p;
+	}
+
+	public void RenderBack() {
+		for (int y = 0; y < Height; y++) {
+			for (int x = 0; x < Width; x++) {
+				Pixels[x + y * Width] = 0x0;
+			}
+		}
+	}
+
+	public void RenderCC() {
 		this.RenderEntity(40 + (160 * 0), 0, Sprite.Blue_Glob);
 		this.RenderEntity(40 + (160 * 1), 0, Sprite.Green_Glob);
 		this.RenderEntity(40 + (160 * 2), 0, Sprite.Yellow_Glob);
 		this.RenderEntity(40 + (160 * 3), 0, Sprite.Red_Glob);
 		this.RenderEntity(40 + (160 * 4), 0, Sprite.Human_F);
-		this.RenderSelect(charnumx, charnumy);
 	}
 
-	public void RenderSelect(int charnumx, int charnumy) {
-		int xp = 40 + (160 * charnumx);
-		int yp = 0 + (100 * charnumy);
-		for (int y = 0; y < 64; y++) {
+	public void RBC(float xp, float yp, int width, int height, Button b) {
+		for (int y = 0; y < height; y++) {
+			int ya = (int) (y + yp);
+			for (int x = 0; x < width; x++) {
+				int xa = (int) (x + xp);
+				if (b.Hovered()) {
+					Pixels[xa + ya * Width] = 0x00D300;
+				} else
+					Pixels[xa + ya * Width] = 0x007100;
+			}
+		}
+	}
+
+	public void RenderSelect(float xp, float yp, int width, int height, Button b) {
+		for (int y = 0; y < height; y++) {
 			int ya = (int) (y + yp);
 			if (ya < 0)
 				ya = 0;
-			for (int x = 0; x < 64; x++) {
+			for (int x = 0; x < width; x++) {
 				int xa = (int) (x + xp);
-				if (xa < -64 || xa >= Main.Width || ya < -64 || ya >= Main.Height)
+				if (xa < -width || xa >= Width || ya < -height || ya >= Height)
 					break;
 				if (xa < 0)
 					xa = 0;
-				int col = Sprite.Select.Pixels[x + y * 64];
+				int col = Sprite.Select.Pixels[x + y * width];
 				if (col != 0XFFFF00FF)
-					Main.Pixels[xa + ya * Main.Width] = Sprite.Select.Pixels[x + y * 64];
+					Pixels[xa + ya * Width] = Sprite.Select.Pixels[x + y * width];
 			}
 		}
 	}
@@ -45,11 +71,11 @@ public class Screen {
 				ya = 0;
 			for (int x = 0; x < 64; x++) {
 				int xa = x + xp;
-				if (xa < -64 || xa >= Main.Width || ya < -64 || ya >= Main.Height)
+				if (xa < -64 || xa >= Width || ya < -64 || ya >= Height)
 					break;
 				if (xa < 0)
 					xa = 0;
-				Main.Pixels[xa + ya * Main.Width] = tile.getSprite().Pixels[x + y * 64];
+				Pixels[xa + ya * Width] = tile.getSprite().Pixels[x + y * 64];
 			}
 		}
 	}
@@ -67,13 +93,31 @@ public class Screen {
 				ya = 0;
 			for (int x = 0; x < 64; x++) {
 				int xa = (int) (x + xp);
-				if (xa < -64 || xa >= Main.Width || ya < 0 || ya >= Main.Height)
+				if (xa < -64 || xa >= Width || ya < 0 || ya >= Height)
 					break;
 				if (xa < 0)
 					xa = 0;
 				int col = sprite.Pixels[x + y * 64];
 				if (col != 0XFFFF00FF)
-					Main.Pixels[xa + ya * Main.Width] = col;
+					Pixels[xa + ya * Width] = col;
+			}
+		}
+	}
+
+	public void RenderPlayer(float xp, float yp, Sprite sprite) {
+		for (int y = 0; y < 64; y++) {
+			int ya = (int) (y + yp);
+			if (ya < 0)
+				ya = 0;
+			for (int x = 0; x < 64; x++) {
+				int xa = (int) (x + xp);
+				if (xa < -64 || xa >= Width || ya < 0 || ya >= Height)
+					break;
+				if (xa < 0)
+					xa = 0;
+				int col = sprite.Pixels[x + y * 64];
+				if (col != 0XFFFF00FF)
+					Pixels[xa + ya * Width] = col;
 			}
 		}
 	}
@@ -84,8 +128,18 @@ public class Screen {
 	}
 
 	public void Clear() {
-		for (int i = 0; i < Main.Pixels.length; i++) {
-			Main.Pixels[i] = 0;
+		for (int i = 0; i < Pixels.length; i++) {
+			Pixels[i] = 0;
 		}
+	}
+
+	public void setWHP(int w, int h, int[] p) {
+		Width = w;
+		Height = h;
+		Pixels = p;
+	}
+
+	public int[] getPixels() {
+		return Pixels;
 	}
 }

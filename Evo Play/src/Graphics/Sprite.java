@@ -12,10 +12,11 @@ public class Sprite {
 	public static Sprite Human_R = new Sprite(4, 0, SpriteSheet.Chars1, false, false);
 	public static Sprite Human_L = new Sprite(4, 0, SpriteSheet.Chars1, true, false);
 	public static Sprite Human_F = new Sprite(7, 0, SpriteSheet.Chars1, false, false);
+	public static Sprite Human_B = new Sprite(6, 0, SpriteSheet.Chars1, false, false);
 	public static Sprite Select = new Sprite(3, 0, SpriteSheet.Tiles, false, false);
 
 	public Sprite(int x, int y, SpriteSheet sheet, boolean xsf, boolean ysf) {
-		Pixels = new int[64 * 64];
+		Pixels = new int[4096];
 		Load(sheet, x << 6, y << 6, xsf, ysf);
 	}
 

@@ -1,46 +1,48 @@
 package Main;
 
 import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Toolkit;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
-import java.io.IOException;
-import java.util.Random;
-
-import javax.imageio.ImageIO;
 import javax.swing.JFrame;
-
 import Entity.Mob.MobHandler;
 import Entity.Mob.Player;
 import Graphics.Screen;
 import Graphics.Sprite;
 import Level.RandomLevel;
+import Main.Input.KeyHandler;
+import Main.Input.MouseHandler;
 
 public class Main extends Canvas {
 	private JFrame Frame;
-	@SuppressWarnings("unused")
-	private Player player;
+	private int[] Pixels;
+	private Screen screen;
 	private boolean Running;
-	private int charnumx = 0;
-	private int charnumy = 0;
 	public double VelX, VelY;
 	private int keyTimer = 0;
-	public static int[] Pixels;
 	private BufferedImage bimg;
-	private BufferedImage back1;
-	private Screen screen = new Screen();
+	private static Player player;
 	private final String Title = "Title";
-	private MobHandler MH = new MobHandler();
+	private static int Width = 800, Height = 600;
+	private MobHandler MOB = new MobHandler();
+	private static String Game_State = "Home";
+	private static boolean IsFullscreen = false;
 	private final KeyHandler KH = new KeyHandler();
-	private String Game_State = "Home";
 	private static final long serialVersionUID = 1L;
-	public static final int Width = 800, Height = 600;
-	public static final RandomLevel level = new RandomLevel(45);
+	private final MouseHandler MH = new MouseHandler();
+	private final RandomLevel level = new RandomLevel(45);
+	private final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
 	public static void main(String[] args) {
 		System.out.println("[System] Starting...");
 		Main M = new Main();
+		M.addMouseListener(M.MH);
+		M.addMouseMotionListener(M.MH);
 		M.Frame = new JFrame("Loading...");
 		M.Frame.add(M);
 		M.Frame.addKeyListener(M.KH);
@@ -57,22 +59,8 @@ public class Main extends Canvas {
 		if (Running)
 			return;
 		Running = true;
-		getBack();
+		MH.UpdateButtons(Game_State);
 		Run();
-	}
-
-	private void getBack() {
-		Random random = new Random();
-		int back = random.nextInt(10);
-		switch (back) {
-		default:
-			try {
-				back1 = ImageIO.read(Main.class.getResource("/Textures/Back1.png"));
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			break;
-		}
 	}
 
 	private void Run() {
@@ -81,7 +69,7 @@ public class Main extends Canvas {
 		double Delta = 0;
 		int Frames = 0;
 		int Updates = 0;
-		final double NS = 1000000000.0 / 120;
+		final double NS = 1000000000.0 / 60;
 		System.out.println("[System] Started");
 		while (Running) {
 			long nowTime = System.nanoTime();
@@ -90,10 +78,10 @@ public class Main extends Canvas {
 			while (Delta >= 1) {
 				Update();
 				Updates++;
+				Render();
+				Frames++;
 				Delta--;
 			}
-			Render();
-			Frames++;
 			if (System.currentTimeMillis() - Timer >= 1000) {
 				Timer += 1000;
 				Frame.setTitle(Title + "   |   " + Frames + " Fps" + "   |   " + Updates + " Updates");
@@ -107,53 +95,35 @@ public class Main extends Canvas {
 	private void KeyUpdate() {
 		Frame.requestFocus();
 		KH.Update();
-		if (KH.ESC)
-			Stop();
 		switch (Game_State) {
+		case "Home":
+			if (keyTimer == 0) {
+				if (KH.Keys[0])
+					Running = false;
+			} else {
+				if (keyTimer >= 14)
+					keyTimer = 0;
+				else
+					keyTimer++;
+				break;
+			}
+			break;
+		case "Options":
+			if (keyTimer == 0) {
+				if (KH.Keys[0]) {
+					Game_State = "Home";
+					keyTimer++;
+				}
+			} else if (keyTimer >= 14)
+				keyTimer = 0;
+			else
+				keyTimer++;
+			break;
 		case "Choose Character":
 			if (keyTimer == 0) {
-				if (KH.Left && charnumx > 0) {
-					charnumx--;
+				if (KH.Keys[0]) {
+					Game_State = "Home";
 					keyTimer = 1;
-				}
-				if (KH.Right && charnumx < 4) {
-					charnumx++;
-					keyTimer = 1;
-					break;
-				}
-				if (KH.Up && charnumy > 0) {
-					charnumy--;
-					keyTimer = 1;
-				}
-				if (KH.Down && charnumy < 2) {
-					charnumy++;
-					keyTimer = 1;
-					break;
-				}
-				if (KH.SPACE) {
-					switch (charnumy) {
-					case 0:
-						switch (charnumx) {
-						case 0:
-							player = new Player(Sprite.Blue_Glob);
-							break;
-						case 1:
-							player = new Player(Sprite.Green_Glob);
-							break;
-						case 2:
-							player = new Player(Sprite.Yellow_Glob);
-							break;
-						case 3:
-							player = new Player(Sprite.Red_Glob);
-							break;
-						case 4:
-							player = new Player(Sprite.Human_F);
-							break;
-						}
-						break;
-					}
-					keyTimer = 1;
-					break;
 				}
 			} else {
 				if (keyTimer >= 14)
@@ -164,22 +134,39 @@ public class Main extends Canvas {
 			}
 			break;
 		case "Playing":
-			if (KH.Up)
+			if (KH.Keys[1]) {
 				VelY -= 0.5;
-			if (KH.Down)
+				player.setDir(0);
+			} else if (KH.Keys[2]) {
 				VelY += 0.5;
-			if (KH.Left)
+				player.setDir(1);
+			} else if (KH.Keys[3]) {
 				VelX -= 0.5;
-			if (KH.Right)
+				player.setDir(2);
+			} else if (KH.Keys[4]) {
 				VelX += 0.5;
+				player.setDir(3);
+			} else
+				player.setDir(4);
 			break;
 		}
+
 	}
 
 	private void Update() {
+		String pastgs = Game_State;
 		KeyUpdate();
-		screen.Update((float) VelX, (float) VelY);
-		MH.Update();
+		MH.CheckIsHovered(MH.getX(), MH.getY());
+		MH.UpdateButtons();
+		if (Game_State != pastgs)
+			MH.UpdateButtons(Game_State);
+		if (bimg != null)
+			screen.Update((float) VelX, (float) VelY);
+		switch (Game_State) {
+		case "Playing":
+			player.Update();
+			break;
+		}
 	}
 
 	private void Render() {
@@ -187,34 +174,69 @@ public class Main extends Canvas {
 		if (BS == null) {
 			bimg = new BufferedImage(Width, Height, BufferedImage.TYPE_INT_RGB);
 			Pixels = ((DataBufferInt) bimg.getRaster().getDataBuffer()).getData();
-			createBufferStrategy(1);
+			screen = new Screen(Width, Height, Pixels);
+			createBufferStrategy(3);
 			return;
 		}
 		Graphics g = BS.getDrawGraphics();
+		if (IsFullscreen && Width == 800) {
+			Frame.setVisible(false);
+			Width = (int) screenSize.getWidth();
+			Height = (int) screenSize.getHeight();
+			Frame.setSize(Width, Height);
+			MH.UpdateButtons(Game_State);
+			Frame.setLocationRelativeTo(null);
+			Frame.setVisible(true);
+		} else if (!IsFullscreen && Width > 800) {
+			Frame.setVisible(false);
+			Width = 800;
+			Height = 600;
+			Frame.setSize(Width, Height);
+			MH.UpdateButtons(Game_State);
+			Frame.setLocationRelativeTo(null);
+			Frame.setVisible(true);
+		}
+		for (int i = 0; i < screen.getPixels().length; i++) {
+			Pixels[i] = screen.getPixels()[i];
+		}
+		g.setFont(new Font("", 40, 60));
+		g.setColor(Color.blue);
 		switch (Game_State) {
 		case "Choose Character":
 			screen.Clear();
-			screen.RenderCC(charnumx, charnumy);
+			screen.RenderCC();
+			MH.RenderButtons(screen);
 			g.drawImage(bimg, 0, 0, Width, Height, null);
 			break;
 		case "Playing":
 			screen.Clear();
 			level.Render((float) VelX, (float) VelY, "grass", screen);
-			MH.Render(screen);
+			MOB.Render(screen);
+			player.Render(screen);
 			g.drawImage(bimg, 0, 0, Width, Height, null);
 			break;
 		case "Home":
-			g.drawImage(back1, 0, 0, Width, Height, null);
+			screen.RenderBack();
+			MH.RenderButtons(screen);
+			g.drawImage(bimg, 0, 0, Width, Height, null);
+			g.drawString("Single Player", getScreenOffsetpx() + 203, getScreenOffsetpy() + 215);
+			g.drawString("Options", getScreenOffsetpx() + 275, getScreenOffsetpy() + 320);
+			break;
+		case "Options":
+			screen.RenderBack();
+			MH.RenderButtons(screen);
+			g.drawImage(bimg, 0, 0, Width, Height, null);
+			if (IsFullscreen)
+				g.drawString("FullScreen: Off", getScreenOffsetpx() + 190, getScreenOffsetpy() + 220);
+			else
+				g.drawString("FullScreen: On", 190, 220);
 			break;
 		}
 		g.dispose();
 		BS.show();
-		g.clearRect(0, 0, Width, Height);
 	}
 
 	public void Stop() {
-		if (!Running)
-			System.exit(0);
 		System.out.println("[System] Stopping...");
 		Running = false;
 		CleanUp();
@@ -224,5 +246,61 @@ public class Main extends Canvas {
 	private void CleanUp() {
 		screen.Clear();
 		Frame.dispose();
+	}
+
+	public static void setFS() {
+		if (IsFullscreen)
+			IsFullscreen = false;
+		else
+			IsFullscreen = true;
+	}
+
+	public static void setGS(String gs) {
+		Game_State = gs;
+	}
+
+	public static void setPlayer(String Char) {
+		switch (Char) {
+		case "char1":
+			player = new Player(Sprite.Blue_Glob, '0');
+			break;
+		case "char2":
+			player = new Player(Sprite.Green_Glob, '1');
+			break;
+		case "char3":
+			player = new Player(Sprite.Yellow_Glob, '2');
+			break;
+		case "char4":
+			player = new Player(Sprite.Red_Glob, '3');
+			break;
+		case "char5":
+			player = new Player(Sprite.Human_F, '4');
+			break;
+		}
+		setGS("Playing");
+	}
+
+	public static int getScreenOffsetx() {
+		if (IsFullscreen)
+			return (Width - 800) / 2;
+		return 0;
+	}
+
+	public static int getScreenOffsety() {
+		if (IsFullscreen)
+			return (Height - 620) / 2;
+		return 0;
+	}
+
+	private int getScreenOffsetpx() {
+		if (IsFullscreen)
+			return (Width - 800) / 2;
+		return 0;
+	}
+
+	private int getScreenOffsetpy() {
+		if (IsFullscreen)
+			return (Height - 601) / 2;
+		return 0;
 	}
 }

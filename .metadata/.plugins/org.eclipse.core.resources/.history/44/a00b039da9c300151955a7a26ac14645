@@ -1,6 +1,0 @@
-package Graphics;
-
-public class Image {
-	public Image() {
-	}
-}
