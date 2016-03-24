@@ -3,11 +3,13 @@ package Main.Input;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 import java.util.LinkedList;
 import Graphics.Screen;
 import GuiObject.Button;
 
-public class MouseHandler implements MouseListener, MouseMotionListener {
+public class MouseHandler implements MouseListener, MouseMotionListener, MouseWheelListener {
 	private float mX, mY;
 	private LinkedList<Button> Buttons = new LinkedList<Button>();
 
@@ -23,12 +25,14 @@ public class MouseHandler implements MouseListener, MouseMotionListener {
 			break;
 		case "Choose Character":
 			Buttons.add(new Button(40 + (160 * 0), 0, 64, 64, false, "char1"));
-			Buttons.add(new Button(40 + (160 * 1), 0, 64, 64, false, "char2"));
-			Buttons.add(new Button(40 + (160 * 2), 0, 64, 64, false, "char3"));
-			Buttons.add(new Button(40 + (160 * 3), 0, 64, 64, false, "char4"));
-			Buttons.add(new Button(40 + (160 * 4), 0, 64, 64, false, "char5"));
 			break;
 		}
+	}
+
+	public void CreateInventoryButton(int Height, int Width, int xp, int yp) {
+		int offx = 64 * xp;
+		int offy = 64 * yp;
+		Buttons.add(new Button(offx, offy, 64, 64, false, "Inventory"));
 	}
 
 	public void RenderButtons(Screen screen) {
@@ -92,6 +96,18 @@ public class MouseHandler implements MouseListener, MouseMotionListener {
 	}
 
 	public float getY() {
+		return mY;
+	}
+
+	public void mouseWheelMoved(MouseWheelEvent mwe) {
+		Main.Main.getScrollamount((int) mwe.getPreciseWheelRotation());
+	}
+	
+	public float getMouseX() {
+		return mX;
+	}
+	
+	public float getMouseY() {
 		return mY;
 	}
 }

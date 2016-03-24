@@ -4,13 +4,12 @@ import Graphics.Screen;
 import Graphics.Sprite;
 
 public class FloorTile extends Tile {
-
 	public FloorTile(Sprite sprite) {
 		super(sprite);
 	}
 
 	public void Render(int x, int y, Screen screen) {
-		screen.RenderTile(x << 6, y << 6, this);
+		screen.RenderTile(x << 5, y << 5, this);
 	}
 
 	public boolean getIsSolid() {

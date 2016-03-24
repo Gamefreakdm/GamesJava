@@ -86,11 +86,12 @@
 	</section>
 	<section name="FatJarPackageWizard">
 		<item value="C:\Users\Dylan\Google Drive\Work\Programming\Games in Java.xml" key="FatJarPackageWizardPage.ANTSCRIPT_LOCATION"/>
-		<item value="C:\Users\Gamefreakdm\Google Drive\Games\3D_Game.jar" key="FatJarPackageWizardPage.DESTINATION_PATH_SELECTION"/>
-		<item value="Main (2) - 3D Game Youtube" key="FatJarPackageWizardPage.LAUNCH_CONFIGURATION_SELECTION_NAME"/>
+		<item value="C:\Users\nanot\Google Drive\Games\Evo Play.jar" key="FatJarPackageWizardPage.DESTINATION_PATH_SELECTION"/>
+		<item value="Main (26) - Evo Play" key="FatJarPackageWizardPage.LAUNCH_CONFIGURATION_SELECTION_NAME"/>
 		<item value="false" key="FatJarPackageWizardPage.ANTSCRIPT_SAVE"/>
 		<item value="1" key="FatJarPackageWizardPage.LIBRARY_HANDLING"/>
 		<list key="FatJarPackageWizardPage.DESTINATION_NAMES_ID">
+			<item value="C:\Users\nanot\Google Drive\Games\Evo Play.jar"/>
 			<item value="C:\Users\Gamefreakdm\Google Drive\Games\3D_Game.jar"/>
 			<item value="C:\Users\Gamefreakdm\Google Drive\Games\3D Game.jar"/>
 			<item value="C:\Users\Dylan\Google Drive\Games\Mutant Apple Invaders.jar"/>

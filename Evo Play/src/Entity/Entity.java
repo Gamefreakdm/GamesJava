@@ -7,12 +7,17 @@ public class Entity {
 	private char car;
 	private float x, y;
 	private int Dir = 1;
-	protected Sprite sprite;
-	protected double VelXN = -0.5;
-	protected double VelXP = 1.5;
-	protected double VelYN = -1.5;
-	protected double VelYP = 1.5;
-	protected int ActTimer = 0;
+	private Sprite sprite;
+	protected boolean IsMoving;
+	protected int animTimer = 0;
+	@SuppressWarnings("unused")
+	private final double VelXP = 2.0;
+	@SuppressWarnings("unused")
+	private final double VelYP = 2.0;
+	@SuppressWarnings("unused")
+	private final double VelXN = -2.0;
+	@SuppressWarnings("unused")
+	private final double VelYN = -2.0;
 
 	public void Update() {
 	}
@@ -50,5 +55,13 @@ public class Entity {
 
 	public void setCar(char car) {
 		this.car = car;
+	}
+
+	public Sprite getSprite() {
+		return sprite;
+	}
+
+	public void setSprite(Sprite sprite) {
+		this.sprite = sprite;
 	}
 }

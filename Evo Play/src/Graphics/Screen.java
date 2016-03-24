@@ -1,6 +1,7 @@
 package Graphics;
 
 import GuiObject.Button;
+import Items.InventoryItem;
 import Level.Tile.Tile;
 
 public class Screen {
@@ -24,11 +25,7 @@ public class Screen {
 	}
 
 	public void RenderCC() {
-		this.RenderEntity(40 + (160 * 0), 0, Sprite.Blue_Glob);
-		this.RenderEntity(40 + (160 * 1), 0, Sprite.Green_Glob);
-		this.RenderEntity(40 + (160 * 2), 0, Sprite.Yellow_Glob);
-		this.RenderEntity(40 + (160 * 3), 0, Sprite.Red_Glob);
-		this.RenderEntity(40 + (160 * 4), 0, Sprite.Human_F);
+		this.RenderEntity(40 + (160 * 0), 0, Sprite.Human_F);
 	}
 
 	public void RBC(float xp, float yp, int width, int height, Button b) {
@@ -36,10 +33,41 @@ public class Screen {
 			int ya = (int) (y + yp);
 			for (int x = 0; x < width; x++) {
 				int xa = (int) (x + xp);
-				if (b.Hovered()) {
+				if (b.Hovered())
 					Pixels[xa + ya * Width] = 0x00D300;
-				} else
+				else
 					Pixels[xa + ya * Width] = 0x007100;
+			}
+		}
+	}
+
+	public void RenderInventorym(InventoryItem[] il, int xp, int yp) {
+		int screenoffy = 64 * yp;
+		int screenoffx = 64 * xp;
+		for (int y = 0; y < 64; y++) {
+			for (int x = 0; x < 64; x++) {
+				int col = Sprite.InventorySlot.Pixels[x + y * 64];
+				if (col != 0XFFFF00FF)
+					Pixels[(x + screenoffx) + (y + screenoffy) * Width] = Sprite.InventorySlot.Pixels[x + y * 64];
+			}
+		}
+	}
+
+	public void RenderInventory1(InventoryItem[] il, int invennum) {
+		int screenoffy = Height - 100;
+		int screenoffx = 80;
+		if (invennum != 0)
+			screenoffx *= invennum;
+		for (int y = 0; y < 64; y++) {
+			for (int x = 0; x < 64; x++) {
+				int Col2 = Sprite.EmptySlot.Pixels[x + y * 64];
+				if (Col2 != 0XFFFF00FF)
+					Pixels[(x + screenoffx) + (y + screenoffy) * Width] = Sprite.EmptySlot.Pixels[x + y * 64];
+				if (il[invennum].isIsSelected() == true) {
+					int col1 = Sprite.InHand.Pixels[x + y * 64];
+					if (col1 != 0XFFFF00FF)
+						Pixels[(x + screenoffx) + (y + screenoffy) * Width] = Sprite.InHand.Pixels[x + y * 64];
+				}
 			}
 		}
 	}
@@ -65,17 +93,17 @@ public class Screen {
 	public void RenderTile(int xp, int yp, Tile tile) {
 		xp -= xOffset;
 		yp -= yOffset;
-		for (int y = 0; y < 64; y++) {
+		for (int y = 0; y < tile.getSprite().SIZE; y++) {
 			int ya = y + yp;
 			if (ya < 0)
 				ya = 0;
-			for (int x = 0; x < 64; x++) {
+			for (int x = 0; x < tile.getSprite().SIZE; x++) {
 				int xa = x + xp;
-				if (xa < -64 || xa >= Width || ya < -64 || ya >= Height)
+				if (xa < -tile.getSprite().SIZE || xa >= Width || ya < -tile.getSprite().SIZE || ya >= Height)
 					break;
 				if (xa < 0)
 					xa = 0;
-				Pixels[xa + ya * Width] = tile.getSprite().Pixels[x + y * 64];
+				Pixels[xa + ya * Width] = tile.getSprite().Pixels[x + y * tile.getSprite().SIZE];
 			}
 		}
 	}

@@ -22,9 +22,8 @@ public class Button {
 
 	public void Update() {
 		if (Clicked) {
-			if (Bname == "char1" || Bname == "char2" || Bname == "char3" || Bname == "char4" || Bname == "char5") {
+			if (Bname == "char1" || Bname == "char2" || Bname == "char3" || Bname == "char4" || Bname == "char5")
 				Main.Main.setPlayer(Bname);
-			}
 			switch (Bname) {
 			case "singleplayer":
 				Main.Main.setGS("Choose Character");
@@ -34,6 +33,8 @@ public class Button {
 				break;
 			case "IFS":
 				Main.Main.setFS();
+				break;
+			case "Inventory":
 				break;
 			}
 			Clicked = false;

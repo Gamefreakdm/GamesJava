@@ -79,6 +79,9 @@ public class Level {
 			Walls.add(new Moving_Wall(200, Main.Height - 450, 50, 10, 'v', 1.5, 90));
 			Walls.add(new Wall(0, Main.Height - 68, Main.Width, 10));
 			break;
+		case 5:
+			Walls.add(new Wall(0, Main.Height - 68, Main.Width, 10));
+			break;
 		}
 	}
 
@@ -99,6 +102,10 @@ public class Level {
 		case 3:
 			if (Main.Score == 16)
 				Main.player.LevelUp(4);
+			break;
+		case 4:
+			if (Main.Score == 20)
+				Main.player.LevelUp(5);
 			break;
 		}
 	}

@@ -14,9 +14,8 @@ public class Level {
 	public void Render(float xscroll, float yscroll, String Map, Screen screen) {
 		screen.setOffset(xscroll, yscroll);
 		for (int y = 0; y < mapSIZE; y++)
-			for (int x = 0; x < mapSIZE; x++) {
+			for (int x = 0; x < mapSIZE; x++)
 				getRandomTile(x, y, this.mapSIZE).Render(x, y, screen);
-			}
 	}
 
 	protected void generateLevel() {
@@ -32,7 +31,7 @@ public class Level {
 		if (this.Tiles[x + y * mapSize] >= 5 && this.Tiles[x + y * mapSize] <= 7)
 			return Tile.Water_Floor;
 		if (this.Tiles[x + y * mapSize] >= 8)
-			return Tile.GrassPlain;
+			return Tile.Grass;
 		return Tile.Grass;
 	}
 

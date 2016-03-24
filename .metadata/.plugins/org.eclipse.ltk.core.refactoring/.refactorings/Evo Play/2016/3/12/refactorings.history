@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Encapsulate field &apos;Items.InventoryItem.IsSelected&apos; in &apos;Items.InventoryItem&apos;&#x0D;&#x0A;- Original project: &apos;Evo Play&apos;&#x0D;&#x0A;- Original element: &apos;Items.InventoryItem.IsSelected&apos;&#x0D;&#x0A;- Getter method name: &apos;isIsSelected&apos;&#x0D;&#x0A;- Setter method name: &apos;setIsSelected&apos;&#x0D;&#x0A;- Field visibility: &apos;public&apos;&#x0D;&#x0A;- Use getter and setter methods in declaring type" comments="false" declaring="true" description="Encapsulate field &apos;IsSelected&apos;" flags="589830" getter="isIsSelected" id="org.eclipse.jdt.ui.self.encapsulate" input="/src&lt;Items{InventoryItem.java[InventoryItem^IsSelected" insertion="2" setter="setIsSelected" stamp="1458318666938" version="1.0" visibility="1"/>
+</session>

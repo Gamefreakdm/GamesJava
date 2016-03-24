@@ -18,20 +18,22 @@ import Level.RandomLevel;
 import Main.Input.KeyHandler;
 import Main.Input.MouseHandler;
 
-public class Main extends Canvas {
+public class Main extends Canvas implements Runnable {
 	private JFrame Frame;
 	private int[] Pixels;
 	private Screen screen;
+	private Thread main;
 	private boolean Running;
 	public double VelX, VelY;
 	private int keyTimer = 0;
 	private BufferedImage bimg;
+	private boolean InInventory;
 	private static Player player;
 	private final String Title = "Title";
-	private static int Width = 800, Height = 600;
 	private MobHandler MOB = new MobHandler();
 	private static String Game_State = "Home";
 	private static boolean IsFullscreen = false;
+	private static int Width = 800, Height = 600;
 	private final KeyHandler KH = new KeyHandler();
 	private static final long serialVersionUID = 1L;
 	private final MouseHandler MH = new MouseHandler();
@@ -43,6 +45,7 @@ public class Main extends Canvas {
 		Main M = new Main();
 		M.addMouseListener(M.MH);
 		M.addMouseMotionListener(M.MH);
+		M.addMouseWheelListener(M.MH);
 		M.Frame = new JFrame("Loading...");
 		M.Frame.add(M);
 		M.Frame.addKeyListener(M.KH);
@@ -59,11 +62,12 @@ public class Main extends Canvas {
 		if (Running)
 			return;
 		Running = true;
+		main = new Thread(this);
+		main.start();
 		MH.UpdateButtons(Game_State);
-		Run();
 	}
 
-	private void Run() {
+	public void run() {
 		long Timer = System.currentTimeMillis();
 		long lastTime = System.nanoTime();
 		double Delta = 0;
@@ -97,60 +101,76 @@ public class Main extends Canvas {
 		KH.Update();
 		switch (Game_State) {
 		case "Home":
-			if (keyTimer == 0) {
+			if (keyTimer == 0)
 				if (KH.Keys[0])
 					Running = false;
-			} else {
-				if (keyTimer >= 14)
-					keyTimer = 0;
-				else
-					keyTimer++;
-				break;
-			}
+				else {
+					if (keyTimer >= 14)
+						keyTimer = 0;
+					else
+						keyTimer++;
+					break;
+				}
 			break;
 		case "Options":
-			if (keyTimer == 0) {
+			if (keyTimer == 0)
 				if (KH.Keys[0]) {
 					Game_State = "Home";
 					keyTimer++;
-				}
-			} else if (keyTimer >= 14)
-				keyTimer = 0;
-			else
-				keyTimer++;
+				} else if (keyTimer >= 14)
+					keyTimer = 0;
+				else
+					keyTimer++;
 			break;
 		case "Choose Character":
-			if (keyTimer == 0) {
+			if (keyTimer == 0)
 				if (KH.Keys[0]) {
 					Game_State = "Home";
 					keyTimer = 1;
+				} else {
+					if (keyTimer >= 14)
+						keyTimer = 0;
+					else
+						keyTimer++;
+					break;
 				}
+			break;
+		case "Playing":
+			if (KH.Keys[1]) {
+				VelY -= 0.9;
+				player.setDir(0);
+			} else if (KH.Keys[2]) {
+				VelY += 0.9;
+				player.setDir(1);
+			} else if (KH.Keys[3]) {
+				VelX -= 0.9;
+				player.setDir(2);
+			} else if (KH.Keys[4]) {
+				VelX += 0.9;
+				player.setDir(3);
+			} else
+				player.setDir(4);
+			if (KH.Keys[0])
+				InInventory = false;
+			if (KH.Keys[6] && InInventory == true) {
+				InInventory = false;
+				keyTimer = 1;
 			} else {
 				if (keyTimer >= 14)
 					keyTimer = 0;
 				else
 					keyTimer++;
-				break;
+			}
+			if (KH.Keys[6] && InInventory == false) {
+				for (int y = 0; y < 4; y++) {
+					for (int x = 0; x < 4; x++) {
+						MH.CreateInventoryButton(Width, Height, x, y);
+					}
+				}
+				InInventory = true;
 			}
 			break;
-		case "Playing":
-			if (KH.Keys[1]) {
-				VelY -= 0.5;
-				player.setDir(0);
-			} else if (KH.Keys[2]) {
-				VelY += 0.5;
-				player.setDir(1);
-			} else if (KH.Keys[3]) {
-				VelX -= 0.5;
-				player.setDir(2);
-			} else if (KH.Keys[4]) {
-				VelX += 0.5;
-				player.setDir(3);
-			} else
-				player.setDir(4);
-			break;
 		}
-
 	}
 
 	private void Update() {
@@ -196,9 +216,8 @@ public class Main extends Canvas {
 			Frame.setLocationRelativeTo(null);
 			Frame.setVisible(true);
 		}
-		for (int i = 0; i < screen.getPixels().length; i++) {
+		for (int i = 0; i < screen.getPixels().length; i++)
 			Pixels[i] = screen.getPixels()[i];
-		}
 		g.setFont(new Font("", 40, 60));
 		g.setColor(Color.blue);
 		switch (Game_State) {
@@ -212,7 +231,19 @@ public class Main extends Canvas {
 			screen.Clear();
 			level.Render((float) VelX, (float) VelY, "grass", screen);
 			MOB.Render(screen);
-			player.Render(screen);
+			for (int i = 0; i < 9; i++) {
+				screen.RenderInventory1(player.getInventory(), i);
+			}
+			if (InInventory) {
+				int Item = 8;
+				for (int y = 0; y < 4; y++) {
+					for (int x = 0; x < 4; x++) {
+						screen.RenderInventorym(player.getInventory(), x, y);
+					}
+				}
+			}
+			player.Render(screen, InInventory);
+			MH.RenderButtons(screen);
 			g.drawImage(bimg, 0, 0, Width, Height, null);
 			break;
 		case "Home":
@@ -262,18 +293,6 @@ public class Main extends Canvas {
 	public static void setPlayer(String Char) {
 		switch (Char) {
 		case "char1":
-			player = new Player(Sprite.Blue_Glob, '0');
-			break;
-		case "char2":
-			player = new Player(Sprite.Green_Glob, '1');
-			break;
-		case "char3":
-			player = new Player(Sprite.Yellow_Glob, '2');
-			break;
-		case "char4":
-			player = new Player(Sprite.Red_Glob, '3');
-			break;
-		case "char5":
 			player = new Player(Sprite.Human_F, '4');
 			break;
 		}
@@ -302,5 +321,9 @@ public class Main extends Canvas {
 		if (IsFullscreen)
 			return (Height - 601) / 2;
 		return 0;
+	}
+
+	public static void getScrollamount(int scroll) {
+		player.setNextF(scroll);
 	}
 }

@@ -6,9 +6,8 @@ import Graphics.Sprite;
 public class Tile {
 	private int x, y;
 	protected Sprite sprite;
-	public static FloorTile GrassPlain = new FloorTile(Sprite.GrassPlain_Floor);
-	public static WallTile Grass = new WallTile(Sprite.Grass_Floor);
-	public static FloorTile Water_Floor = new FloorTile(Sprite.Water_Floor);
+	public static FloorTile Grass = new FloorTile(Sprite.Grass_Floor1);
+	public static FloorTile Water_Floor = new FloorTile(Sprite.Water_Floor1);
 
 	public Tile(Sprite sprite) {
 		this.sprite = sprite;

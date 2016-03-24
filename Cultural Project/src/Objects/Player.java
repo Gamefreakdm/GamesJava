@@ -88,7 +88,7 @@ public class Player extends Entity {
 				Main.Score = 0;
 				LevelUp(level = 0);
 			} else if (level > 3) {
-				Main.Score = 13;
+				Main.Score = 16;
 				LevelUp(level = 4);
 			}
 			Lives = 3;

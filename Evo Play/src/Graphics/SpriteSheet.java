@@ -6,18 +6,22 @@ import javax.imageio.ImageIO;
 
 public class SpriteSheet {
 	private int[] Pixels;
-	public static SpriteSheet Tiles = new SpriteSheet("/Textures/Tiles1.png");
-	public static SpriteSheet Chars1 = new SpriteSheet("/Textures/Chars1.png");
+	private final int SIZE;
+	public static SpriteSheet Tiles2 = new SpriteSheet("/Textures/Tiles2.png", 256);
+	public static SpriteSheet Tiles1 = new SpriteSheet("/Textures/Tiles1.png", 1024);
+	public static SpriteSheet Chars1 = new SpriteSheet("/Textures/Chars1.png", 1024);
+	public static SpriteSheet InventoryItems1 = new SpriteSheet ("/Textures/InventoryItems1.png", 1024);
 
-	public SpriteSheet(String path) {
-		Pixels = new int[1048576];
-		Load(path);
+	public SpriteSheet(String path, int Size) {
+		Pixels = new int[Size * Size];
+		Load(path, Size);
+		SIZE = Size;
 	}
 
-	private void Load(String path) {
+	private void Load(String path, int s) {
 		try {
 			BufferedImage img = ImageIO.read(SpriteSheet.class.getResource(path));
-			img.getRGB(0, 0, 1024, 1024, Pixels, 0, 1024);
+			img.getRGB(0, 0, s, s, Pixels, 0, s);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -25,5 +29,9 @@ public class SpriteSheet {
 
 	public int[] getPixels() {
 		return Pixels;
+	}
+
+	public int getSize() {
+		return SIZE;
 	}
 }

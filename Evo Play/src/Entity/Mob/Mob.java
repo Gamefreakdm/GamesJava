@@ -4,7 +4,6 @@ import Entity.Entity;
 import Graphics.Screen;
 
 public abstract class Mob extends Entity {
-
 	public void Update() {
 	}
 
