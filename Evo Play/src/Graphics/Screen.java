@@ -1,7 +1,7 @@
 package Graphics;
 
 import GuiObject.Button;
-import Items.InventoryItem;
+import GuiObject.InventoryObject.Items.InventoryItem;
 import Level.Tile.Tile;
 
 public class Screen {
@@ -91,8 +91,8 @@ public class Screen {
 	}
 
 	public void RenderTile(int xp, int yp, Tile tile) {
-		xp -= xOffset;
-		yp -= yOffset;
+		xp -= getxOffset();
+		yp -= getyOffset();
 		for (int y = 0; y < tile.getSprite().SIZE; y++) {
 			int ya = y + yp;
 			if (ya < 0)
@@ -112,9 +112,27 @@ public class Screen {
 		this.setOffset(xf, yf);
 	}
 
+	public void RenderInventoryButton(float xp, float yp, Sprite sprite) {
+		for (int y = 0; y < 64; y++) {
+			int ya = (int) (y + yp);
+			if (ya < 0)
+				ya = 0;
+			for (int x = 0; x < 64; x++) {
+				int xa = (int) (x + xp);
+				if (xa < -64 || xa >= Width || ya < 0 || ya >= Height)
+					break;
+				if (xa < 0)
+					xa = 0;
+				int col = sprite.Pixels[x + y * 64];
+				if (col != 0XFFFF00FF)
+					Pixels[xa + ya * Width] = col;
+			}
+		}
+	}
+
 	public void RenderEntity(float xp, float yp, Sprite sprite) {
-		xp -= xOffset;
-		yp -= yOffset;
+		xp -= getxOffset();
+		yp -= getyOffset();
 		for (int y = 0; y < 64; y++) {
 			int ya = (int) (y + yp);
 			if (ya < 0)
@@ -169,5 +187,13 @@ public class Screen {
 
 	public int[] getPixels() {
 		return Pixels;
+	}
+
+	public float getxOffset() {
+		return xOffset;
+	}
+
+	public float getyOffset() {
+		return yOffset;
 	}
 }

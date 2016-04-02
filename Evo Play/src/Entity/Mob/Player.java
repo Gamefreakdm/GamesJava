@@ -2,7 +2,7 @@ package Entity.Mob;
 
 import Graphics.Screen;
 import Graphics.Sprite;
-import Items.InventoryItem;
+import GuiObject.InventoryObject.Items.InventoryItem;
 
 public class Player extends Mob {
 	private int handnum = 0;
@@ -21,12 +21,22 @@ public class Player extends Mob {
 			IsMoving = false;
 	}
 
+	public void UpdateInventory() {
+		for (int i = 0; i < IL.length; i++) {
+			if (IL[i].getID() != "0" && IL[i].isIsPicked()) {
+				IL[i].setX(Main.Main.getMouseHandler().getMouseX() - 32);
+				IL[i].setY(Main.Main.getMouseHandler().getMouseY() - 32);
+			}
+		}
+	}
+
 	private void Init() {
 		this.setX((800 / 2) - 30);
 		this.setY((600 / 2) - 30);
 		for (int i = 0; i < 25; i++) {
 			IL[i] = new InventoryItem(i, "0");
 		}
+		IL[9] = new InventoryItem(9, "stone sword");
 		IL[0].setIsSelected(true);
 	}
 

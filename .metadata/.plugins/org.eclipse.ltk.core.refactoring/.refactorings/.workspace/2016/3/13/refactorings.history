@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Delete resource &apos;sdfsdfsdfsdf&apos;" deleteContents="false" description="Delete resource &apos;sdfsdfsdfsdf&apos;" element1="/sdfsdfsdfsdf" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1458846793577"/>&#x0A;<refactoring comment="Delete resource &apos;Evo Play/src/GuiObject/InventoryItem.java&apos;" deleteContents="false" description="Delete resource &apos;Evo Play/src/GuiObject/InventoryItem.java&apos;" element1="/Evo Play/src/GuiObject/InventoryItem.java" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1458912064910"/>
+</session>

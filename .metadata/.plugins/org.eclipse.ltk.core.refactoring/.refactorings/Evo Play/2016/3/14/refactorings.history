@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Encapsulate field &apos;GuiObject.InventoryObject.Items.InventoryItem.IsPicked&apos; in &apos;GuiObject.InventoryObject.Items.InventoryItem&apos;&#x0D;&#x0A;- Original project: &apos;Evo Play&apos;&#x0D;&#x0A;- Original element: &apos;GuiObject.InventoryObject.Items.InventoryItem.IsPicked&apos;&#x0D;&#x0A;- Getter method name: &apos;isIsPicked&apos;&#x0D;&#x0A;- Setter method name: &apos;setIsPicked&apos;&#x0D;&#x0A;- Field visibility: &apos;public&apos;&#x0D;&#x0A;- Use getter and setter methods in declaring type" comments="false" declaring="true" description="Encapsulate field &apos;IsPicked&apos;" flags="589830" getter="isIsPicked" id="org.eclipse.jdt.ui.self.encapsulate" input="/src&lt;GuiObject.InventoryObject.Items{InventoryItem.java[InventoryItem^IsPicked" insertion="9" setter="setIsPicked" stamp="1459455967040" version="1.0" visibility="1"/>
+</session>

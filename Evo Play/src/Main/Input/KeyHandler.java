@@ -4,7 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public final class KeyHandler implements KeyListener {
-	public boolean Keys[] = new boolean[7];
+	public boolean Keys[] = new boolean[11];
 	private final boolean[] Codes = new boolean[400];
 
 	public void Update() {
@@ -14,7 +14,11 @@ public final class KeyHandler implements KeyListener {
 		Keys[3] = Codes[KeyEvent.VK_LEFT];
 		Keys[4] = Codes[KeyEvent.VK_RIGHT];
 		Keys[5] = Codes[KeyEvent.VK_SPACE];
-		Keys[6] = Codes[KeyEvent.VK_I];
+		Keys[6] = Codes[KeyEvent.VK_E];
+		Keys[7] = Codes[KeyEvent.VK_W];
+		Keys[8] = Codes[KeyEvent.VK_A];
+		Keys[9] = Codes[KeyEvent.VK_D];
+		Keys[10] = Codes[KeyEvent.VK_S];
 	}
 
 	public void keyPressed(KeyEvent KP) {

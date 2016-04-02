@@ -54,8 +54,8 @@
 <fullyQualifiedTypeName name="java.awt.Font"/>
 <fullyQualifiedTypeName name="Level.Level"/>
 <fullyQualifiedTypeName name="Graphics.Sprite"/>
-<fullyQualifiedTypeName name="Main.Main"/>
 <fullyQualifiedTypeName name="Graphics.SpriteSheet"/>
 <fullyQualifiedTypeName name="Graphics.Screen"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="Main.Main"/>
 </qualifiedTypeNameHistroy>

@@ -29,10 +29,20 @@ public class MouseHandler implements MouseListener, MouseMotionListener, MouseWh
 		}
 	}
 
-	public void CreateInventoryButton(int Height, int Width, int xp, int yp) {
+	public void setButtonOffsets(float x, float y) {
+		for (int i = 0; i < Buttons.size(); i++) {
+			Buttons.get(i).SetOffsets(x, y);
+		}
+	}
+
+	public void CreateInventoryButton(int Height, int Width, int xp, int yp, int slot) {
 		int offx = 64 * xp;
 		int offy = 64 * yp;
-		Buttons.add(new Button(offx, offy, 64, 64, false, "Inventory"));
+		Buttons.add(new Button(offx, offy, 64, 64, false, slot, "IB"));
+	}
+
+	public void DestoryInventoryButtons() {
+		Buttons.clear();
 	}
 
 	public void RenderButtons(Screen screen) {
@@ -42,17 +52,15 @@ public class MouseHandler implements MouseListener, MouseMotionListener, MouseWh
 		}
 	}
 
-	public void CheckIsClicked(float x, float y) {
+	public void CheckIsClicked() {
 		for (int i = 0; i < Buttons.size(); i++) {
-			Button temp = Buttons.get(i);
-			temp.CheckIsClicked(x, y);
+			Buttons.get(i).CheckIsClicked(this.getMouseX(), this.getMouseY());
 		}
 	}
 
-	public void CheckIsHovered(float x, float y) {
+	public void CheckIsHovered() {
 		for (int i = 0; i < Buttons.size(); i++) {
-			Button temp = Buttons.get(i);
-			temp.CheckIsHovered(x, y);
+			Buttons.get(i).CheckIsHovered(this.getMouseX(), this.getMouseY());
 		}
 	}
 
@@ -74,7 +82,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, MouseWh
 	}
 
 	public void mousePressed(MouseEvent mp) {
-		CheckIsClicked(mX, mY);
+		CheckIsClicked();
 	}
 
 	public void mouseReleased(MouseEvent mr) {
@@ -91,22 +99,14 @@ public class MouseHandler implements MouseListener, MouseMotionListener, MouseWh
 		mY = ME.getY();
 	}
 
-	public float getX() {
-		return mX;
-	}
-
-	public float getY() {
-		return mY;
-	}
-
 	public void mouseWheelMoved(MouseWheelEvent mwe) {
 		Main.Main.getScrollamount((int) mwe.getPreciseWheelRotation());
 	}
-	
+
 	public float getMouseX() {
 		return mX;
 	}
-	
+
 	public float getMouseY() {
 		return mY;
 	}
