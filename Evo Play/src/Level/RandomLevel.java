@@ -5,7 +5,7 @@ import java.util.Random;
 public class RandomLevel extends Level {
 	public RandomLevel(int ms) {
 		super(ms);
-		Tiles = new int[45 * 45];
+		Tiles = new int[ms * ms];
 		generateLevel();
 	}
 

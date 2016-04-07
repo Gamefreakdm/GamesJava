@@ -17,11 +17,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, MouseWh
 		this.ClearButtons();
 		switch (gs) {
 		case "Home":
-			Buttons.add(new Button(193, 166, 383, 73, true, "singleplayer"));
-			Buttons.add(new Button(193, 266, 383, 73, true, "Options"));
-			break;
-		case "Options":
-			Buttons.add(new Button(193, 166, 395, 73, true, "IFS"));
+			Buttons.add(new Button(193, 166, 383, 73, true, "sp"));
 			break;
 		case "Choose Character":
 			Buttons.add(new Button(40 + (160 * 0), 0, 64, 64, false, "char1"));
@@ -29,16 +25,15 @@ public class MouseHandler implements MouseListener, MouseMotionListener, MouseWh
 		}
 	}
 
-	public void setButtonOffsets(float x, float y) {
-		for (int i = 0; i < Buttons.size(); i++) {
-			Buttons.get(i).SetOffsets(x, y);
+	public void CreateInventoryButton(int xp, int yp, int slot, boolean ish) {
+		if (!ish) {
+			int offx = 64 * xp;
+			int offy = 64 * yp;
+			Buttons.add(new Button(offx, offy, 64, 64, false, slot, "IB"));
+		} else {
+			int offx = (80 * xp) - 32;
+			Buttons.add(new Button(offx - 48, 500, 64, 64, false, slot, "IB"));
 		}
-	}
-
-	public void CreateInventoryButton(int Height, int Width, int xp, int yp, int slot) {
-		int offx = 64 * xp;
-		int offy = 64 * yp;
-		Buttons.add(new Button(offx, offy, 64, 64, false, slot, "IB"));
 	}
 
 	public void DestoryInventoryButtons() {

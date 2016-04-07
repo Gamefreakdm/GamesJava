@@ -4,10 +4,10 @@ import Graphics.Screen;
 import Graphics.Sprite;
 
 public class InventoryItem {
-	private String ID = "";
-	private int SlotNum = 0;
-	private Sprite sprite;
 	private float X, Y;
+	private Sprite sprite;
+	private final String ID;
+	private int SlotNum = 0;
 	private boolean IsPicked = false;
 	private boolean IsSelected = false;
 
@@ -17,7 +17,7 @@ public class InventoryItem {
 		Init();
 	}
 
-	private void Init() {
+	public void Init() {
 		sprite = null;
 		switch (ID) {
 		case "stone sword":
@@ -33,7 +33,7 @@ public class InventoryItem {
 			Y = 500;
 		} else {
 			X = 0;
-			if (SlotNum < 13 && SlotNum > 7) {
+			if (SlotNum < 13 && SlotNum >= 8) {
 				Y = 0;
 				X += (SlotNum - 9) * 64;
 			} else if (SlotNum < 17 && SlotNum >= 13) {
@@ -87,5 +87,17 @@ public class InventoryItem {
 
 	public void setIsPicked(boolean isPicked) {
 		IsPicked = isPicked;
+	}
+
+	public void setSlot(int sn) {
+		SlotNum = sn;
+	}
+
+	public int getSlotNum() {
+		return SlotNum;
+	}
+
+	public float getY() {
+		return Y;
 	}
 }

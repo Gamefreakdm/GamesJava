@@ -17,11 +17,9 @@ public class Screen {
 	}
 
 	public void RenderBack() {
-		for (int y = 0; y < Height; y++) {
-			for (int x = 0; x < Width; x++) {
+		for (int y = 0; y < Height; y++)
+			for (int x = 0; x < Width; x++)
 				Pixels[x + y * Width] = 0x0;
-			}
-		}
 	}
 
 	public void RenderCC() {
@@ -44,13 +42,12 @@ public class Screen {
 	public void RenderInventorym(InventoryItem[] il, int xp, int yp) {
 		int screenoffy = 64 * yp;
 		int screenoffx = 64 * xp;
-		for (int y = 0; y < 64; y++) {
+		for (int y = 0; y < 64; y++)
 			for (int x = 0; x < 64; x++) {
 				int col = Sprite.InventorySlot.Pixels[x + y * 64];
 				if (col != 0XFFFF00FF)
 					Pixels[(x + screenoffx) + (y + screenoffy) * Width] = Sprite.InventorySlot.Pixels[x + y * 64];
 			}
-		}
 	}
 
 	public void RenderInventory1(InventoryItem[] il, int invennum) {
@@ -58,7 +55,7 @@ public class Screen {
 		int screenoffx = 80;
 		if (invennum != 0)
 			screenoffx *= invennum;
-		for (int y = 0; y < 64; y++) {
+		for (int y = 0; y < 64; y++)
 			for (int x = 0; x < 64; x++) {
 				int Col2 = Sprite.EmptySlot.Pixels[x + y * 64];
 				if (Col2 != 0XFFFF00FF)
@@ -69,7 +66,14 @@ public class Screen {
 						Pixels[(x + screenoffx) + (y + screenoffy) * Width] = Sprite.InHand.Pixels[x + y * 64];
 				}
 			}
-		}
+	}
+
+	public void RenderUpgrade() {
+		int xsof = Width - 300;
+		for (int y = 0; y < 400; y++)
+			for (int x = xsof; x < Width; x++) {
+				Pixels[x + y * Width] = 0x282828;
+			}
 	}
 
 	public void RenderSelect(float xp, float yp, int width, int height, Button b) {
@@ -174,9 +178,8 @@ public class Screen {
 	}
 
 	public void Clear() {
-		for (int i = 0; i < Pixels.length; i++) {
+		for (int i = 0; i < Pixels.length; i++)
 			Pixels[i] = 0;
-		}
 	}
 
 	public void setWHP(int w, int h, int[] p) {

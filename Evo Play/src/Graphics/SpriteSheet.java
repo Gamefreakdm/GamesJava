@@ -10,7 +10,7 @@ public class SpriteSheet {
 	public static SpriteSheet Tiles2 = new SpriteSheet("/Textures/Tiles2.png", 256);
 	public static SpriteSheet Tiles1 = new SpriteSheet("/Textures/Tiles1.png", 1024);
 	public static SpriteSheet Chars1 = new SpriteSheet("/Textures/Chars1.png", 1024);
-	public static SpriteSheet InventoryItems1 = new SpriteSheet ("/Textures/InventoryItems1.png", 1024);
+	public static SpriteSheet InventoryItems1 = new SpriteSheet("/Textures/InventoryItems1.png", 1024);
 
 	public SpriteSheet(String path, int Size) {
 		Pixels = new int[Size * Size];

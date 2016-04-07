@@ -2,10 +2,8 @@ package Main;
 
 import java.awt.Canvas;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Toolkit;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
@@ -14,6 +12,7 @@ import Entity.Mob.MobHandler;
 import Entity.Mob.Player;
 import Graphics.Screen;
 import Graphics.Sprite;
+import GuiObject.InventoryObject.Items.InventoryItem;
 import Level.RandomLevel;
 import Main.Input.KeyHandler;
 import Main.Input.MouseHandler;
@@ -22,23 +21,22 @@ public class Main extends Canvas implements Runnable {
 	private JFrame Frame;
 	private int[] Pixels;
 	private Screen screen;
-	private Thread main;
 	private boolean Running;
 	public double VelX, VelY;
 	private int keyTimer = 0;
 	private BufferedImage bimg;
+	private boolean InUpgrades;
 	private boolean InInventory;
 	private static Player player;
 	private final String Title = "Title";
-	private MobHandler MOB = new MobHandler();
 	private static String Game_State = "Home";
-	private static boolean IsFullscreen = false;
-	private static int Width = 800, Height = 600;
+	private final Thread main = new Thread(this);
 	private final KeyHandler KH = new KeyHandler();
 	private static final long serialVersionUID = 1L;
-	private static final MouseHandler MH = new MouseHandler();
+	private final MobHandler MOB = new MobHandler();
+	private final static int Width = 800, Height = 600;
 	private final RandomLevel level = new RandomLevel(45);
-	private final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+	private static final MouseHandler MH = new MouseHandler();
 
 	public static void main(String[] args) {
 		System.out.println("[System] Starting...");
@@ -62,7 +60,6 @@ public class Main extends Canvas implements Runnable {
 		if (Running)
 			return;
 		Running = true;
-		main = new Thread(this);
 		main.start();
 		MH.UpdateButtons(Game_State);
 	}
@@ -101,81 +98,81 @@ public class Main extends Canvas implements Runnable {
 		KH.Update();
 		switch (Game_State) {
 		case "Home":
-			if (keyTimer == 0)
-				if (KH.Keys[0])
-					Running = false;
-				else {
-					if (keyTimer >= 14)
-						keyTimer = 0;
-					else
-						keyTimer++;
-					break;
-				}
+			if (KH.Keys[0] && keyTimer == 0)
+				Running = false;
 			break;
 		case "Options":
-			if (keyTimer == 0)
-				if (KH.Keys[0]) {
-					Game_State = "Home";
-					keyTimer++;
-				} else if (keyTimer >= 14)
-					keyTimer = 0;
-				else
-					keyTimer++;
+			if (KH.Keys[0] && keyTimer == 0) {
+				Game_State = "Home";
+				keyTimer++;
+			}
 			break;
 		case "Choose Character":
-			if (keyTimer == 0)
-				if (KH.Keys[0]) {
-					Game_State = "Home";
-					keyTimer = 1;
-				} else {
-					if (keyTimer >= 14)
-						keyTimer = 0;
-					else
-						keyTimer++;
-					break;
-				}
+			if (KH.Keys[0] && keyTimer == 0) {
+				Game_State = "Home";
+				keyTimer++;
+			}
 			break;
 		case "Playing":
-			if (!InInventory) {
+			if (!InInventory && !InUpgrades) {
 				if (KH.Keys[1] || KH.Keys[7]) {
-					VelY -= 0.9;
+					VelY -= player.getSpeed();
 					player.setDir(0);
 				} else if (KH.Keys[2] || KH.Keys[10]) {
-					VelY += 0.9;
+					VelY += player.getSpeed();
 					player.setDir(1);
 				} else if (KH.Keys[3] || KH.Keys[8]) {
-					VelX -= 0.9;
+					VelX -= player.getSpeed();
 					player.setDir(2);
 				} else if (KH.Keys[4] || KH.Keys[9]) {
-					VelX += 0.9;
+					VelX += player.getSpeed();
 					player.setDir(3);
+				} else if (KH.Keys[12] && player.getSpeed() < 3.0) {
+					player.setSpeed(player.getSpeed() + 0.2);
+				} else if (KH.Keys[13] && player.getSpeed() > 0.6) {
+					player.setSpeed(player.getSpeed() - 0.2);
 				} else
 					player.setDir(4);
 			}
-			if (KH.Keys[0])
-				InInventory = false;
+			if (KH.Keys[0] && keyTimer == 0 && InInventory || KH.Keys[0] && keyTimer == 0 && InUpgrades) {
+				if (InInventory)
+					InInventory = false;
+				if (InUpgrades)
+					InUpgrades = false;
+				MH.DestoryInventoryButtons();
+				keyTimer++;
+			}
+			if (KH.Keys[11] && !InUpgrades && keyTimer == 0) {
+				InUpgrades = true;
+				keyTimer++;
+			}
+			if (KH.Keys[11] && InUpgrades && keyTimer == 0) {
+				InUpgrades = false;
+				keyTimer++;
+			}
 			if (KH.Keys[6] && InInventory == true && keyTimer == 0) {
 				InInventory = false;
 				MH.DestoryInventoryButtons();
-				keyTimer = 1;
+				keyTimer++;
 			}
 			if (KH.Keys[6] && keyTimer == 0) {
 				int sn = 8;
-				for (int y = 0; y < 4; y++) {
+				for (int i = 0; i < 8; i++)
+					MH.CreateInventoryButton(i + 2, 8, i, true);
+				for (int y = 0; y < 4; y++)
 					for (int x = 0; x < 4; x++) {
 						sn++;
-						MH.CreateInventoryButton(Width, Height, x, y, sn);
+						MH.CreateInventoryButton(x, y, sn, false);
 					}
-				}
 				InInventory = true;
 				keyTimer++;
-			} else if (keyTimer > 0) {
-				keyTimer++;
-				if (keyTimer >= 14)
-					keyTimer = 0;
 			}
 			break;
 		}
+		if (keyTimer > 0 && keyTimer < 14)
+			keyTimer++;
+		else if (keyTimer > 0 && keyTimer >= 14)
+			keyTimer = 0;
 
 	}
 
@@ -194,7 +191,7 @@ public class Main extends Canvas implements Runnable {
 			screen.setOffset((int) (VelX), (int) (VelY));
 			if (InInventory) {
 				MH.CheckIsHovered();
-				player.UpdateInventory();
+				player.UpdateInventory(InInventory);
 			}
 			break;
 		}
@@ -210,23 +207,6 @@ public class Main extends Canvas implements Runnable {
 			return;
 		}
 		Graphics g = BS.getDrawGraphics();
-		if (IsFullscreen && Width == 800) {
-			Frame.setVisible(false);
-			Width = (int) screenSize.getWidth();
-			Height = (int) screenSize.getHeight();
-			Frame.setSize(Width, Height);
-			MH.UpdateButtons(Game_State);
-			Frame.setLocationRelativeTo(null);
-			Frame.setVisible(true);
-		} else if (!IsFullscreen && Width > 800) {
-			Frame.setVisible(false);
-			Width = 800;
-			Height = 600;
-			Frame.setSize(Width, Height);
-			MH.UpdateButtons(Game_State);
-			Frame.setLocationRelativeTo(null);
-			Frame.setVisible(true);
-		}
 		for (int i = 0; i < screen.getPixels().length; i++)
 			Pixels[i] = screen.getPixels()[i];
 		g.setFont(new Font("", 40, 60));
@@ -242,17 +222,15 @@ public class Main extends Canvas implements Runnable {
 			screen.Clear();
 			level.Render((float) VelX, (float) VelY, "grass", screen);
 			MOB.Render(screen);
-			for (int i = 0; i < 9; i++) {
+			for (int i = 0; i < 9; i++)
 				screen.RenderInventory1(player.getInventory(), i);
-			}
-			if (InInventory) {
-				for (int y = 0; y < 4; y++) {
-					for (int x = 0; x < 4; x++) {
+			if (InInventory)
+				for (int y = 0; y < 4; y++)
+					for (int x = 0; x < 4; x++)
 						screen.RenderInventorym(player.getInventory(), x, y);
-					}
-				}
-			}
 			player.Render(screen, InInventory);
+			if (InUpgrades)
+				screen.RenderUpgrade();
 			MH.RenderButtons(screen);
 			g.drawImage(bimg, 0, 0, Width, Height, null);
 			break;
@@ -260,21 +238,12 @@ public class Main extends Canvas implements Runnable {
 			screen.RenderBack();
 			MH.RenderButtons(screen);
 			g.drawImage(bimg, 0, 0, Width, Height, null);
-			g.drawString("Single Player", getScreenOffsetpx() + 203, getScreenOffsetpy() + 215);
-			g.drawString("Options", getScreenOffsetpx() + 275, getScreenOffsetpy() + 320);
-			break;
-		case "Options":
-			screen.RenderBack();
-			MH.RenderButtons(screen);
-			g.drawImage(bimg, 0, 0, Width, Height, null);
-			if (IsFullscreen)
-				g.drawString("FullScreen: Off", getScreenOffsetpx() + 190, getScreenOffsetpy() + 220);
-			else
-				g.drawString("FullScreen: On", 190, 220);
+			g.drawString("Single Player", 203, 215);
 			break;
 		}
 		g.dispose();
 		BS.show();
+
 	}
 
 	public void Stop() {
@@ -287,13 +256,6 @@ public class Main extends Canvas implements Runnable {
 	private void CleanUp() {
 		screen.Clear();
 		Frame.dispose();
-	}
-
-	public static void setFS() {
-		if (IsFullscreen)
-			IsFullscreen = false;
-		else
-			IsFullscreen = true;
 	}
 
 	public static void setGS(String gs) {
@@ -309,36 +271,25 @@ public class Main extends Canvas implements Runnable {
 		setGS("Playing");
 	}
 
-	public static int getScreenOffsetx() {
-		if (IsFullscreen)
-			return (Width - 800) / 2;
-		return 0;
-	}
-
-	public static int getScreenOffsety() {
-		if (IsFullscreen)
-			return (Height - 620) / 2;
-		return 0;
-	}
-
-	private int getScreenOffsetpx() {
-		if (IsFullscreen)
-			return (Width - 800) / 2;
-		return 0;
-	}
-
 	public static MouseHandler getMouseHandler() {
 		return MH;
 	}
 
-	private int getScreenOffsetpy() {
-		if (IsFullscreen)
-			return (Height - 601) / 2;
-		return 0;
-	}
-
 	public static void slotselected(int sn) {
-		player.getInventory()[sn].IsPicked();
+		boolean isinhand = false;
+		int pastslot = 0;
+		for (int i = 0; i < player.getInventory().length; i++) {
+			if (player.getInventory()[i].isIsPicked() && player.getInventory()[i].getID() != "0") {
+				pastslot = player.getInventory()[i].getSlotNum();
+				player.getInventory()[sn] = new InventoryItem(sn, player.getInventory()[i].getID());
+				if (pastslot != sn)
+					player.getInventory()[i] = new InventoryItem(i, "0");
+				isinhand = true;
+				player.getInventory()[i].Init();
+			}
+			if (!isinhand && player.getInventory()[i].getID() != "0")
+				player.getInventory()[sn].IsPicked();
+		}
 	}
 
 	public static void getScrollamount(int scroll) {

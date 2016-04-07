@@ -22,17 +22,6 @@ public class MobHandler {
 
 	public void addMob(float x, float y, char mob, int Level) {
 		switch (mob) {
-		case 'g':
-			MobList.add(new Glob(x, y, mob, Level));
-			break;
-		case 'r':
-			MobList.add(new Glob(x, y, mob, Level));
-			break;
-		case 'b':
-			MobList.add(new Glob(x, y, mob, Level));
-		case 'y':
-			MobList.add(new Glob(x, y, mob, Level));
-			break;
 		case 'h':
 			MobList.add(new Human(x, y, Level));
 			break;
