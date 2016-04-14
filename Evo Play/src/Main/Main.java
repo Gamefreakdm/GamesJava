@@ -7,7 +7,10 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
+
 import javax.swing.JFrame;
+
+import Entity.Mob.Mob;
 import Entity.Mob.MobHandler;
 import Entity.Mob.Player;
 import Graphics.Screen;
@@ -127,8 +130,9 @@ public class Main extends Canvas implements Runnable {
 				} else if (KH.Keys[4] || KH.Keys[9]) {
 					VelX += player.getSpeed();
 					player.setDir(3);
-				} else if (KH.Keys[12] && player.getSpeed() < 3.0) {
-					player.setSpeed(player.getSpeed() + 0.2);
+				} else if (KH.Keys[12] && keyTimer == 0) {
+					player.setExp(player.getExp() + 10);
+					keyTimer++;
 				} else if (KH.Keys[13] && player.getSpeed() > 0.6) {
 					player.setSpeed(player.getSpeed() - 0.2);
 				} else
@@ -144,6 +148,8 @@ public class Main extends Canvas implements Runnable {
 			}
 			if (KH.Keys[11] && !InUpgrades && keyTimer == 0) {
 				InUpgrades = true;
+				for (int i = 0; i < 4; i++)
+					MH.CreateUpgradeButtons(i);
 				keyTimer++;
 			}
 			if (KH.Keys[11] && InUpgrades && keyTimer == 0) {
@@ -189,9 +195,10 @@ public class Main extends Canvas implements Runnable {
 		case "Playing":
 			player.Update();
 			screen.setOffset((int) (VelX), (int) (VelY));
-			if (InInventory) {
+			if (InInventory || InUpgrades) {
 				MH.CheckIsHovered();
-				player.UpdateInventory(InInventory);
+				if (InInventory)
+					player.UpdateInventory(InInventory);
 			}
 			break;
 		}
@@ -224,15 +231,28 @@ public class Main extends Canvas implements Runnable {
 			MOB.Render(screen);
 			for (int i = 0; i < 9; i++)
 				screen.RenderInventory1(player.getInventory(), i);
-			if (InInventory)
+			if (InInventory) {
 				for (int y = 0; y < 4; y++)
 					for (int x = 0; x < 4; x++)
 						screen.RenderInventorym(player.getInventory(), x, y);
+				MH.RenderButtons(screen);
+			}
 			player.Render(screen, InInventory);
-			if (InUpgrades)
+			if (InUpgrades) {
 				screen.RenderUpgrade();
-			MH.RenderButtons(screen);
+				for (int y = 0; y < 4; y++) {
+					screen.RenderImage(736, (68 * y), 64, 64, Sprite.PlusButton);
+				}
+				MH.RenderButtons(screen);
+			}
 			g.drawImage(bimg, 0, 0, Width, Height, null);
+			if (InUpgrades) {
+				g.setColor(Color.white);
+				g.drawString("EXP: " + player.getExp(), Width - 300, 340);
+				g.drawString("Speed", 500, 45);
+				g.drawString("Strength", 500, 120);
+				g.drawString("Defense", 500, 195);
+			}
 			break;
 		case "Home":
 			screen.RenderBack();
@@ -294,5 +314,9 @@ public class Main extends Canvas implements Runnable {
 
 	public static void getScrollamount(int scroll) {
 		player.setNextF(scroll);
+	}
+
+	public static Mob getPlayer() {
+		return player;
 	}
 }

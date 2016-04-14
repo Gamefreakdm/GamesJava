@@ -116,7 +116,9 @@ public class Screen {
 		this.setOffset(xf, yf);
 	}
 
-	public void RenderInventoryButton(float xp, float yp, Sprite sprite) {
+	public void RenderEntity(float xp, float yp, Sprite sprite) {
+		xp -= getxOffset();
+		yp -= getyOffset();
 		for (int y = 0; y < 64; y++) {
 			int ya = (int) (y + yp);
 			if (ya < 0)
@@ -134,22 +136,12 @@ public class Screen {
 		}
 	}
 
-	public void RenderEntity(float xp, float yp, Sprite sprite) {
-		xp -= getxOffset();
-		yp -= getyOffset();
-		for (int y = 0; y < 64; y++) {
+	public void RenderImage(float xp, float yp, int w, int h, Sprite sprite) {
+		for (int y = 0; y < h; y++) {
 			int ya = (int) (y + yp);
-			if (ya < 0)
-				ya = 0;
-			for (int x = 0; x < 64; x++) {
+			for (int x = 0; x < w; x++) {
 				int xa = (int) (x + xp);
-				if (xa < -64 || xa >= Width || ya < 0 || ya >= Height)
-					break;
-				if (xa < 0)
-					xa = 0;
-				int col = sprite.Pixels[x + y * 64];
-				if (col != 0XFFFF00FF)
-					Pixels[xa + ya * Width] = col;
+				Pixels[xa + ya * Width] = sprite.Pixels[x + y * sprite.SIZE];
 			}
 		}
 	}

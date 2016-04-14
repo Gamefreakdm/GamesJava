@@ -25,6 +25,10 @@ public class MouseHandler implements MouseListener, MouseMotionListener, MouseWh
 		}
 	}
 
+	public void CreateUpgradeButtons(int yp) {
+		Buttons.add(new Button(736, (68 * yp), 64, 64, false, "up" + yp));
+	}
+
 	public void CreateInventoryButton(int xp, int yp, int slot, boolean ish) {
 		if (!ish) {
 			int offx = 64 * xp;

@@ -26,6 +26,7 @@ public class Sprite {
 	public static Sprite Human_B = new Sprite(7, 0, SpriteSheet.Chars1, 64, false, false);
 	public static Sprite Human_BF = new Sprite(7, 0, SpriteSheet.Chars1, 64, true, false);
 	public static Sprite Select = new Sprite(0, 0, SpriteSheet.Tiles1, 64, false, false);
+	public static Sprite PlusButton = new Sprite(4, 0, SpriteSheet.InventoryItems1, 64, false, false);
 
 	public Sprite(int x, int y, SpriteSheet sheet, int size, boolean xsf, boolean ysf) {
 		Pixels = new int[size * size];

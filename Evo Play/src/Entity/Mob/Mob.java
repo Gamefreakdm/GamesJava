@@ -4,6 +4,9 @@ import Entity.Entity;
 import Graphics.Screen;
 
 public abstract class Mob extends Entity {
+	private double exp = 0;
+	private double str = 0;
+	private double def = 0;
 	private double speed = 1.0;
 
 	public void Update() {
@@ -21,5 +24,29 @@ public abstract class Mob extends Entity {
 
 	public void setSpeed(double sp) {
 		speed = sp;
+	}
+
+	public double getExp() {
+		return exp;
+	}
+
+	public void setExp(double exp) {
+		this.exp = exp;
+	}
+
+	public double getStr() {
+		return str;
+	}
+
+	public void setStr(double str) {
+		this.str = str;
+	}
+
+	public double getDef() {
+		return def;
+	}
+
+	public void setDef(double def) {
+		this.def = def;
 	}
 }

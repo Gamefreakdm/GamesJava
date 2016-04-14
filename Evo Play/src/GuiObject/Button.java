@@ -1,7 +1,6 @@
 package GuiObject;
 
 import Graphics.Screen;
-import Graphics.Sprite;
 import Main.Main;
 
 public class Button {
@@ -47,15 +46,27 @@ public class Button {
 			case "IB":
 				Main.slotselected(slotnum);
 				break;
+			case "up0":
+				if (Main.getPlayer().getSpeed() == 1.0 || Main.getPlayer().getExp() >= (Main.getPlayer().getSpeed() * 10) * 10) {
+					if (Main.getPlayer().getSpeed() == 1.0 && Main.getPlayer().getExp() >= 10) {
+						Main.getPlayer().setSpeed(Main.getPlayer().getSpeed() + 0.2);
+						Main.getPlayer().setExp(Main.getPlayer().getExp() + -10);
+					} else if (Main.getPlayer().getExp() >= ((Main.getPlayer().getSpeed() * 10) * 10)) {
+						Main.getPlayer().setExp(Main.getPlayer().getExp() + -((Main.getPlayer().getSpeed() * 10) * 10));
+						Main.getPlayer().setSpeed(Main.getPlayer().getSpeed() + 0.2);
+					}
+				}
+				break;
+
 			}
-			Clicked = false;
 		}
+		Clicked = false;
 	}
 
 	public void Render(Screen screen) {
 		if (!IsVisable) {
 			if (Hovered)
-				screen.RenderInventoryButton(X, Y, Sprite.Select);
+				screen.RenderSelect(X, Y, Width, Height, this);
 		} else
 			screen.RBC(X, Y, Width, Height, this);
 	}
