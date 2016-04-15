@@ -15,10 +15,8 @@ public class Player extends Mob {
 	}
 
 	public void Update() {
-		if (this.getDir() > 0)
-			IsMoving = true;
-		else
-			IsMoving = false;
+		if (getSpeed() > 3.0)
+			setSpeed(3.0);
 	}
 
 	public void UpdateInventory(boolean ini) {
@@ -44,8 +42,38 @@ public class Player extends Mob {
 	}
 
 	public void Render(Screen screen, boolean ini) {
-		Anim();
-		screen.RenderPlayer(getX(), getY(), getSprite());
+		if (isIsMoving())
+			Anim();
+		switch (this.getDir()) {
+		case 0:
+			for (int i = 0; i < IL.length; i++) {
+				if (IL[i].getID() != "0" && IL[i].isIsSelected())
+					screen.RenderImage(this.getIHX(), this.getIHY(), 32, 32, IL[i].getMinispriteR());
+			}
+			screen.RenderPlayer(getX(), getY(), getSprite());
+			break;
+		case 1:
+			screen.RenderPlayer(getX(), getY(), getSprite());
+			for (int i = 0; i < IL.length; i++) {
+				if (IL[i].getID() != "0" && IL[i].isIsSelected())
+					screen.RenderImage(this.getIHX(), this.getIHY(), 32, 32, IL[i].getMinispriteR());
+			}
+			break;
+		case 2:
+			screen.RenderPlayer(getX(), getY(), getSprite());
+			for (int i = 0; i < IL.length; i++) {
+				if (IL[i].getID() != "0" && IL[i].isIsSelected())
+					screen.RenderImage(this.getIHX(), this.getIHY(), 32, 32, IL[i].getMinispriteL());
+			}
+			break;
+		default:
+			screen.RenderPlayer(getX(), getY(), getSprite());
+			for (int i = 0; i < IL.length; i++) {
+				if (IL[i].getID() != "0" && IL[i].isIsSelected())
+					screen.RenderImage(this.getIHX(), this.getIHY(), 32, 32, IL[i].getMinispriteR());
+			}
+			break;
+		}
 		for (int i = 0; i < 25; i++)
 			if (IL[i].getID() != "0") {
 				if (i <= 7)
@@ -60,56 +88,66 @@ public class Player extends Mob {
 		case '4':
 			switch (this.getDir()) {
 			case 0:
-				this.animTimer++;
-				if (animTimer <= 8)
+				this.setIHX(this.getX() + 13);
+				this.setIHY(this.getY() + 20);
+				this.setAnimTimer(this.getAnimTimer() + 1);
+				if (getAnimTimer() <= 8)
 					this.setSprite(Sprite.Human_B);
 				else
 					this.setSprite(Sprite.Human_BF);
-				if (animTimer >= 13)
-					animTimer = 0;
+				if (getAnimTimer() >= 13)
+					setAnimTimer(0);
 				break;
 			case 1:
-				this.animTimer++;
-				if (animTimer <= 8)
+				this.setIHX(this.getX() + 16);
+				this.setIHY(this.getY() + 22);
+				this.setAnimTimer(this.getAnimTimer() + 1);
+				if (getAnimTimer() <= 8)
 					this.setSprite(Sprite.Human_F);
 				else
 					this.setSprite(Sprite.Human_FF);
-				if (animTimer >= 13)
-					animTimer = 0;
+				if (getAnimTimer() >= 13)
+					setAnimTimer(0);
 				break;
 			case 2:
-				this.animTimer++;
-				if (animTimer <= 3)
+				this.setAnimTimer(this.getAnimTimer() + 1);
+				if (getAnimTimer() <= 3 || getAnimTimer() <= 18 && getAnimTimer() > 15) {
+					this.setIHX(this.getX() + 2);
+					this.setIHY(this.getY() + 22);
 					this.setSprite(Sprite.Human_LS);
-				if (animTimer <= 6 && animTimer > 3)
+				}
+				if (getAnimTimer() <= 6 && getAnimTimer() > 3 || getAnimTimer() <= 15 && getAnimTimer() > 12) {
+					this.setIHX(this.getX() - 8);
+					this.setIHY(this.getY() + 15);
 					this.setSprite(Sprite.Human_LK);
-				if (animTimer <= 9 && animTimer > 6)
+				}
+				if (getAnimTimer() <= 9 && getAnimTimer() > 6 && getAnimTimer() <= 12 && getAnimTimer() > 9) {
+					this.setIHX(this.getX() - 8);
+					this.setIHY(this.getY() + 15);
 					this.setSprite(Sprite.Human_L);
-				if (animTimer <= 12 && animTimer > 9)
-					this.setSprite(Sprite.Human_L);
-				if (animTimer <= 15 && animTimer > 12)
-					this.setSprite(Sprite.Human_LK);
-				if (animTimer <= 18 && animTimer > 15)
-					this.setSprite(Sprite.Human_LS);
-				if (animTimer > 21)
-					animTimer = 0;
+				}
+				if (getAnimTimer() > 21)
+					setAnimTimer(0);
 				break;
 			case 3:
-				this.animTimer++;
-				if (animTimer <= 3)
+				this.setAnimTimer(this.getAnimTimer() + 1);
+				if (getAnimTimer() <= 3 || getAnimTimer() <= 18 && getAnimTimer() > 15) {
+					this.setIHX(this.getX() + 32);
+					this.setIHY(this.getY() + 22);
 					this.setSprite(Sprite.Human_RS);
-				if (animTimer <= 6 && animTimer > 3)
+				}
+				if (getAnimTimer() <= 6 && getAnimTimer() > 3 || getAnimTimer() <= 15 && getAnimTimer() > 12) {
+					this.setIHX(this.getX() + 40);
+					this.setIHY(this.getY() + 15);
 					this.setSprite(Sprite.Human_RK);
-				if (animTimer <= 9 && animTimer > 6)
+				}
+				if (getAnimTimer() <= 9 && getAnimTimer() > 6 && getAnimTimer() <= 12 && getAnimTimer() > 9) {
+					this.setIHX(this.getX() + 32);
+					this.setIHY(this.getY() + 22);
 					this.setSprite(Sprite.Human_R);
-				if (animTimer <= 12 && animTimer > 9)
-					this.setSprite(Sprite.Human_R);
-				if (animTimer <= 15 && animTimer > 12)
-					this.setSprite(Sprite.Human_RK);
-				if (animTimer <= 18 && animTimer > 15)
-					this.setSprite(Sprite.Human_RS);
-				if (animTimer > 21)
-					animTimer = 0;
+				}
+				if (getAnimTimer() > 21)
+					setAnimTimer(0);
 				break;
 			}
 			break;

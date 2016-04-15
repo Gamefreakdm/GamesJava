@@ -141,6 +141,8 @@ public class Screen {
 			int ya = (int) (y + yp);
 			for (int x = 0; x < w; x++) {
 				int xa = (int) (x + xp);
+				int Col = sprite.Pixels[x + y * sprite.SIZE];
+				if (Col != 0XFFFF00FF)
 				Pixels[xa + ya * Width] = sprite.Pixels[x + y * sprite.SIZE];
 			}
 		}

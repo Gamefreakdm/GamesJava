@@ -8,6 +8,8 @@ public class InventoryItem {
 	private Sprite sprite;
 	private final String ID;
 	private int SlotNum = 0;
+	private Sprite minispriteR;
+	private Sprite minispriteL;
 	private boolean IsPicked = false;
 	private boolean IsSelected = false;
 
@@ -22,6 +24,8 @@ public class InventoryItem {
 		switch (ID) {
 		case "stone sword":
 			sprite = Sprite.Sword_II;
+			setMinispriteR(Sprite.IHDSwordIIR);
+			setMinispriteL(Sprite.IHDSwordIIL);
 			break;
 		case "0":
 			sprite = Sprite.EmptySlot;
@@ -99,5 +103,21 @@ public class InventoryItem {
 
 	public float getY() {
 		return Y;
+	}
+
+	public Sprite getMinispriteR() {
+		return minispriteR;
+	}
+
+	public void setMinispriteR(Sprite minispriteR) {
+		this.minispriteR = minispriteR;
+	}
+
+	public Sprite getMinispriteL() {
+		return minispriteL;
+	}
+
+	public void setMinispriteL(Sprite minispriteL) {
+		this.minispriteL = minispriteL;
 	}
 }

@@ -5,6 +5,8 @@ public class Sprite {
 	protected final int SIZE;
 	public static Sprite Grass_Floor = new Sprite(0x007F0E, 32);
 	public static Sprite Water_Floor = new Sprite(0x0026FF, 32);
+	public static Sprite IHDSwordIIR = new Sprite(0, 0, SpriteSheet.InHandItems, 32, false, false);
+	public static Sprite IHDSwordIIL = new Sprite(0, 0, SpriteSheet.InHandItems, 32, true, false);
 	public static Sprite Grass_Floor1 = new Sprite(0, 0, SpriteSheet.Tiles2, 32, false, false);
 	public static Sprite Water_Floor1 = new Sprite(1, 0, SpriteSheet.Tiles2, 32, false, false);
 	public static Sprite Sword_II = new Sprite(3, 0, SpriteSheet.InventoryItems1, 64, false, false);

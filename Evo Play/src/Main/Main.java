@@ -7,9 +7,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
-
 import javax.swing.JFrame;
-
 import Entity.Mob.Mob;
 import Entity.Mob.MobHandler;
 import Entity.Mob.Player;
@@ -121,22 +119,26 @@ public class Main extends Canvas implements Runnable {
 				if (KH.Keys[1] || KH.Keys[7]) {
 					VelY -= player.getSpeed();
 					player.setDir(0);
+					player.setIsMoving(true);
 				} else if (KH.Keys[2] || KH.Keys[10]) {
 					VelY += player.getSpeed();
 					player.setDir(1);
+					player.setIsMoving(true);
 				} else if (KH.Keys[3] || KH.Keys[8]) {
 					VelX -= player.getSpeed();
 					player.setDir(2);
+					player.setIsMoving(true);
 				} else if (KH.Keys[4] || KH.Keys[9]) {
 					VelX += player.getSpeed();
 					player.setDir(3);
+					player.setIsMoving(true);
 				} else if (KH.Keys[12] && keyTimer == 0) {
-					player.setExp(player.getExp() + 10);
+					player.setExp(player.getExp() + 100);
 					keyTimer++;
 				} else if (KH.Keys[13] && player.getSpeed() > 0.6) {
 					player.setSpeed(player.getSpeed() - 0.2);
 				} else
-					player.setDir(4);
+					player.setIsMoving(false);
 			}
 			if (KH.Keys[0] && keyTimer == 0 && InInventory || KH.Keys[0] && keyTimer == 0 && InUpgrades) {
 				if (InInventory)
