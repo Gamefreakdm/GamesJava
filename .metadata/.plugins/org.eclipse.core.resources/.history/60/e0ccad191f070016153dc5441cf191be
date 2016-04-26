@@ -39,7 +39,7 @@ public class Player extends Mob {
 			IL[i] = new InventoryItem(i, "0");
 		IL[0] = new InventoryItem(0, "stone sword");
 		IL[0].setIsSelected(true);
-		Anim();
+		Anim(0);
 	}
 
 	public void Render(Screen screen, boolean ini) {
@@ -84,7 +84,7 @@ public class Player extends Mob {
 			}
 	}
 
-	public void Anim() {
+	public void Anim()) {
 		switch (this.getCar()) {
 		case '4':
 			switch (this.getDir()) {

@@ -39,7 +39,6 @@ public class Player extends Mob {
 			IL[i] = new InventoryItem(i, "0");
 		IL[0] = new InventoryItem(0, "stone sword");
 		IL[0].setIsSelected(true);
-		Anim();
 	}
 
 	public void Render(Screen screen, boolean ini) {
