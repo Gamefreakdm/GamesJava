@@ -29,7 +29,7 @@ public class Level {
 		if (this.Tiles[x + y * mapSize] >= 1 && this.Tiles[x + y * mapSize] <= 4)
 			return Tile.Grass;
 		if (this.Tiles[x + y * mapSize] >= 5 && this.Tiles[x + y * mapSize] <= 7)
-			return Tile.Water_Floor;
+			return Tile.Grass;
 		if (this.Tiles[x + y * mapSize] >= 8)
 			return Tile.Grass;
 		return Tile.Grass;
