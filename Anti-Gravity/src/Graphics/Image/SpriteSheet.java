@@ -7,6 +7,7 @@ import javax.imageio.ImageIO;
 public class SpriteSheet {
 	private int SIZE;
 	private int[] Pixels;
+	public static SpriteSheet Chars = new SpriteSheet("/Sprite sheets/Chars.png");
 
 	public SpriteSheet(String path) {
 		Load(path);
