@@ -17,8 +17,8 @@ public class Screen {
 		}
 	}
 
-	public void Render() {
-		R3D.Floor();
+	public void Render(double time) {
+		R3D.Floor(time);
 	}
 
 	public void setPixelsnew(int[] p) {

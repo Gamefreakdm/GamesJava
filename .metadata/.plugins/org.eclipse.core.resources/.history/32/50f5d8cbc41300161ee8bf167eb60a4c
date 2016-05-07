@@ -1,0 +1,9 @@
+package Input;
+
+public class Controller {
+	private double x, z, rot, xa, za, rota;
+
+	public void Update(boolean forward, boolean backward, boolean left, boolean right, boolean turnl, boolean turnr) {
+		double RotSpeed = 1;
+	}
+}

@@ -1,0 +1,27 @@
+package Main;
+
+public class Time {
+	final double NS = 1000000000.0 / 60;
+
+	public void Run(int nowTime, double Delta, int lastTime) {
+		nowTime = System.nanoTime();
+		Delta += (nowTime - lastTime) / NS;
+		lastTime = nowTime;
+		while (Delta >= 1) {
+			Update();
+			Ticked = true;
+			Delta--;
+		}
+		if (Ticked) {
+			Render();
+			Frames++;
+			GameTime++;
+			Ticked = false;
+		}
+		if (System.currentTimeMillis() - Timer >= 1000) {
+			Timer += 1000;
+			Frame.setTitle(Title + "   |   " + Frames + " Fps");
+			Frames = 0;
+		}
+	}
+}

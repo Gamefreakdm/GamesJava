@@ -1,0 +1,11 @@
+package Main;
+
+public class Game {
+	private int Time = 0;
+
+	public Game() {
+	}
+
+	public void Update() {
+	}
+}

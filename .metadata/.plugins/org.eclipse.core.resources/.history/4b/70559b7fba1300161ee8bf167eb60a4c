@@ -1,0 +1,70 @@
+package Input;
+
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
+
+public class InputHandler implements FocusListener, KeyListener, MouseListener, MouseMotionListener, MouseWheelListener {
+	private final boolean[] Key = new boolean[6];
+	private final boolean[] Codes = new boolean[68836];
+
+	public void Update() {
+		Key[0] = Codes[KeyEvent.VK_ESCAPE];
+		Key[1] = Codes[KeyEvent.VK_F10];
+		Key[2] = Codes[KeyEvent.VK_W];
+		Key[3] = Codes[KeyEvent.VK_A];
+		Key[4] = Codes[KeyEvent.VK_S];
+		Key[5] = Codes[KeyEvent.VK_D];
+	}
+
+	public void keyPressed(KeyEvent KP) {
+		Codes[KP.getKeyCode()] = true;
+	}
+
+	public void keyReleased(KeyEvent KR) {
+		Codes[KR.getKeyCode()] = false;
+	}
+
+	public void keyTyped(KeyEvent KT) {
+	}
+
+	public boolean getKey(int i) {
+		return Key[i];
+	}
+
+	public void mouseWheelMoved(MouseWheelEvent arg0) {
+	}
+
+	public void mouseDragged(MouseEvent arg0) {
+	}
+
+	public void mouseMoved(MouseEvent arg0) {
+	}
+
+	public void mouseClicked(MouseEvent arg0) {
+	}
+
+	public void mouseEntered(MouseEvent arg0) {
+	}
+
+	public void mouseExited(MouseEvent arg0) {
+	}
+
+	public void mousePressed(MouseEvent arg0) {
+	}
+
+	public void mouseReleased(MouseEvent arg0) {
+	}
+
+	public void focusGained(FocusEvent arg0) {
+	}
+
+	public void focusLost(FocusEvent arg0) {
+	}
+}

@@ -1,0 +1,18 @@
+package Main;
+
+import Input.InputHandler;
+
+public class Game {
+	private double Time = 0;
+
+	public Game() {
+	}
+
+	public void Update(InputHandler IH) {
+		Time++;
+	}
+
+	public double getTime() {
+		return Time;
+	}
+}

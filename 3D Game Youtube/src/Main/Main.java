@@ -1,44 +1,43 @@
 package Main;
 
 import java.awt.Canvas;
-import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Toolkit;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import javax.swing.JFrame;
 import Graphics.Screen;
-import Input.KeyHandler;
+import Input.InputHandler;
 
 public class Main extends Canvas implements Runnable {
+	private Game game;
 	private boolean Running;
+	private int Width, Height;
 	private final String Title;
 	private final JFrame Frame;
 	private BufferedImage bimg;
 	public static Screen screen;
-	private final KeyHandler KH;
-	private int Width, Height;
-	private final Dimension screenSize;
+	private final InputHandler IH;
 	private boolean Ticked = false;
-	public static double GameTime = 0;
-	private int keyTimer = 0;
 	private static final long serialVersionUID = 1L;
 
 	private Main() {
 		System.out.println("[System] Starting...");
-		screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		Width = 800;
 		Height = 600;
 		Title = "Pre-Alpha 1.0.1";
-		KH = new KeyHandler();
+		IH = new InputHandler();
 		Frame = new JFrame("Loading...");
+		game = new Game();
 	}
 
 	public static void main(String[] args) {
 		Main M = new Main();
 		M.Frame.add(M);
-		M.Frame.addKeyListener(M.KH);
+		M.Frame.addKeyListener(M.IH);
+		M.addMouseListener(M.IH);
+		M.addMouseMotionListener(M.IH);
+		M.addMouseWheelListener(M.IH);
 		M.Frame.setSize(M.Width, M.Height);
 		M.Frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		M.Frame.setResizable(false);
@@ -76,7 +75,6 @@ public class Main extends Canvas implements Runnable {
 			if (Ticked) {
 				Render();
 				Frames++;
-				GameTime++;
 				Ticked = false;
 			}
 			if (System.currentTimeMillis() - Timer >= 1000) {
@@ -88,23 +86,12 @@ public class Main extends Canvas implements Runnable {
 		Stop();
 	}
 
-	private void KeyUpdate() {
-		Frame.requestFocus();
-		KH.Update();
-		if (KH.getKey(0))
-			Running = false;
-		if (KH.getKey(1)) {
-			keyTimer++;
-			if (keyTimer == 1) {
-				ScreenSize();
-				KH.setKey(1, false);
-			} else if (keyTimer >= 6)
-				keyTimer = 0;
-		}
-	}
-
 	private void Update() {
-		KeyUpdate();
+		Frame.requestFocus();
+		game.KeyUpdate(IH.Key);
+		game.Update();
+		if (!game.IsRunning())
+			Running = false;
 	}
 
 	private void Render() {
@@ -113,39 +100,23 @@ public class Main extends Canvas implements Runnable {
 			bimg = new BufferedImage(Width, Height, BufferedImage.TYPE_INT_RGB);
 			screen = new Screen(Width, Height);
 			screen.setPixelsnew(((DataBufferInt) bimg.getRaster().getDataBuffer()).getData());
-			createBufferStrategy(3);
+			createBufferStrategy(1);
 			return;
 		}
-		screen.Render();
+		screen.Render(game.getTime());
 		Graphics g = BS.getDrawGraphics();
 		g.drawImage(bimg, 0, 0, Width, Height, null);
 		BS.show();
 	}
 
 	private void Stop() {
-		if (Running)
-			return;
 		System.out.println("[System] Stopping...");
 		CleanUp();
+		System.exit(0);
 	}
 
 	private void CleanUp() {
 		screen.clearPixels();
 		Frame.dispose();
-	}
-
-	private void ScreenSize() {
-		if (Width != 800) {
-			Width = 800;
-			Height = 600;
-		} else {
-			Width = (int) screenSize.getWidth();
-			Height = (int) screenSize.getHeight();
-		}
-		this.Frame.setVisible(false);
-		this.Frame.setSize(Width, Height);
-		this.Frame.setLocationRelativeTo(null);
-		screen.clearPixels();
-		this.Frame.setVisible(true);
 	}
 }

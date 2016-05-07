@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;3D Game Youtube/src/Input/KeyHandler.java&apos; to &apos;InputHandler.java&apos;" description="Rename resource &apos;KeyHandler.java&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/Input/KeyHandler.java" name="InputHandler.java" stamp="1462480523490" updateReferences="true"/>
+</session>

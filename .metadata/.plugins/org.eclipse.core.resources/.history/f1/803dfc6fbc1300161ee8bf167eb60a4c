@@ -1,0 +1,16 @@
+package Main;
+
+public class Game {
+	private double Time = 0;
+
+	public Game() {
+	}
+
+	public void Update() {
+		Time++;
+	}
+
+	public double getTime() {
+		return Time;
+	}
+}
