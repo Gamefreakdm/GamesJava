@@ -8,7 +8,7 @@ public class Sprite {
 	public static Sprite IHDSwordIIR = new Sprite(0, 0, SpriteSheet.InHandItems, 32, false, false);
 	public static Sprite IHDSwordIIL = new Sprite(0, 0, SpriteSheet.InHandItems, 32, true, false);
 	public static Sprite Grass_Floor1 = new Sprite(0, 0, SpriteSheet.Tiles2, 32, false, false);
-	public static Sprite Water_Floor1 = new Sprite(2, 0, SpriteSheet.Tiles2, 32, false, false);
+	public static Sprite Water_Floor1 = new Sprite(3, 0, SpriteSheet.Tiles2, 32, false, false);
 	public static Sprite Sword_II = new Sprite(3, 0, SpriteSheet.InventoryItems1, 64, false, false);
 	public static Sprite InventorySlot = new Sprite(2, 0, SpriteSheet.InventoryItems1, 64, false, false);
 	public static Sprite EmptySlot = new Sprite(0, 0, SpriteSheet.InventoryItems1, 64, false, false);

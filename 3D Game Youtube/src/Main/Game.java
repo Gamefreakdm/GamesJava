@@ -5,7 +5,7 @@ import Input.Controller;
 
 public class Game {
 	private double Time = 0;
-	private final Controller CO;
+	public final Controller CO;
 	private boolean Running = false;
 
 	public Game() {

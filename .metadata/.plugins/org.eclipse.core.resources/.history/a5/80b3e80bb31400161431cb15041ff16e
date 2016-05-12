@@ -1,0 +1,28 @@
+package Graphics;
+
+public class Render {
+	private final int[] Pixels;
+	private final int Width, Height;
+	protected final Screen screen;
+
+	public Render(int w, int h, Screen s) {
+		Width = w;
+		Height = h;
+	}
+
+	public void RenderSquare() {
+		for (int y = 0; y < Height; y++) {
+			for (int x = -0; x < Width; x++) {
+
+			}
+		}
+	}
+
+	public int getWidth() {
+		return Width;
+	}
+
+	public int getHeight() {
+		return Height;
+	}
+}
