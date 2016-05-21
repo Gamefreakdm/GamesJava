@@ -1,4 +1,4 @@
-INDEX VERSION 1.129+C:\Users\nanot\Documents\GitHub\GamesJava\.metadata\.plugins\org.eclipse.jdt.core
+INDEX VERSION 1.129+C:\Users\NanoT\Documents\GitHub\GamesJava\.metadata\.plugins\org.eclipse.jdt.core
 3678980623.index
 908807355.index
 3876561862.index

@@ -1,8 +1,0 @@
-package Main;
-
-public class Time {
-
-	public void Run() {
-		int frames = 0;
-	}
-}

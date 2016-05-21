@@ -1,5 +1,0 @@
-package Input;
-
-public class Controller {
-	private double x, z, rotation, xa, za, rotationa;
-}

@@ -1,6 +1,0 @@
-package Main;
-
-public class Time {
-	public Time() {
-	}
-}

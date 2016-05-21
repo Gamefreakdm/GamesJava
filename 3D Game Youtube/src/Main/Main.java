@@ -38,6 +38,7 @@ public class Main extends Canvas implements Runnable {
 		M.addMouseListener(M.IH);
 		M.addMouseMotionListener(M.IH);
 		M.addMouseWheelListener(M.IH);
+		M.Frame.addFocusListener(M.IH);
 		M.Frame.setSize(M.Width, M.Height);
 		M.Frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		M.Frame.setResizable(false);
@@ -91,10 +92,10 @@ public class Main extends Canvas implements Runnable {
 			Delta += (nowTime - lastTime) / NS;
 			lastTime = nowTime;
 			while (Delta >= 1) {
+				Update();
+				Ticked = true;
 				Delta--;
 			}
-			Update();
-			Ticked = true;
 			if (Ticked) {
 				Render();
 				Frames++;

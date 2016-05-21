@@ -56,5 +56,8 @@ public class InputHandler implements FocusListener, KeyListener, MouseListener, 
 	}
 
 	public void focusLost(FocusEvent arg0) {
+		for (int i = 0; i < Key.length; i++) {
+			Key[i] = false;
+		}
 	}
 }

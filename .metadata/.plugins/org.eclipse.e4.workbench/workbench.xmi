@@ -79,12 +79,13 @@
           <tags>persp.actionSet:adt.actionSet.lint</tags>
           <tags>persp.actionSet:adt.actionSet.refactorings</tags>
           <tags>persp.actionSet:org.eclipse.debug.ui.debugActionSet</tags>
-          <children xsi:type="basic:PartSashContainer" xmi:id="_4N-QFRS2EeaTc7VUdWZUog" selectedElement="_4N-QJhS2EeaTc7VUdWZUog" horizontal="true">
+          <children xsi:type="basic:PartSashContainer" xmi:id="_4N-QFRS2EeaTc7VUdWZUog" selectedElement="_4N-QFhS2EeaTc7VUdWZUog" horizontal="true">
             <children xsi:type="basic:PartSashContainer" xmi:id="_4N-QFhS2EeaTc7VUdWZUog" containerData="1912" selectedElement="_4N-QFxS2EeaTc7VUdWZUog">
               <children xsi:type="basic:PartSashContainer" xmi:id="_4N-QFxS2EeaTc7VUdWZUog" containerData="6000" selectedElement="_4N-QGBS2EeaTc7VUdWZUog">
                 <children xsi:type="basic:PartStack" xmi:id="_4N-QGBS2EeaTc7VUdWZUog" elementId="left" containerData="5362" selectedElement="_4N-QGxS2EeaTc7VUdWZUog">
                   <tags>newtablook</tags>
                   <tags>org.eclipse.e4.primaryNavigationStack</tags>
+                  <tags>active</tags>
                   <children xsi:type="advanced:Placeholder" xmi:id="_4N-QGRS2EeaTc7VUdWZUog" elementId="org.eclipse.jdt.ui.PackageExplorer" toBeRendered="false" ref="_4N-4SxS2EeaTc7VUdWZUog"/>
                   <children xsi:type="advanced:Placeholder" xmi:id="_4N-QGhS2EeaTc7VUdWZUog" elementId="org.eclipse.jdt.ui.TypeHierarchy" toBeRendered="false" ref="_4N-4ThS2EeaTc7VUdWZUog"/>
                   <children xsi:type="advanced:Placeholder" xmi:id="_4N-QGxS2EeaTc7VUdWZUog" elementId="org.eclipse.ui.views.ResourceNavigator" ref="_4N-4URS2EeaTc7VUdWZUog"/>
@@ -275,54 +276,51 @@
       <tags>categoryTag:Help</tags>
     </sharedElements>
     <sharedElements xsi:type="advanced:Area" xmi:id="_4N-4LRS2EeaTc7VUdWZUog" elementId="org.eclipse.ui.editorss" selectedElement="_4N-4LhS2EeaTc7VUdWZUog">
-      <children xsi:type="basic:PartStack" xmi:id="_4N-4LhS2EeaTc7VUdWZUog" elementId="org.eclipse.e4.primaryDataStack" selectedElement="_M2apUBXsEeatOcY3CEV_kg">
+      <children xsi:type="basic:PartStack" xmi:id="_4N-4LhS2EeaTc7VUdWZUog" elementId="org.eclipse.e4.primaryDataStack" selectedElement="_Mt2jMBXsEeatOcY3CEV_kg">
         <tags>newtablook</tags>
         <tags>org.eclipse.e4.primaryDataStack</tags>
         <tags>EditorStack</tags>
-        <tags>active</tags>
         <children xsi:type="basic:Part" xmi:id="_MrSXYBXsEeatOcY3CEV_kg" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="Render.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;Render.java&quot; partName=&quot;Render.java&quot; title=&quot;Render.java&quot; tooltip=&quot;3D Game Youtube/src/Graphics/Render.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/3D Game Youtube/src/Graphics/Render.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;72&quot; selectionTopPixel=&quot;3&quot;/>&#xD;&#xA;&lt;/editor>"/>
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;Render.java&quot; partName=&quot;Render.java&quot; title=&quot;Render.java&quot; tooltip=&quot;3D Game Youtube/src/Graphics/Render.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/3D Game Youtube/src/Graphics/Render.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;72&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
           <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
           <tags>removeOnHide</tags>
         </children>
         <children xsi:type="basic:Part" xmi:id="_Mt2jMBXsEeatOcY3CEV_kg" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="Render3D.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;Render3D.java&quot; partName=&quot;Render3D.java&quot; title=&quot;Render3D.java&quot; tooltip=&quot;3D Game Youtube/src/Graphics/Render3D.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/3D Game Youtube/src/Graphics/Render3D.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;160&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;Render3D.java&quot; partName=&quot;Render3D.java&quot; title=&quot;Render3D.java&quot; tooltip=&quot;3D Game Youtube/src/Graphics/Render3D.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/3D Game Youtube/src/Graphics/Render3D.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;38&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
           <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
           <tags>removeOnHide</tags>
         </children>
         <children xsi:type="basic:Part" xmi:id="_MvoE0BXsEeatOcY3CEV_kg" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="Screen.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;Screen.java&quot; partName=&quot;Screen.java&quot; title=&quot;Screen.java&quot; tooltip=&quot;3D Game Youtube/src/Graphics/Screen.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/3D Game Youtube/src/Graphics/Screen.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;282&quot; selectionTopPixel=&quot;34&quot;/>&#xD;&#xA;&lt;/editor>"/>
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;Screen.java&quot; partName=&quot;Screen.java&quot; title=&quot;Screen.java&quot; tooltip=&quot;3D Game Youtube/src/Graphics/Screen.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/3D Game Youtube/src/Graphics/Screen.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;284&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
           <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
           <tags>removeOnHide</tags>
         </children>
         <children xsi:type="basic:Part" xmi:id="_MxGrgBXsEeatOcY3CEV_kg" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="Controller.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;Controller.java&quot; partName=&quot;Controller.java&quot; title=&quot;Controller.java&quot; tooltip=&quot;3D Game Youtube/src/Input/Controller.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/3D Game Youtube/src/Input/Controller.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;232&quot; selectionTopPixel=&quot;105&quot;/>&#xD;&#xA;&lt;/editor>"/>
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;Controller.java&quot; partName=&quot;Controller.java&quot; title=&quot;Controller.java&quot; tooltip=&quot;3D Game Youtube/src/Input/Controller.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/3D Game Youtube/src/Input/Controller.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;207&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
           <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
           <tags>removeOnHide</tags>
         </children>
         <children xsi:type="basic:Part" xmi:id="_My8ekBXsEeatOcY3CEV_kg" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="InputHandler.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;InputHandler.java&quot; partName=&quot;InputHandler.java&quot; title=&quot;InputHandler.java&quot; tooltip=&quot;3D Game Youtube/src/Input/InputHandler.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/3D Game Youtube/src/Input/InputHandler.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;0&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;InputHandler.java&quot; partName=&quot;InputHandler.java&quot; title=&quot;InputHandler.java&quot; tooltip=&quot;3D Game Youtube/src/Input/InputHandler.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/3D Game Youtube/src/Input/InputHandler.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;1005&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
           <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
           <tags>removeOnHide</tags>
         </children>
         <children xsi:type="basic:Part" xmi:id="_M0zfwBXsEeatOcY3CEV_kg" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="Game.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;Game.java&quot; partName=&quot;Game.java&quot; title=&quot;Game.java&quot; tooltip=&quot;3D Game Youtube/src/Main/Game.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/3D Game Youtube/src/Main/Game.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;133&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;Game.java&quot; partName=&quot;Game.java&quot; title=&quot;Game.java&quot; tooltip=&quot;3D Game Youtube/src/Main/Game.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/3D Game Youtube/src/Main/Game.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;189&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
           <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
           <tags>removeOnHide</tags>
         </children>
         <children xsi:type="basic:Part" xmi:id="_M2apUBXsEeatOcY3CEV_kg" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="Main.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;Main.java&quot; partName=&quot;Main.java&quot; title=&quot;Main.java&quot; tooltip=&quot;3D Game Youtube/src/Main/Main.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/3D Game Youtube/src/Main/Main.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;210&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;Main.java&quot; partName=&quot;Main.java&quot; title=&quot;Main.java&quot; tooltip=&quot;3D Game Youtube/src/Main/Main.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/3D Game Youtube/src/Main/Main.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;3425&quot; selectionTopPixel=&quot;1144&quot;/>&#xD;&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
           <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
           <tags>removeOnHide</tags>
-          <tags>active</tags>
-          <tags>activeOnClose</tags>
         </children>
       </children>
     </sharedElements>
@@ -346,9 +344,11 @@
       <toolbar xmi:id="_4N-4UBS2EeaTc7VUdWZUog" elementId="org.eclipse.jdt.ui.TypeHierarchy" visible="false"/>
     </sharedElements>
     <sharedElements xsi:type="basic:Part" xmi:id="_4N-4URS2EeaTc7VUdWZUog" elementId="org.eclipse.ui.views.ResourceNavigator" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="Navigator" iconURI="platform:/plugin/org.eclipse.ui.ide/icons/full/eview16/filenav_nav.png" closeable="true">
-      <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;view LINK_NAVIGATOR_TO_EDITOR=&quot;1&quot; sorter=&quot;1&quot;>&#xD;&#xA;&lt;filters>&#xD;&#xA;&lt;filter element=&quot;*.class&quot; isEnabled=&quot;false&quot;/>&#xD;&#xA;&lt;filter element=&quot;.*&quot; isEnabled=&quot;false&quot;/>&#xD;&#xA;&lt;/filters>&#xD;&#xA;&lt;expanded>&#xD;&#xA;&lt;element path=&quot;/3D Game Youtube&quot;/>&#xD;&#xA;&lt;element path=&quot;/3D Game Youtube/src&quot;/>&#xD;&#xA;&lt;element path=&quot;/3D Game Youtube/src/Graphics&quot;/>&#xD;&#xA;&lt;element path=&quot;/3D Game Youtube/src/Input&quot;/>&#xD;&#xA;&lt;element path=&quot;/3D Game Youtube/src/Main&quot;/>&#xD;&#xA;&lt;/expanded>&#xD;&#xA;&lt;selection>&#xD;&#xA;&lt;element path=&quot;/3D Game Youtube/src/Main/Main.java&quot;/>&#xD;&#xA;&lt;/selection>&#xD;&#xA;&lt;/view>"/>
+      <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;view LINK_NAVIGATOR_TO_EDITOR=&quot;1&quot; sorter=&quot;1&quot;>&#xD;&#xA;&lt;filters>&#xD;&#xA;&lt;filter element=&quot;*.class&quot; isEnabled=&quot;false&quot;/>&#xD;&#xA;&lt;filter element=&quot;.*&quot; isEnabled=&quot;false&quot;/>&#xD;&#xA;&lt;/filters>&#xD;&#xA;&lt;expanded>&#xD;&#xA;&lt;element path=&quot;/3D Game Youtube&quot;/>&#xD;&#xA;&lt;element path=&quot;/3D Game Youtube/src&quot;/>&#xD;&#xA;&lt;element path=&quot;/3D Game Youtube/src/Graphics&quot;/>&#xD;&#xA;&lt;element path=&quot;/3D Game Youtube/src/Input&quot;/>&#xD;&#xA;&lt;element path=&quot;/3D Game Youtube/src/Main&quot;/>&#xD;&#xA;&lt;/expanded>&#xD;&#xA;&lt;selection>&#xD;&#xA;&lt;element path=&quot;/3D Game Youtube&quot;/>&#xD;&#xA;&lt;/selection>&#xD;&#xA;&lt;/view>"/>
       <tags>View</tags>
       <tags>categoryTag:General</tags>
+      <tags>active</tags>
+      <tags>activeOnClose</tags>
       <menus xmi:id="_4N-4UhS2EeaTc7VUdWZUog" elementId="org.eclipse.ui.views.ResourceNavigator">
         <tags>ViewMenu</tags>
         <tags>menuContribution:menu</tags>
@@ -861,7 +861,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_4N_eXxS2EeaTc7VUdWZUog" elementId="org.eclipse.ui.workbench.file">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_6pwVpxbdEeaj_4xp662GNA" elementId="print" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" enabled="false" command="_4OCiaBS2EeaTc7VUdWZUog"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_nubmwBxREeaUybs2pOZcKQ" elementId="print" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" enabled="false" command="_4OCiaBS2EeaTc7VUdWZUog"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_4N_ebRS2EeaTc7VUdWZUog" elementId="additions" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -894,7 +894,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_4N_evRS2EeaTc7VUdWZUog" elementId="org.eclipse.ui.workbench.navigate">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_6p770BbdEeaj_4xp662GNA" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_4OB8HBS2EeaTc7VUdWZUog"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_nufRIBxREeaUybs2pOZcKQ" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_4OB8HBS2EeaTc7VUdWZUog"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_4N_eyBS2EeaTc7VUdWZUog" elementId="group.editor" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -1006,7 +1006,6 @@
     <bindings xmi:id="_4N_fGhS2EeaTc7VUdWZUog" keySequence="CTRL+2 F" command="_4OB7hBS2EeaTc7VUdWZUog"/>
     <bindings xmi:id="_4N_fGxS2EeaTc7VUdWZUog" keySequence="ALT+SHIFT+ARROW_LEFT" command="_4ODIwhS2EeaTc7VUdWZUog"/>
     <bindings xmi:id="_4N_fHBS2EeaTc7VUdWZUog" keySequence="CTRL+SHIFT+ARROW_DOWN" command="_4ODI7hS2EeaTc7VUdWZUog"/>
-    <bindings xmi:id="_4N_fHRS2EeaTc7VUdWZUog" keySequence="ALT+CTRL+SPACE" command="_4ODJyRS2EeaTc7VUdWZUog"/>
   </bindingTables>
   <bindingTables xmi:id="_4N_fHhS2EeaTc7VUdWZUog" elementId="org.eclipse.wst.sse.ui.structuredTextEditorScope" bindingContext="_4OAF1RS2EeaTc7VUdWZUog">
     <bindings xmi:id="_4N_fHxS2EeaTc7VUdWZUog" keySequence="CTRL+I" command="_4OBU6xS2EeaTc7VUdWZUog"/>
@@ -1177,6 +1176,7 @@
     </bindings>
     <bindings xmi:id="_4N_frxS2EeaTc7VUdWZUog" keySequence="ALT+CTRL+B" command="_4OChjxS2EeaTc7VUdWZUog"/>
     <bindings xmi:id="_4N_fsBS2EeaTc7VUdWZUog" keySequence="ALT+CTRL+X G" command="_4ODJ-RS2EeaTc7VUdWZUog"/>
+    <bindings xmi:id="_hgD58BrmEeary6DatzMIbA" keySequence="CTRL+SHIFT+V" command="_4ODI-xS2EeaTc7VUdWZUog"/>
   </bindingTables>
   <bindingTables xmi:id="_4N_fsRS2EeaTc7VUdWZUog" elementId="org.eclipse.ui.textEditorScope" bindingContext="_4OAF0BS2EeaTc7VUdWZUog">
     <bindings xmi:id="_4N_fshS2EeaTc7VUdWZUog" keySequence="CTRL+SHIFT+NUMPAD_MULTIPLY" command="_4OB8IxS2EeaTc7VUdWZUog"/>
@@ -1227,6 +1227,7 @@
     <bindings xmi:id="_4N_f3xS2EeaTc7VUdWZUog" keySequence="CTRL++" command="_4ODJ9BS2EeaTc7VUdWZUog"/>
     <bindings xmi:id="_4N_f4BS2EeaTc7VUdWZUog" keySequence="ALT+SHIFT+Y" command="_4ODJ8xS2EeaTc7VUdWZUog"/>
     <bindings xmi:id="_4N_f4RS2EeaTc7VUdWZUog" keySequence="CTRL+=" command="_4ODJ9BS2EeaTc7VUdWZUog"/>
+    <bindings xmi:id="_hf_ogRrmEeary6DatzMIbA" keySequence="ALT+CTRL+SPACE" command="_4ODJyRS2EeaTc7VUdWZUog"/>
   </bindingTables>
   <bindingTables xmi:id="_4N_f4hS2EeaTc7VUdWZUog" elementId="org.eclipse.tm.terminal.TerminalContext" bindingContext="_4OAF9xS2EeaTc7VUdWZUog"/>
   <bindingTables xmi:id="_4N_f4xS2EeaTc7VUdWZUog" elementId="org.eclipse.cdt.ui.macroExpansionHoverScope" bindingContext="_4OAF_BS2EeaTc7VUdWZUog"/>
