@@ -1,0 +1,9 @@
+package Graphics;
+
+public class Texture {
+	public static Render floor = LoadBitmap(Sprite.Plain);
+
+	public static Render LoadBitmap(Sprite sprite) {
+		return floor;
+	}
+}

@@ -1,17 +1,22 @@
 package Graphics;
 
-import Main.Game;
-
 public class Render {
-	public final Game game;
-	protected final int[] Pixels;
+	private final int[] Pixels;
+	private final int SIZE;
 	private final int Width, Height;
 
-	public Render(int w, int h, Game g) {
+	public Render(int w, int h) {
 		Width = w;
 		Height = h;
 		Pixels = new int[w * h];
-		game = g;
+		SIZE = 0;
+	}
+
+	public Render(int s) {
+		SIZE = s;
+		Width = s;
+		Height = s;
+		Pixels = new int[s * s];
 	}
 
 	public int getWidth() {
@@ -24,5 +29,17 @@ public class Render {
 
 	public int[] getPixels() {
 		return Pixels;
+	}
+
+	public int getSize() {
+		return SIZE;
+	}
+
+	public int getdeSize() {
+		return SIZE - 1;
+	}
+
+	protected void setPixels(int access, int result) {
+		Pixels[access] = result;
 	}
 }

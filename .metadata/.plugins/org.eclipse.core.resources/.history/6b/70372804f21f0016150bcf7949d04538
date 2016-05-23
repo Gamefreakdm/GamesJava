@@ -1,0 +1,33 @@
+package Graphics.Image;
+
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+
+public class SpriteSheet {
+	private int SIZE;
+	private int[] Pixels;
+
+	public SpriteSheet(String path) {
+		Load(path);
+	}
+
+	private void Load(String path) {
+		try {
+			BufferedImage img = ImageIO.read(SpriteSheet.class.getResource(path));
+			SIZE = img.getWidth();
+			Pixels = new int[SIZE * SIZE];
+			img.getRGB(0, 0, img.getWidth(), img.getHeight(), Pixels, 0, img.getWidth());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public int getSize() {
+		return SIZE;
+	}
+
+	public int[] getPixels() {
+		return Pixels;
+	}
+}

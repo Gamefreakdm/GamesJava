@@ -1,0 +1,46 @@
+package Input;
+
+public class Controller {
+	private double pastmxos = 0;
+	private double x, z, rot;
+	private double xa, za, rota;
+
+	public void Update(boolean fw, boolean bw, boolean l, boolean r, boolean ist, double nmxos, boolean spr, boolean cro) {
+		double RotSpeed = 600.00;
+		double WalkSpeed = 1;
+		if (spr && !cro)
+			WalkSpeed = 2.5;
+		if (cro && !spr)
+			WalkSpeed = 0.2;
+		if (!cro && !spr)
+			WalkSpeed = 1;
+		double xMove = 0;
+		double zMove = 0;
+		if (fw)
+			zMove++;
+		if (bw)
+			zMove--;
+		if (r)
+			xMove++;
+		if (l)
+			xMove--;
+		if (nmxos != pastmxos && ist)
+			rota += nmxos / RotSpeed;
+		xa = ((xMove * Math.cos(rot)) + (zMove * Math.sin(rot))) * WalkSpeed;
+		za = ((zMove * Math.cos(rot)) - (xMove * Math.sin(rot))) * WalkSpeed;
+		x = getX() + xa;
+		z = getZ() + za;
+		xa *= 0.1;
+		za *= 0.1;
+		rot += rota;
+		rota *= 0.8;
+	}
+
+	public double getX() {
+		return x;
+	}
+
+	public double getZ() {
+		return z;
+	}
+}

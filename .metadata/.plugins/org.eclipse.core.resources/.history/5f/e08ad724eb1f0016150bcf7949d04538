@@ -1,0 +1,184 @@
+package Main;
+
+import java.awt.AWTException;
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Point;
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferInt;
+
+import javax.swing.JFrame;
+
+import Graphics.Screen;
+import Input.InputHandler;
+
+public class Main extends Canvas implements Runnable {
+	private final Game game;
+	private final JFrame Frame;
+	private final InputHandler IH;
+	private final int Width, Height;
+	private static final long serialVersionUID = 1L;
+
+	private Main() {
+		System.out.println("[System] Starting...");
+		Width = 800;
+		Height = 600;
+		Frame = new JFrame("Loading...");
+		game = new Game();
+		IH = new InputHandler(game);
+	}
+
+	private Robot r;
+
+	public static void main(String[] args) {
+		Main M = new Main();
+		M.Frame.add(M);
+		M.Frame.addKeyListener(M.IH);
+		M.addMouseListener(M.IH);
+		M.addMouseMotionListener(M.IH);
+		M.addMouseWheelListener(M.IH);
+		M.Frame.addFocusListener(M.IH);
+		M.Frame.setSize(M.Width, M.Height);
+		M.Frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		M.Frame.setResizable(false);
+		M.Frame.setLocationRelativeTo(null);
+		M.Frame.setUndecorated(false);
+		M.Frame.setVisible(true);
+		M.Frame.setTitle("Pre-Alpha 0.0.1");
+		try {
+			M.r = new Robot();
+		} catch (AWTException e) {
+			e.printStackTrace();
+		}
+		M.Start();
+		System.out.println("[System] Finished Main.");
+	}
+
+	private final Toolkit tk = Toolkit.getDefaultToolkit();
+
+	private void Start() {
+		Thread thread = new Thread(this);
+		thread.start();
+		Point p = new Point();
+		p.setLocation(IH.getMousex(), IH.getMousey());
+		BufferedImage InC = new BufferedImage(1, 1, BufferedImage.TRANSLUCENT);
+		Cursor InvisC;
+		InvisC = tk.createCustomCursor(InC, p, "inisc");
+		Frame.setCursor(InvisC);
+		System.out.println("[System] Finished thread creation and Cursor settings.");
+	}
+
+	// To tell you the truth when ngwati told me you where leaving I crtied and
+	// irais told me not to cry anymore
+	// after reading your journal entry yesterday i kinda found peace in it and
+	// why your leaving and how it will be for you
+	// anyways i want your phone number and adress on that white piece of paper
+	// -.- you suck btw -.- who will i talk to now and
+	// share everything i want to say and talk about life and how everythings
+	// going. who am i gonna go on adventures with
+	// like the museum adventure and everything. you just had one year left i
+	// had one year more with my best friend and all of that
+	// just got cut down to the last day since im going to have am careers and
+	// leave from ccd home we wont even be able to see
+	// each other dammit dylan why you leaving -.- now two more weeks with no
+	// one to talk about but your happy and your figuring
+	// your life out so i hope you do well and good luck to you maybe youll make
+	// alot of money from making games oh well i cant
+	// stop you so i have to accept your leaving but your happy so i guess i
+	// should be too i cant say this in person and it's easier
+	// to type it and for you to just read it. This sucks balls losing one of my
+	// best friends #BABE3 well i love you man you
+	// where a really cool guy to be around to talk to and to be with and it was
+	// and awesome decision for me to befriend you
+	// public void main(String args[]) {
+	// System.out.println("love you man");
+	// }
+	int FPS;
+
+	public void run() {
+		long Timer = System.currentTimeMillis();
+		long lastTime = System.nanoTime();
+		double Delta = 0;
+		long nowTime = 0;
+		final double NS = 1000000000.0 / 60;
+		boolean Ticked = false;
+		int Frames = 0;
+		System.out.println("[System] Started.");
+		while (game.IsRunning()) {
+			nowTime = System.nanoTime();
+			Delta += (nowTime - lastTime) / NS;
+			lastTime = nowTime;
+			while (Delta >= 1) {
+				Update();
+				Ticked = true;
+				Delta--;
+			}
+			Render();
+			Frames++;
+			if (Ticked) {
+				Ticked = false;
+			}
+			if (System.currentTimeMillis() - Timer >= 1000) {
+				Timer += 1000;
+				Frames = 0;
+			}
+		}
+		Stop();
+	}
+
+	private void Update() {
+		if (game.GameState() == "Playing")
+			Frame.requestFocus();
+		game.KeyUpdate(IH.Key, IH.getmxc(), IH.Istr());
+		game.Update();
+		if (game.GameState() == "Playing") {
+			IH.setIstr(false);
+			r.mouseMove(400, 300);
+		}
+	}
+
+	private int[] Pixels;
+	private Screen screen;
+	private BufferedImage bimg;
+
+	private void Render() {
+		final BufferStrategy BS = getBufferStrategy();
+		if (BS == null) {
+			bimg = new BufferedImage(Width, Height, BufferedImage.TYPE_INT_RGB);
+			screen = new Screen(Width, Height, game);
+			Pixels = ((DataBufferInt) bimg.getRaster().getDataBuffer()).getData();
+			createBufferStrategy(1);
+			System.out.println("[System] Created graphics.");
+			return;
+		}
+		screen.Render();
+		for (int i = 0; i < Pixels.length; i++) {
+			Pixels[i] = screen.getPixels()[i];
+		}
+		Graphics g = BS.getDrawGraphics();
+		g.drawImage(bimg, 0, 0, Width, Height, null);
+		BS.show();
+	}
+
+	private void Stop() {
+		System.out.println("[System] Stopping...");
+		CleanUp();
+		System.out.println("[System] Stopped.");
+		System.exit(0);
+	}
+
+	private void CleanUp() {
+		screen.clearPixels();
+		for (int i = 0; i < Pixels.length; i++) {
+			Pixels[i] = 0;
+		}
+		Frame.dispose();
+		System.out.println("[System] Finished Clean Up.");
+	}
+}

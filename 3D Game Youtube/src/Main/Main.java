@@ -1,7 +1,12 @@
 package Main;
 
+import java.awt.AWTException;
 import java.awt.Canvas;
+import java.awt.Cursor;
 import java.awt.Graphics;
+import java.awt.Point;
+import java.awt.Robot;
+import java.awt.Toolkit;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
@@ -10,14 +15,10 @@ import Graphics.Screen;
 import Input.InputHandler;
 
 public class Main extends Canvas implements Runnable {
-	private int[] Pixels;
 	private final Game game;
-	private final String Title;
 	private final JFrame Frame;
-	private BufferedImage bimg;
-	public static Screen screen;
+	private final String Title;
 	private final InputHandler IH;
-	private boolean Ticked = false;
 	private final int Width, Height;
 	private static final long serialVersionUID = 1L;
 
@@ -25,11 +26,13 @@ public class Main extends Canvas implements Runnable {
 		System.out.println("[System] Starting...");
 		Width = 800;
 		Height = 600;
-		Title = "Pre-Alpha 1.0.1";
-		IH = new InputHandler();
 		Frame = new JFrame("Loading...");
 		game = new Game();
+		Title = "Pre-Alpha 0.2.0";
+		IH = new InputHandler(game);
 	}
+
+	private Robot r;
 
 	public static void main(String[] args) {
 		Main M = new Main();
@@ -45,48 +48,38 @@ public class Main extends Canvas implements Runnable {
 		M.Frame.setLocationRelativeTo(null);
 		M.Frame.setUndecorated(false);
 		M.Frame.setVisible(true);
+		try {
+			M.r = new Robot();
+		} catch (AWTException e) {
+			e.printStackTrace();
+		}
 		M.Start();
+		System.out.println("[System] Finished Main.");
 	}
+
+	private final Toolkit tk = Toolkit.getDefaultToolkit();
 
 	private void Start() {
 		Thread thread = new Thread(this);
 		thread.start();
+		Point p = new Point();
+		p.setLocation(IH.getMousex(), IH.getMousey());
+		BufferedImage InC = new BufferedImage(1, 1, BufferedImage.TRANSLUCENT);
+		Cursor InvisC;
+		InvisC = tk.createCustomCursor(InC, p, "inisc");
+		Frame.setCursor(InvisC);
+		System.out.println("[System] Finished thread creation and Cursor settings.");
 	}
 
-	// To tell you the truth when ngwati told me you where leaving I crtied and
-	// irais told me not to cry anymore
-	// after reading your journal entry yesterday i kinda found peace in it and
-	// why your leaving and how it will be for you
-	// anyways i want your phone number and adress on that white piece of paper
-	// -.- you suck btw -.- who will i talk to now and
-	// share everything i want to say and talk about life and how everythings
-	// going. who am i gonna go on adventures with
-	// like the museum adventure and everything. you just had one year left i
-	// had one year more with my best friend and all of that
-	// just got cut down to the last day since im going to have am careers and
-	// leave from ccd home we wont even be able to see
-	// each other dammit dylan why you leaving -.- now two more weeks with no
-	// one to talk about but your happy and your figuring
-	// your life out so i hope you do well and good luck to you maybe youll make
-	// alot of money from making games oh well i cant
-	// stop you so i have to accept your leaving but your happy so i guess i
-	// should be too i cant say this in person and it's easier
-	// to type it and for you to just read it. This sucks balls losing one of my
-	// best friends #BABE3 well i love you man you
-	// where a really cool guy to be around to talk to and to be with and it was
-	// and awesome decision for me to befriend you
-	// public void main(String args[]) {
-	// System.out.println("love you man");
-	// }
-
 	public void run() {
-		int Frames = 0;
 		long Timer = System.currentTimeMillis();
 		long lastTime = System.nanoTime();
 		double Delta = 0;
 		long nowTime = 0;
 		final double NS = 1000000000.0 / 60;
-		System.out.println("[System] Started");
+		boolean Ticked = false;
+		int Frames = 0;
+		System.out.println("[System] Started.");
 		while (game.IsRunning()) {
 			nowTime = System.nanoTime();
 			Delta += (nowTime - lastTime) / NS;
@@ -96,14 +89,14 @@ public class Main extends Canvas implements Runnable {
 				Ticked = true;
 				Delta--;
 			}
+			Render();
+			Frames++;
 			if (Ticked) {
-				Render();
-				Frames++;
 				Ticked = false;
 			}
 			if (System.currentTimeMillis() - Timer >= 1000) {
 				Timer += 1000;
-				Frame.setTitle(Title + "   |   " + Frames + " Fps");
+				Frame.setTitle(Title + " | | " + Frames + " FPS");
 				Frames = 0;
 			}
 		}
@@ -111,21 +104,31 @@ public class Main extends Canvas implements Runnable {
 	}
 
 	private void Update() {
-		Frame.requestFocus();
-		game.KeyUpdate(IH.Key);
+		if (game.GameState() == "Playing")
+			Frame.requestFocus();
+		game.KeyUpdate(IH.Key, IH.getMxc(), IH.Istr());
 		game.Update();
+		if (game.GameState() == "Playing") {
+			IH.setIstr(false);
+			r.mouseMove(400, 300);
+		}
 	}
 
+	private int[] Pixels;
+	private Screen screen;
+	private BufferedImage bimg;
+
 	private void Render() {
-		BufferStrategy BS = getBufferStrategy();
+		final BufferStrategy BS = getBufferStrategy();
 		if (BS == null) {
 			bimg = new BufferedImage(Width, Height, BufferedImage.TYPE_INT_RGB);
 			screen = new Screen(Width, Height, game);
 			Pixels = ((DataBufferInt) bimg.getRaster().getDataBuffer()).getData();
-			createBufferStrategy(3);
+			createBufferStrategy(1);
+			System.out.println("[System] Created graphics.");
 			return;
 		}
-		screen.Render(game.getTime());
+		screen.Render();
 		for (int i = 0; i < Pixels.length; i++) {
 			Pixels[i] = screen.getPixels()[i];
 		}
@@ -137,6 +140,7 @@ public class Main extends Canvas implements Runnable {
 	private void Stop() {
 		System.out.println("[System] Stopping...");
 		CleanUp();
+		System.out.println("[System] Stopped.");
 		System.exit(0);
 	}
 
@@ -146,5 +150,6 @@ public class Main extends Canvas implements Runnable {
 			Pixels[i] = 0;
 		}
 		Frame.dispose();
+		System.out.println("[System] Finished Clean Up.");
 	}
 }

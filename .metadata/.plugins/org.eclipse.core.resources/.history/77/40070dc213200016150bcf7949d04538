@@ -1,0 +1,12 @@
+package Graphics;
+
+public class Texture {
+	public static Render floor = LoadBitmap(Sprite.Plain);
+
+	public static Render LoadBitmap(Sprite sprite) {
+		Render result = new Render(sprite.getSize(), sprite.getSize());
+		for (int i = 0; i < sprite.getSize() * sprite.getSize(); i++)
+			result.setPixels(i, sprite.getPixels()[i]);
+	}
+	return result;
+}

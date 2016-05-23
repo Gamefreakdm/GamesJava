@@ -1,0 +1,9 @@
+package Graphics;
+
+public class Texture {
+
+	public Texture() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

@@ -1,0 +1,33 @@
+package Graphics;
+
+public class Render {
+	private final int[] Pixels;
+	private final int SIZE;
+	private final int deSIZE;
+	private final int Width, Height;
+
+	public Render(int w, int h) {
+		Width = w;
+		Height = h;
+		Pixels = new int[w * h];
+	}
+	
+	public Render() {
+	}
+
+	public int getWidth() {
+		return Width;
+	}
+
+	public int getHeight() {
+		return Height;
+	}
+
+	public int[] getPixels() {
+		return Pixels;
+	}
+
+	protected void setPixels(int access, int result) {
+		Pixels[access] = result;
+	}
+}

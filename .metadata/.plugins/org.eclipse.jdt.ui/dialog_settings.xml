@@ -78,6 +78,13 @@
 			<item value="391" key="DIALOG_X_ORIGIN"/>
 		</section>
 	</section>
+	<section name="org.eclipse.jdt.internal.ui.text.QuickOutline">
+		<item value="true" key="org.eclipse.jdt.internal.ui.text.JavaOutlineInformationControlDIALOG_USE_PERSISTED_SIZE"/>
+		<item value="400" key="org.eclipse.jdt.internal.ui.text.JavaOutlineInformationControlDIALOG_WIDTH"/>
+		<item value="320" key="org.eclipse.jdt.internal.ui.text.JavaOutlineInformationControlDIALOG_HEIGHT"/>
+		<item value="false" key="GoIntoTopLevelTypeAction.isChecked"/>
+		<item value="false" key="org.eclipse.jdt.internal.ui.text.JavaOutlineInformationControlDIALOG_USE_PERSISTED_LOCATION"/>
+	</section>
 	<section name="RefactoringWizard.preview">
 		<item value="600" key="width"/>
 		<item value="400" key="height"/>
@@ -86,11 +93,12 @@
 	</section>
 	<section name="FatJarPackageWizard">
 		<item value="C:\Users\Dylan\Google Drive\Work\Programming\Games in Java.xml" key="FatJarPackageWizardPage.ANTSCRIPT_LOCATION"/>
-		<item value="C:\Users\nanot\Google Drive\Games\test.jar" key="FatJarPackageWizardPage.DESTINATION_PATH_SELECTION"/>
+		<item value="C:\Users\nanot\Documents\Launchable-games\3D-Game-Engine\3D-Game-Engine.jar" key="FatJarPackageWizardPage.DESTINATION_PATH_SELECTION"/>
 		<item value="Main (2) - 3D Game Youtube" key="FatJarPackageWizardPage.LAUNCH_CONFIGURATION_SELECTION_NAME"/>
 		<item value="false" key="FatJarPackageWizardPage.ANTSCRIPT_SAVE"/>
 		<item value="1" key="FatJarPackageWizardPage.LIBRARY_HANDLING"/>
 		<list key="FatJarPackageWizardPage.DESTINATION_NAMES_ID">
+			<item value="C:\Users\nanot\Documents\Launchable-games\3D-Game-Engine\3D-Game-Engine.jar"/>
 			<item value="C:\Users\nanot\Google Drive\Games\test.jar"/>
 			<item value="C:\Users\nanot\Google Drive\Games\Evo Play.jar"/>
 			<item value="C:\Users\Gamefreakdm\Google Drive\Games\3D_Game.jar"/>
