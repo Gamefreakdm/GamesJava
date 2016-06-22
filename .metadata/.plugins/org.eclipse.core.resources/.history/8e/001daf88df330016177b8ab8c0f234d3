@@ -1,0 +1,4 @@
+package GameObject.Mob.Entity;
+
+class Entity {
+}

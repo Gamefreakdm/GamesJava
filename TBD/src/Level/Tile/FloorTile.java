@@ -1,0 +1,23 @@
+package Level.Tile;
+
+import Graphics.Image.Sprite;
+import Graphics.Render.Screen;
+
+public class FloorTile extends Tile {
+
+	public FloorTile(float sx, float sy, Sprite ssprite) {
+		this.setIsSolid(false);
+		this.setX(sx);
+		this.setY(sy);
+		this.setSprite(ssprite);
+	}
+
+	public void Update() {
+	}
+
+	public void Render(Screen screen) {
+	}
+
+	public void Collision() {
+	}
+}

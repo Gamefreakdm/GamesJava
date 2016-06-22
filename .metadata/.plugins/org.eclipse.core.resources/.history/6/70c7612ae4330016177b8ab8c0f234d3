@@ -1,0 +1,9 @@
+package GameObject.Mob;
+
+import GameObject.Mob.Entity.Entity;;
+
+public abstract class Mob extends Entity {
+
+	public void Update() {
+	}
+}

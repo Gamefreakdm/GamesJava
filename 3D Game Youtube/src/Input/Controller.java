@@ -24,10 +24,10 @@ public class Controller {
 			WalkSpeed = 0.2;
 		else
 			WalkSpeed = 0.8;
-		xa = ((xMove * Math.cos(rot)) + (zMove * Math.sin(rot))) * WalkSpeed;
-		za = ((zMove * Math.cos(rot)) - (xMove * Math.sin(rot))) * WalkSpeed;
-		x = getX() + xa;
-		z = getZ() + za;
+		xa = (((xMove * Math.cos(rot)) + (zMove * Math.sin(rot))) * WalkSpeed);
+		za = (((zMove * Math.cos(rot)) - (xMove * Math.sin(rot))) * WalkSpeed);
+		x = (getX() + xa);
+		z = (getZ() + za);
 		xa *= 0.1;
 		za *= 0.1;
 		rot += rota;

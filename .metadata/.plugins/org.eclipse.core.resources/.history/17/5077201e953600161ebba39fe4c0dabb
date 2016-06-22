@@ -1,0 +1,8 @@
+package Level;
+
+public class Level {
+	private final int SIZE;
+
+	public Level(int s, char type) {
+	}
+}

@@ -1,0 +1,12 @@
+package Main;
+
+import Input.KeyHandler;
+
+public class Game {
+
+	public void Update(KeyHandler KH) {
+	}
+
+	public void KeyUpdate() {
+	}
+}

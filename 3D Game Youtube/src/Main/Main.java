@@ -28,7 +28,7 @@ public class Main extends Canvas implements Runnable {
 		Height = 600;
 		Frame = new JFrame("Loading...");
 		game = new Game();
-		Title = "Pre-Alpha 0.2.0";
+		Title = "Pre-Alpha 0.2.1";
 		IH = new InputHandler(game);
 	}
 
@@ -85,13 +85,13 @@ public class Main extends Canvas implements Runnable {
 			Delta += (nowTime - lastTime) / NS;
 			lastTime = nowTime;
 			while (Delta >= 1) {
-				Update();
-				Ticked = true;
 				Delta--;
 			}
-			Render();
-			Frames++;
+			Update();
+			Ticked = true;
 			if (Ticked) {
+				Render();
+				Frames++;
 				Ticked = false;
 			}
 			if (System.currentTimeMillis() - Timer >= 1000) {
@@ -110,7 +110,7 @@ public class Main extends Canvas implements Runnable {
 		game.Update();
 		if (game.GameState() == "Playing") {
 			IH.setIstr(false);
-			r.mouseMove(400, 300);
+			r.mouseMove(700, 300);
 		}
 	}
 

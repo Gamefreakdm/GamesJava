@@ -14,11 +14,9 @@ public class Sprite {
 	}
 
 	private void Load(SpriteSheet sp, int X, int Y, int s) {
-		for (int y = 0; y < s; y++) {
-			for (int x = 0; x < s; x++) {
+		for (int y = 0; y < s; y++)
+			for (int x = 0; x < s; x++)
 				Pixels[x + y * s] = sp.getPixels()[(x + X) + (y + Y) * sp.getSize()];
-			}
-		}
 	}
 
 	public int getSize() {

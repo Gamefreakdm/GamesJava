@@ -1,0 +1,7 @@
+package GameObject.Mob;
+
+import GameObject.Mob.Entity.Entity;;
+
+public class Mob extends Entity {
+
+}

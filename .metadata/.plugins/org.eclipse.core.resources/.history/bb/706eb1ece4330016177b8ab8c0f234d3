@@ -1,0 +1,6 @@
+package GameObject.Mob;
+
+public class Player {
+	public Player() {
+	}
+}

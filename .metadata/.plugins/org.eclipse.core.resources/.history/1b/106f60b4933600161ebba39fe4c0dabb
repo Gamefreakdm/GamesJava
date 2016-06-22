@@ -1,0 +1,12 @@
+package Level.Tile;
+
+import Graphics.Image.Sprite;
+
+public class Tile {
+	private float X, Y;
+	private Sprite sprite;
+	private boolean IsSolid;
+
+	public Tile() {
+	}
+}

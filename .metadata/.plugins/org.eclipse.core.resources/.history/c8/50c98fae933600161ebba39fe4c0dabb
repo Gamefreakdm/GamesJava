@@ -1,0 +1,8 @@
+package Level.Tile;
+
+public class Tile {
+private float X, Y;
+private Sprite sprite;
+	public Tile() {
+	}
+}

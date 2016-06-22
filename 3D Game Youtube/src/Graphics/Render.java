@@ -1,8 +1,8 @@
 package Graphics;
 
 public class Render {
-	private final int[] Pixels;
 	private final int SIZE;
+	private final int[] Pixels;
 	private final int Width, Height;
 
 	public Render(int w, int h) {

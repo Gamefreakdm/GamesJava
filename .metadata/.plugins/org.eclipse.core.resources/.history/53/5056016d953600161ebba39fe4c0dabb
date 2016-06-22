@@ -1,0 +1,22 @@
+package Level;
+
+public class Level {
+	private final int SIZE;
+	private final char TYPE;
+
+	public Level(int s, char type) {
+		SIZE = s;
+		TYPE = type;
+	}
+
+	public void Render(Screen screen) {
+	}
+
+	public int getSIZE() {
+		return SIZE;
+	}
+
+	public char getTYPE() {
+		return TYPE;
+	}
+}

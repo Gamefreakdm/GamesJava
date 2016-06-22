@@ -1,0 +1,7 @@
+package Level.Tile;
+
+public class Tile {
+
+	public Tile() {
+	}
+}

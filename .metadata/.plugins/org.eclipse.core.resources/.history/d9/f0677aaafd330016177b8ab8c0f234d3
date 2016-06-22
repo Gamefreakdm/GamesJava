@@ -1,0 +1,25 @@
+package Main;
+
+import Input.KeyHandler;
+
+public class Game {
+	private boolean Running = false;
+
+	public Game() {
+		Running = true;
+	}
+
+	public void Update(KeyHandler KH) {
+		KeyUpdate(KH);
+	}
+
+	public void KeyUpdate(KeyHandler KH) {
+		if (KH.Keys[0])
+			Running = false;
+		System.out.println("sdfsdfsdf");
+	}
+
+	public boolean getRunning() {
+		return Running;
+	}
+}

@@ -1,5 +1,0 @@
-package Graphics;
-
-public class Texture {
-	public static Render plain = LoadBitmap(Sprite.Plain);
-}

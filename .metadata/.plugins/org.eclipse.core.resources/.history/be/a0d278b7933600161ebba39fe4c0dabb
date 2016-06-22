@@ -1,0 +1,20 @@
+package Level.Tile;
+
+import Graphics.Image.Sprite;
+
+public class Tile {
+	private float X, Y;
+	private Sprite sprite;
+	private boolean IsSolid;
+
+	public Tile() {
+	}
+
+	public float getX() {
+		return X;
+	}
+
+	public void setX(float x) {
+		X = x;
+	}
+}

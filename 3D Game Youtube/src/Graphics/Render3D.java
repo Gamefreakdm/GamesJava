@@ -21,19 +21,19 @@ public class Render3D extends Render {
 		double sine = Math.sin(rot);
 		double cosine = Math.cos(rot);
 		for (int y = 0; y < getHeight(); y++) {
-			double ydepth = ((y + -getHeight() / 2.0) / getHeight());
+			double ydepth = ((y + (-getHeight() / 2.0)) / getHeight());
 			double z = 8 / ydepth;
 			if (ydepth < 0)
-				z = 8 / -ydepth;
+				z = 20 / -ydepth;
 			for (int x = 0; x < getWidth(); x++) {
 				double xdepth = ((x - (getWidth() / 2.0)) / getHeight());
 				xdepth *= z;
-				double xx = (xdepth * cosine + z * sine) + xMove;
-				double yy = (z * cosine - xdepth * sine) + zMove;
+				double xx = (((xdepth * cosine) + (z * sine)) + xMove);
+				double yy = (((z * cosine) - (xdepth * sine)) + zMove);
 				int xPix = (int) xx;
 				int yPix = (int) yy;
 				if (xx > MapSize || yy > MapSize || xx < -MapSize || yy < -MapSize)
-					setPixels(x + (y * getWidth()), Texture.rock.getPixels()[(x & 15) + ((y & 15) * 16)]);
+					setPixels(x + (y * getWidth()), Texture.rock.getPixels()[(x & 15) + ((y & 15) << 4)]);
 				else {
 					if (y > 300)
 						setPixels(x + (y * getWidth()), getRandTex(x, y).getPixels()[(xPix & getRandTex(x, y).getdeSize()) + (yPix & getRandTex(x, y).getdeSize()) * getRandTex(x, y).getSize()]);

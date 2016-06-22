@@ -1,0 +1,18 @@
+package GameObject.Mob;
+
+import GameObject.Mob.Entity.Entity;
+import Graphics.Image.Sprite;
+import Graphics.Render.Screen;;
+
+public class Mob extends Entity {
+	private Sprite sprite;
+
+	public Mob(float x, float y, int w, int h, int id, Sprite sprite) {
+	}
+
+	public void Update() {
+	}
+
+	public void Render(Screen screen) {
+	}
+}

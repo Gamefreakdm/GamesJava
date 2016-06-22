@@ -1,0 +1,13 @@
+package GameObject.Mob;
+
+import Graphics.Image.Sprite;
+import Graphics.Render.Screen;
+
+public class Player extends Mob {
+
+	public void Render(Screen screen) {
+	}
+
+	public void Update() {
+	}
+}
