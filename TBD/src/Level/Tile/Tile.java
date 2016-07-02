@@ -4,31 +4,15 @@ import Graphics.Image.Sprite;
 import Graphics.Render.Screen;
 
 public abstract class Tile {
-	private float X, Y;
 	private Sprite sprite;
 	private boolean IsSolid;
+	public static Tile Grass = new FloorTile(Sprite.test1);
 
 	public abstract void Update();
 
-	public abstract void Render(Screen screen);
+	public abstract void Render(Screen screen, int sx, int sy);
 
 	public abstract void Collision();
-
-	public float getX() {
-		return X;
-	}
-
-	public void setX(float x) {
-		X = x;
-	}
-
-	public float getY() {
-		return Y;
-	}
-
-	public void setY(float y) {
-		Y = y;
-	}
 
 	public Sprite getSprite() {
 		return sprite;

@@ -1,9 +1,0 @@
-package Main;
-
-public class GameState {
-	private String Game_State;
-
-	public GameState(String gs) {
-		Game_State = gs;
-	}
-}

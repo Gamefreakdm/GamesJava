@@ -9,11 +9,14 @@ import javax.swing.JFrame;
 import Graphics.Render.Screen;
 import Input.KeyHandler;
 import Input.MouseHandler;
+import Level.Level;
+import Graphics.Image.AnimatedSprite;
 
 public class Main extends Canvas implements Runnable {
 	private int[] Pixels;
 	private Screen screen;
 	private final Game game;
+	private final Level level;
 	private final GameState GS;
 	private final String Title;
 	private final JFrame Frame;
@@ -31,6 +34,7 @@ public class Main extends Canvas implements Runnable {
 		Frame = new JFrame("Loading...");
 		game = new Game();
 		GS = new GameState("Loading...");
+		level = new Level(45, 'r', Width, Height);
 	}
 
 	public static void main(String[] args) {
@@ -95,8 +99,8 @@ public class Main extends Canvas implements Runnable {
 		}
 		screen.clearPixels();
 		screen.Render();
-		if (GS.getGame_State() == "Playing")
-			;
+		level.Render(screen);
+		screen.RT(AnimatedSprite.Player.getSprite(1), 10, 10);
 		Graphics g = BS.getDrawGraphics();
 		g.drawImage(bimg, 0, 0, Width, Height, null);
 		g.dispose();

@@ -1,0 +1,13 @@
+package Graphics.Image;
+
+public class AnimatedSprite {
+	private final Sprite sprites[];
+
+	public AnimatedSprite(int ss, int l) {
+		sprites = new Sprite[l];
+	}
+
+	private void Load(int ss) {
+		for (int y = 0; y < (sprites.length / 2; y++)
+	}
+}

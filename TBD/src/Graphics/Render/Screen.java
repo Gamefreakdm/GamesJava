@@ -1,7 +1,7 @@
 package Graphics.Render;
 
 import GameObject.Mob.Mob;
-import Level.Tile.Tile;
+import Graphics.Image.Sprite;
 
 public class Screen {
 	private final int[] Pixels;
@@ -33,12 +33,14 @@ public class Screen {
 			}
 	}
 
-	public void RT(Tile tile) {
-		for (int y = 0; y < tile.getSprite().getSize(); y++)
-			for (int x = 0; x < tile.getSprite().getSize(); x++) {
-				int xa = (int) tile.getX() + x;
-				int ya = (int) tile.getY() + y;
-				Pixels[xa + (ya * Width)] = tile.getSprite().getPixels()[x + (y * tile.getSprite().getSize())];
+	public void RT(Sprite sprite, float sx, float sy) {
+		for (int y = 0; y < sprite.getSize(); y++)
+			for (int x = 0; x < sprite.getSize(); x++) {
+				int xa = (int) sx + x;
+				int ya = (int) sy + y;
+				if (xa < 0 || xa >= Width || ya < 0 || ya >= Height)
+					continue;
+				Pixels[xa + (ya * Width)] = sprite.getPixels()[x + (y * sprite.getSize())];
 			}
 	}
 

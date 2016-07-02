@@ -119,17 +119,17 @@ public class Screen {
 	public void RenderEntity(float xp, float yp, Sprite sprite) {
 		xp -= getxOffset();
 		yp -= getyOffset();
-		for (int y = 0; y < 64; y++) {
+		for (int y = 0; y < sprite.SIZE; y++) {
 			int ya = (int) (y + yp);
 			if (ya < 0)
 				ya = 0;
-			for (int x = 0; x < 64; x++) {
+			for (int x = 0; x < sprite.SIZE; x++) {
 				int xa = (int) (x + xp);
-				if (xa < -64 || xa >= Width || ya < 0 || ya >= Height)
+				if (xa < -sprite.SIZE || xa >= Width || ya < -sprite.SIZE || ya >= Height)
 					break;
 				if (xa < 0)
 					xa = 0;
-				int col = sprite.Pixels[x + y * 64];
+				int col = sprite.Pixels[x + y * sprite.SIZE];
 				if (col != 0XFFFF00FF)
 					Pixels[xa + ya * Width] = col;
 			}
@@ -143,7 +143,7 @@ public class Screen {
 				int xa = (int) (x + xp);
 				int Col = sprite.Pixels[x + y * sprite.SIZE];
 				if (Col != 0XFFFF00FF)
-				Pixels[xa + ya * Width] = sprite.Pixels[x + y * sprite.SIZE];
+					Pixels[xa + ya * Width] = sprite.Pixels[x + y * sprite.SIZE];
 			}
 		}
 	}

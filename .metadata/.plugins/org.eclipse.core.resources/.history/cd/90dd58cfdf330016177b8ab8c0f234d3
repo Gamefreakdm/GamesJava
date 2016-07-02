@@ -1,6 +1,0 @@
-package GameObject.Mob.Entity;
-
-class Entity {
-	private int ID;
-	private float X, Y;
-}

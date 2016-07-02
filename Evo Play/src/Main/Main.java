@@ -15,36 +15,45 @@ import Graphics.Screen;
 import Graphics.Sprite;
 import GuiObject.InventoryObject.Items.InventoryItem;
 import Level.RandomLevel;
-import Main.Input.KeyHandler;
-import Main.Input.MouseHandler;
+import Input.KeyHandler;
+import Input.MouseHandler;
 
 public class Main extends Canvas implements Runnable {
 	private JFrame Frame;
 	private int[] Pixels;
 	private Screen screen;
-	private boolean Running;
+	private final Game game;
 	public double VelX, VelY;
 	private int keyTimer = 0;
+	private final Thread main;
+	private final String Title;
 	private BufferedImage bimg;
 	private boolean InUpgrades;
 	private boolean InInventory;
+	private final KeyHandler KH;
 	private static Player player;
-	private final String Title = "Title";
-	private static String Game_State = "Home";
-	private final Thread main = new Thread(this);
-	private final KeyHandler KH = new KeyHandler();
+	private final MobHandler MOB;
+	private final MouseHandler MH;
+	private final RandomLevel level;
 	private static final long serialVersionUID = 1L;
-	private final MobHandler MOB = new MobHandler();
 	private final static int Width = 800, Height = 600;
-	private final RandomLevel level = new RandomLevel(45);
-	private static final MouseHandler MH = new MouseHandler();
+
+	public Main() {
+		Title = "Title";
+		main = new Thread(this);
+		KH = new KeyHandler();
+		MH = new MouseHandler();
+		MOB = new MobHandler();
+		level = new RandomLevel(45);
+		game = new Game(KH, MH);
+	}
 
 	public static void main(String[] args) {
 		System.out.println("[System] Starting...");
 		Main M = new Main();
-		M.addMouseListener(MH);
-		M.addMouseMotionListener(MH);
-		M.addMouseWheelListener(MH);
+		M.addMouseListener(M.MH);
+		M.addMouseMotionListener(M.MH);
+		M.addMouseWheelListener(M.MH);
 		M.Frame = new JFrame("Loading...");
 		M.Frame.add(M);
 		M.Frame.addKeyListener(M.KH);
@@ -58,11 +67,10 @@ public class Main extends Canvas implements Runnable {
 	}
 
 	private void Start() {
-		if (Running)
+		if (game.isRunning())
 			return;
-		Running = true;
+		game.setRunning(true);
 		main.start();
-		MH.UpdateButtons(Game_State);
 	}
 
 	public void run() {
@@ -72,18 +80,24 @@ public class Main extends Canvas implements Runnable {
 		int Frames = 0;
 		int Updates = 0;
 		final double NS = 1000000000.0 / 60;
+		boolean Ticked = false;
 		System.out.println("[System] Started");
-		while (Running) {
+		while (game.isRunning()) {
 			long nowTime = System.nanoTime();
 			Delta += (nowTime - lastTime) / NS;
 			lastTime = nowTime;
 			while (Delta >= 1) {
+				game.Update();
 				Update();
 				Updates++;
-				Render();
-				Frames++;
+				Ticked = true;
 				Delta--;
 			}
+			if (Ticked) {
+				Render();
+				Ticked = false;
+			}
+			Frames++;
 			if (System.currentTimeMillis() - Timer >= 1000) {
 				Timer += 1000;
 				Frame.setTitle(Title + "   |   " + Frames + " Fps" + "   |   " + Updates + " Updates");
@@ -185,12 +199,6 @@ public class Main extends Canvas implements Runnable {
 	}
 
 	private void Update() {
-		String pastgs = Game_State;
-		KeyUpdate();
-		MH.CheckIsHovered();
-		MH.UpdateButtons();
-		if (Game_State != pastgs)
-			MH.UpdateButtons(Game_State);
 		if (bimg != null)
 			screen.Update((float) VelX, (float) VelY);
 		switch (Game_State) {
@@ -280,10 +288,6 @@ public class Main extends Canvas implements Runnable {
 		Frame.dispose();
 	}
 
-	public static void setGS(String gs) {
-		Game_State = gs;
-	}
-
 	public static void setPlayer(String Char) {
 		switch (Char) {
 		case "char1":
@@ -291,10 +295,6 @@ public class Main extends Canvas implements Runnable {
 			break;
 		}
 		setGS("Playing");
-	}
-
-	public static MouseHandler getMouseHandler() {
-		return MH;
 	}
 
 	public static void slotselected(int sn) {

@@ -1,0 +1,14 @@
+package Main;
+
+public class Game {
+	private boolean Running = false;
+
+	public Game() {
+	}
+
+	public void Update() {
+	}
+
+	public void KeyUpdate() {
+	}
+}

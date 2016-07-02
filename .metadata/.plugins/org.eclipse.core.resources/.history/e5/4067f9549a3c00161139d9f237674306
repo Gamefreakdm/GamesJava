@@ -1,0 +1,18 @@
+package Main;
+
+import Input.KeyHandler;
+import Input.MouseHandler;
+
+public class Game {
+	private final KeyHandler KH;
+	private boolean Running = false;
+
+	public Game(KeyHandler KH, MouseHandler MH) {
+	}
+
+	public void Update() {
+	}
+
+	public void KeyUpdate() {
+	}
+}

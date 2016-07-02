@@ -118,13 +118,9 @@ public class Player extends Mob {
 					this.setSprite(Sprite.Human_LS);
 				}
 				if (getAnimTimer() <= 6 && getAnimTimer() > 3 || getAnimTimer() <= 15 && getAnimTimer() > 12) {
-					this.setIHX(this.getX() - 8);
-					this.setIHY(this.getY() + 15);
 					this.setSprite(Sprite.Human_LK);
 				}
 				if (getAnimTimer() <= 9 && getAnimTimer() > 6 && getAnimTimer() <= 12 && getAnimTimer() > 9) {
-					this.setIHX(this.getX() - 8);
-					this.setIHY(this.getY() + 15);
 					this.setSprite(Sprite.Human_L);
 				}
 				if (getAnimTimer() > 21)
@@ -138,13 +134,9 @@ public class Player extends Mob {
 					this.setSprite(Sprite.Human_RS);
 				}
 				if (getAnimTimer() <= 6 && getAnimTimer() > 3 || getAnimTimer() <= 15 && getAnimTimer() > 12) {
-					this.setIHX(this.getX() + 40);
-					this.setIHY(this.getY() + 15);
 					this.setSprite(Sprite.Human_RK);
 				}
 				if (getAnimTimer() <= 9 && getAnimTimer() > 6 && getAnimTimer() <= 12 && getAnimTimer() > 9) {
-					this.setIHX(this.getX() + 32);
-					this.setIHY(this.getY() + 22);
 					this.setSprite(Sprite.Human_R);
 				}
 				if (getAnimTimer() > 21)

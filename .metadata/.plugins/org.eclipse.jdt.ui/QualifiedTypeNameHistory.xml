@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="org.lwjgl.opengl.DisplayMode"/>
 <fullyQualifiedTypeName name="org.lwjgl.opengl.ContextAttribs"/>
 <fullyQualifiedTypeName name="org.lwjgl.LWJGLException"/>
 <fullyQualifiedTypeName name="org.lwjgl.input.Keyboard"/>
@@ -17,7 +16,6 @@
 <fullyQualifiedTypeName name="Tile.Tile"/>
 <fullyQualifiedTypeName name="Main.ID"/>
 <fullyQualifiedTypeName name="Main.Story"/>
-<fullyQualifiedTypeName name="java.awt.Toolkit"/>
 <fullyQualifiedTypeName name="java.awt.GraphicsEnvironment"/>
 <fullyQualifiedTypeName name="Entity.Mob.Player"/>
 <fullyQualifiedTypeName name="Entity.Entity"/>
@@ -44,7 +42,6 @@
 <fullyQualifiedTypeName name="java.awt.event.MouseMotionListener"/>
 <fullyQualifiedTypeName name="GuiObject.Button"/>
 <fullyQualifiedTypeName name="java.awt.Font"/>
-<fullyQualifiedTypeName name="Level.Level"/>
 <fullyQualifiedTypeName name="Graphics.Screen"/>
 <fullyQualifiedTypeName name="Graphics.Sprite"/>
 <fullyQualifiedTypeName name="java.awt.GraphicsDevice"/>
@@ -55,9 +52,12 @@
 <fullyQualifiedTypeName name="java.awt.Color"/>
 <fullyQualifiedTypeName name="Graphics.SpriteSheet"/>
 <fullyQualifiedTypeName name="GameObject.Mob.Entity.Entity"/>
-<fullyQualifiedTypeName name="Input.MouseHandler"/>
-<fullyQualifiedTypeName name="Input.KeyHandler"/>
 <fullyQualifiedTypeName name="Graphics.Image.Sprite"/>
 <fullyQualifiedTypeName name="Level.Tile.FloorTile"/>
 <fullyQualifiedTypeName name="Level.Tile.Tile"/>
+<fullyQualifiedTypeName name="Level.Level"/>
+<fullyQualifiedTypeName name="Graphics.Image.SpriteSheet"/>
+<fullyQualifiedTypeName name="Input.MouseHandler"/>
+<fullyQualifiedTypeName name="Input.KeyHandler"/>
+<fullyQualifiedTypeName name="java.awt.Toolkit"/>
 </qualifiedTypeNameHistroy>

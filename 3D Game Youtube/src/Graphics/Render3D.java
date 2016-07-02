@@ -32,12 +32,16 @@ public class Render3D extends Render {
 				double yy = (((z * cosine) - (xdepth * sine)) + zMove);
 				int xPix = (int) xx;
 				int yPix = (int) yy;
+				if (x < 0 || x > getWidth() || y < 0 || y > getHeight())
+					continue;
 				if (xx > MapSize || yy > MapSize || xx < -MapSize || yy < -MapSize)
 					setPixels(x + (y * getWidth()), Texture.rock.getPixels()[(x & 15) + ((y & 15) << 4)]);
+				else if (z > 300)
+					continue;
 				else {
-					if (y > 300)
+					if (y > (getHeight() / 2))
 						setPixels(x + (y * getWidth()), getRandTex(x, y).getPixels()[(xPix & getRandTex(x, y).getdeSize()) + (yPix & getRandTex(x, y).getdeSize()) * getRandTex(x, y).getSize()]);
-					if (y < 300)
+					if (y < (getHeight() / 2))
 						setPixels(x + (y * getWidth()), Texture.sky.getPixels()[(xPix & Texture.sky.getdeSize()) + (yPix & Texture.sky.getdeSize()) * Texture.sky.getSize()]);
 				}
 			}

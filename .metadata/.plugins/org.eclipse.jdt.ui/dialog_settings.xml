@@ -3,12 +3,12 @@
 	<item value="JavaSE-1.8" key="org.eclipse.jdt.ui.last.selected.execution.enviroment"/>
 	<item value="6" key="org.eclipse.jdt.uiformatter_pagemodify_dialog.last_focus"/>
 	<item value="3" key="TypeHierarchyViewPart.orientation"/>
-	<item value="97" key="org.eclipse.jdt.uiformatter_pagemodify_dialog.preferred_x"/>
+	<item value="2153" key="org.eclipse.jdt.uiformatter_pagemodify_dialog.preferred_x"/>
 	<item value="false" key="TypeHierarchyViewPart.linkeditors"/>
 	<item value="2" key="CallHierarchyViewPart.field_mode"/>
-	<item value="0" key="org.eclipse.jdt.uiformatter_pagemodify_dialog.preferred_y"/>
+	<item value="81" key="org.eclipse.jdt.uiformatter_pagemodify_dialog.preferred_y"/>
 	<item value="800" key="org.eclipse.jdt.ui.codeformatter.line_wrapping_tab_page.preview_line_width"/>
-	<item value="8" key="org.eclipse.jdt.uiformatter_page.modify_dialog_tab_page.last_focus_index"/>
+	<item value="9" key="org.eclipse.jdt.uiformatter_page.modify_dialog_tab_page.last_focus_index"/>
 	<item value="2" key="TypeHierarchyViewPart.hierarchyview"/>
 	<item value="500" key="CallHierarchyViewPart.ratio1"/>
 	<item value="1" key="SearchScopeActionGroup.search_scope_type"/>
@@ -16,10 +16,10 @@
 	<item value="false" key="TypeHierarchyViewPart.qualifiednames"/>
 	<item value="0" key="org.eclipse.jdt.uiformatter_page.white_space_tab_page.node"/>
 	<item value="1005" key="org.eclipse.jdt.uiformatter_pagemodify_dialog.preferred_width"/>
-	<item value="728" key="org.eclipse.jdt.uiformatter_pagemodify_dialog.preferred_height"/>
+	<item value="863" key="org.eclipse.jdt.uiformatter_pagemodify_dialog.preferred_height"/>
 	<item value="0" key="CallHierarchyViewPart.call_mode"/>
 	<item value="C:\Users\Dylan\Google Drive\Work\Programming\eclipse Java\Libs" key="org.eclipse.jdt.ui.lastextjar"/>
-	<item value="1" key="org.eclipse.jdt.uiformatter_page.line_wrapping_tab_page.last_category_index"/>
+	<item value="7" key="org.eclipse.jdt.uiformatter_page.line_wrapping_tab_page.last_category_index"/>
 	<item value="0" key="org.eclipse.jdt.uiformatter_page.white_space.java_view.inner"/>
 	<item value="filter_imports;" key="filters_last_used"/>
 	<item value="3" key="CallHierarchyViewPart.orientation"/>
@@ -93,13 +93,13 @@
 	</section>
 	<section name="FatJarPackageWizard">
 		<item value="C:\Users\Dylan\Google Drive\Work\Programming\Games in Java.xml" key="FatJarPackageWizardPage.ANTSCRIPT_LOCATION"/>
-		<item value="C:\Users\NanoT\Documents\Launchable-games\3D-Game-Engine\3D-Game-Engine.jar" key="FatJarPackageWizardPage.DESTINATION_PATH_SELECTION"/>
+		<item value="F:\3D-Game-Engine.jar" key="FatJarPackageWizardPage.DESTINATION_PATH_SELECTION"/>
 		<item value="Main (2) - 3D Game Youtube" key="FatJarPackageWizardPage.LAUNCH_CONFIGURATION_SELECTION_NAME"/>
 		<item value="false" key="FatJarPackageWizardPage.ANTSCRIPT_SAVE"/>
 		<item value="1" key="FatJarPackageWizardPage.LIBRARY_HANDLING"/>
 		<list key="FatJarPackageWizardPage.DESTINATION_NAMES_ID">
-			<item value="C:\Users\NanoT\Documents\Launchable-games\3D-Game-Engine\3D-Game-Engine.jar"/>
 			<item value="F:\3D-Game-Engine.jar"/>
+			<item value="C:\Users\NanoT\Documents\Launchable-games\3D-Game-Engine\3D-Game-Engine.jar"/>
 			<item value="C:\Users\nanot\Documents\Launchable-games\3D-Game-Engine\3D-Game-Engine.jar"/>
 			<item value="C:\Users\nanot\Google Drive\Games\test.jar"/>
 			<item value="C:\Users\nanot\Google Drive\Games\Evo Play.jar"/>

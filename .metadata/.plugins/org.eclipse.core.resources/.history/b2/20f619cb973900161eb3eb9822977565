@@ -1,0 +1,40 @@
+package Graphics;
+
+public class AnimatedSprite {
+	private int frame = 0;
+	private Sprite sprite;
+	private int rate = 5;
+	private int length = -1;
+	private Sprite[] sprites;
+
+	public static AnimatedSprite test = new AnimatedSprite(SpriteSheet.Player, 16, 16);
+
+	public AnimatedSprite(SpriteSheet sheet, int ss, int length) {
+		this.length = length;
+		sprites = new Sprite[length - 1];
+		sprite = sprites[14];
+	}
+
+	private void load(int length, SpriteSheet sheet) {
+		int iter = 0;
+		for (int y = 0; y < (length / 2); y++) 
+			for (int x = 0; x < (length / 2); x++) {
+				sprites[iter] = new Sprite(x, y, )
+			}
+	}
+
+	public void Update() {
+		if (frame > length)
+			frame = 0;
+		else
+			frame++;
+	}
+
+	public Sprite getSprite() {
+		return sprite;
+	}
+
+	public void setFrameRate(int frames) {
+		this.rate = frames;
+	}
+}
