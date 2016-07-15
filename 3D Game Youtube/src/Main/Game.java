@@ -29,7 +29,8 @@ public class Game {
 			boolean s = key[KeyEvent.VK_S];
 			boolean crl = key[KeyEvent.VK_CONTROL];
 			boolean shi = key[KeyEvent.VK_SHIFT];
-			CO.Update(w, s, a, d, istr, mxos, crl, shi);
+			boolean ju = key[KeyEvent.VK_SPACE];
+			CO.Update(w, s, a, d, istr, mxos, crl, shi, ju);
 		} else if (GS == "Paused") {
 			if (key[KeyEvent.VK_ENTER])
 				GS = "Playing";

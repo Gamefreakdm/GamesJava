@@ -1,9 +1,0 @@
-package Graphics.Image;
-
-public class AnimatedSprite {
-	private final int SpriteSize;
-
-	public AnimatedSprite(int ss, int l) {
-		SpriteSize = ss;
-	}
-}

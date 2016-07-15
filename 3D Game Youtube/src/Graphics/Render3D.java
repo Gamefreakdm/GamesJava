@@ -12,19 +12,19 @@ public class Render3D extends Render {
 		MapSize = 16 << 4;
 	}
 
-	private double xMove, zMove, rot;
-
 	public void Floor() {
+		double xMove, zMove, rot, up;
 		xMove = game().getCO().getX();
 		zMove = game().getCO().getZ();
 		rot = game().getCO().getRot();
+		up = game.getCO().getY();
 		double sine = Math.sin(rot);
 		double cosine = Math.cos(rot);
 		for (int y = 0; y < getHeight(); y++) {
 			double ydepth = ((y + (-getHeight() / 2.0)) / getHeight());
-			double z = 8 / ydepth;
+			double z = (14 + up) / ydepth;
 			if (ydepth < 0)
-				z = 20 / -ydepth;
+				z = (20 - up) / -ydepth;
 			for (int x = 0; x < getWidth(); x++) {
 				double xdepth = ((x - (getWidth() / 2.0)) / getHeight());
 				xdepth *= z;

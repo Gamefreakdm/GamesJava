@@ -1,0 +1,23 @@
+package GameObject.Mob;
+
+import Graphics.Image.AnimatedSprite;
+import Graphics.Render.Screen;
+
+public class Player extends Mob {
+
+	public Player(int x, int y, int id, AnimatedSprite an) {
+		super(x, y, id, an);
+	}
+
+	@Override
+	public void Update() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void Render(Screen screen) {
+		// TODO Auto-generated method stub
+
+	}
+}

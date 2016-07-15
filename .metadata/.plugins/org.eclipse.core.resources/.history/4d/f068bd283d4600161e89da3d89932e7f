@@ -1,0 +1,9 @@
+package Input;
+
+public class KeyHandler {
+
+	public KeyHandler() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

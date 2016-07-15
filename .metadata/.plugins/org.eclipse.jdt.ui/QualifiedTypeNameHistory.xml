@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="org.lwjgl.opengl.ContextAttribs"/>
-<fullyQualifiedTypeName name="org.lwjgl.LWJGLException"/>
-<fullyQualifiedTypeName name="org.lwjgl.input.Keyboard"/>
-<fullyQualifiedTypeName name="Objects.Handler"/>
-<fullyQualifiedTypeName name="Level.LevelGen"/>
 <fullyQualifiedTypeName name="Main.Gravity"/>
 <fullyQualifiedTypeName name="Objects.GeneralDan"/>
 <fullyQualifiedTypeName name="Graphics.ImageLoader"/>
@@ -56,8 +51,13 @@
 <fullyQualifiedTypeName name="Level.Tile.FloorTile"/>
 <fullyQualifiedTypeName name="Level.Tile.Tile"/>
 <fullyQualifiedTypeName name="Level.Level"/>
-<fullyQualifiedTypeName name="Graphics.Image.SpriteSheet"/>
 <fullyQualifiedTypeName name="Input.MouseHandler"/>
 <fullyQualifiedTypeName name="Input.KeyHandler"/>
 <fullyQualifiedTypeName name="java.awt.Toolkit"/>
+<fullyQualifiedTypeName name="GameObject.Entity"/>
+<fullyQualifiedTypeName name="Graphics.Image.SpriteSheet"/>
+<fullyQualifiedTypeName name="org.lwjgl.opengl.GL11"/>
+<fullyQualifiedTypeName name="java.nio.ByteBuffer"/>
+<fullyQualifiedTypeName name="org.lwjgl.glfw.GLFWVidMode"/>
+<fullyQualifiedTypeName name="org.lwjgl.glfw.GLFW"/>
 </qualifiedTypeNameHistroy>
