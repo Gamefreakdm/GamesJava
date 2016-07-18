@@ -1,6 +1,0 @@
-package Input;
-
-import org.lwjgl.glfw.GLFWKeyCallback;
-
-public class KeyHandler extends GLFWKeyCallback {
-}
