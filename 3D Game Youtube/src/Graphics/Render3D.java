@@ -9,7 +9,7 @@ public class Render3D extends Render {
 	public Render3D(int w, int h, Game g) {
 		super(w, h);
 		game = g;
-		MapSize = 16 << 4;
+		MapSize = 200 << 4;
 	}
 
 	public void Floor() {
@@ -22,9 +22,9 @@ public class Render3D extends Render {
 		double cosine = Math.cos(rot);
 		for (int y = 0; y < getHeight(); y++) {
 			double ydepth = ((y + (-getHeight() / 2.0)) / getHeight());
-			double z = (14 + up) / ydepth;
+			double z = (20 + up) / ydepth;
 			if (ydepth < 0)
-				z = (20 - up) / -ydepth;
+				z = (40 - up) / -ydepth;
 			for (int x = 0; x < getWidth(); x++) {
 				double xdepth = ((x - (getWidth() / 2.0)) / getHeight());
 				xdepth *= z;
@@ -34,9 +34,11 @@ public class Render3D extends Render {
 				int yPix = (int) yy;
 				if (x < 0 || x > getWidth() || y < 0 || y > getHeight())
 					continue;
-				if (xx > MapSize || yy > MapSize || xx < -MapSize || yy < -MapSize)
-					setPixels(x + (y * getWidth()), Texture.rock.getPixels()[(x & 15) + ((y & 15) << 4)]);
-				else if (z > 300)
+				// if (xx > MapSize || yy > MapSize || xx < -MapSize || yy <
+				// -MapSize)
+				// setPixels(x + (y * getWidth()), Texture.rock.getPixels()[(x &
+				// 15) + ((y & 15) << 4)]);
+				else if (z > 700)
 					continue;
 				else {
 					if (y > (getHeight() / 2))

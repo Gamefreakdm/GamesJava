@@ -50,7 +50,6 @@
 <fullyQualifiedTypeName name="Graphics.Image.Sprite"/>
 <fullyQualifiedTypeName name="Level.Tile.FloorTile"/>
 <fullyQualifiedTypeName name="Level.Tile.Tile"/>
-<fullyQualifiedTypeName name="Level.Level"/>
 <fullyQualifiedTypeName name="Input.MouseHandler"/>
 <fullyQualifiedTypeName name="Input.KeyHandler"/>
 <fullyQualifiedTypeName name="java.awt.Toolkit"/>
@@ -60,4 +59,5 @@
 <fullyQualifiedTypeName name="java.nio.ByteBuffer"/>
 <fullyQualifiedTypeName name="org.lwjgl.glfw.GLFWVidMode"/>
 <fullyQualifiedTypeName name="org.lwjgl.glfw.GLFW"/>
+<fullyQualifiedTypeName name="Level.Level"/>
 </qualifiedTypeNameHistroy>

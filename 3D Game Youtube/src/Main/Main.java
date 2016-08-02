@@ -1,12 +1,8 @@
 package Main;
 
-import java.awt.AWTException;
 import java.awt.Canvas;
-import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Point;
-import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
@@ -35,8 +31,6 @@ public class Main extends Canvas implements Runnable {
 		IH = new InputHandler(game);
 	}
 
-	private Robot r;
-
 	public static void main(String[] args) {
 		Main M = new Main();
 		M.Frame.add(M);
@@ -51,27 +45,13 @@ public class Main extends Canvas implements Runnable {
 		M.Frame.setLocationRelativeTo(null);
 		M.Frame.setUndecorated(false);
 		M.Frame.setVisible(true);
-		try {
-			M.r = new Robot();
-		} catch (AWTException e) {
-			e.printStackTrace();
-		}
 		M.Start();
 		System.out.println("[System] Finished Main.");
 	}
 
-	private final Toolkit tk = Toolkit.getDefaultToolkit();
-
 	private void Start() {
 		Thread thread = new Thread(this);
 		thread.start();
-		Point p = new Point();
-		p.setLocation(IH.getMousex(), IH.getMousey());
-		BufferedImage InC = new BufferedImage(1, 1, BufferedImage.TRANSLUCENT);
-		Cursor InvisC;
-		InvisC = tk.createCustomCursor(InC, p, "inisc");
-		Frame.setCursor(InvisC);
-		System.out.println("[System] Finished thread creation and Cursor settings.");
 	}
 
 	public void run() {
@@ -112,8 +92,6 @@ public class Main extends Canvas implements Runnable {
 		game.KeyUpdate(IH.Key, IH.getMxc(), IH.Istr());
 		game.Update();
 		if (game.GameState() == "Playing") {
-			IH.setIstr(false);
-			r.mouseMove(700, 300);
 		}
 	}
 
