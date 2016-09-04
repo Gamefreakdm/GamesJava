@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Delete 3 resources" deleteContents="false" description="Delete 3 resources" element1="/SpaceEvolve/src/Graphics" element2="/SpaceEvolve/src/Input" element3="/SpaceEvolve/src/Main" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="3" stamp="1472506919383"/>&#x0A;<refactoring comment="Delete resource &apos;SpaceEvolve/src&apos;" deleteContents="false" description="Delete resource &apos;SpaceEvolve/src&apos;" element1="/SpaceEvolve/src" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1472513404749"/>
+</session>
