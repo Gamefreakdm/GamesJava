@@ -1,0 +1,11 @@
+package Level;
+
+import Main.Game;
+
+public class Level {
+	private final Game game;
+	private int[] Pixels = new int[game]
+
+	public void Render() {
+	}
+}

@@ -1,0 +1,40 @@
+package Level;
+
+import Main.Game;
+
+public class Level {
+	private final Game game;
+	private int[] Buff1 = null;
+	private int[] Buff2 = null;
+	private int[] Buff3 = null;
+	private int[] Pixels = null;
+
+	public Level(Game g) {
+		game = g;
+		Pixels = new int[game.getWidth() * game.getHeight()];
+		Buff1 = new int[game.getWidth() * game.getHeight()];
+		Buff2 = new int[game.getWidth() * game.getHeight()];
+		Buff3 = new int[game.getWidth() * game.getHeight()];
+	}
+
+	private void GenBuff(int b) {
+		switch (b) {
+		case 1:
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+		}
+	}
+
+	public void Render() {
+		if (Pixels.length != game.getWidth() * game.getHeight())
+			if (Buff1[Pixels.length] == 0)
+				GenBuff(1);
+		if (Buff2[Pixels.length] == 0)
+			GenBuff(2);
+		if (Buff3[Pixels.length] == 0)
+			GenBuff(3);
+	}
+}
