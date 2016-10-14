@@ -1,45 +1,55 @@
 package Level;
 
-import Main.Game;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+import Graphics.Render.Screen;
+import Level.Tile.AnimatedTile;
+import Level.Tile.Tile;
 
 public class Level {
-	private final Game game;
-	private int[] Buff1 = null;
-	private int[] Buff2 = null;
-	private int[] Buff3 = null;
-	private int[] Pixels = null;
+	private Scanner scanner = null;
+	private Tile[] Tiles = new Tile[109];
 
-	public Level(Game g) {
-		game = g;
-		Pixels = new int[game.getWidth() * game.getHeight()];
-		Buff1 = new int[game.getWidth() * game.getHeight()];
-		Buff2 = new int[game.getWidth() * game.getHeight()];
-		Buff3 = new int[game.getWidth() * game.getHeight()];
+	public Level(File file) {
+		try {
+			scanner = new Scanner(file);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		CreateLevel();
 	}
 
-	private void GenBuff(int b) {
-		switch (b) {
-		case 1:
-			break;
-		case 2:
-			break;
-		case 3:
-			break;
+	private void CreateLevel() {
+		for (int y = 0; y < 8; y++) {
+			String temp = scanner.nextLine();
+			System.out.println(temp.charAt(0));
+			char[] ctemp = new char[temp.length()];
+			for (int i = 0; i < temp.length(); i++) {
+				ctemp[i] = temp.charAt(i);
+			}
+			for (int x = 0; x < 11; x++) {
+				switch (ctemp[x + y]) {
+				case 'a':
+					System.out.println("sdfsf");
+					Tiles[x + y] = Tile.grass;
+					break;
+				default:
+					Tiles[x + y] = Tile.grass;
+				}
+			}
 		}
 	}
 
-	public void Render() {
-		if (Pixels.length != game.getWidth() * game.getHeight()) {
-			Pixels = new int[game.getWidth() * game.getHeight()];
-			Buff1 = new int[game.getWidth() * game.getHeight()];
-			Buff2 = new int[game.getWidth() * game.getHeight()];
-			Buff3 = new int[game.getWidth() * game.getHeight()];
+	public void RenderT(Screen screen) {
+		for (int y = 0; y < 8; y++) {
+			for (int x = 0; x < 11; x++) {
+				screen.RenderTile(Tiles[x + y], x, y);
+			}
 		}
-		if (Buff1[Pixels.length] == 0)
-			GenBuff(1);
-		if (Buff2[Pixels.length] == 0)
-			GenBuff(2);
-		if (Buff3[Pixels.length] == 0)
-			GenBuff(3);
+	}
+
+	public void RenderAT(AnimatedTile tile, int xp, int yp) {
 	}
 }

@@ -3,6 +3,7 @@ package Graphics.Image;
 public class Sprite {
 	private final int[] Pixels;
 	private final int Width, Height;
+	public static Sprite GrassTile = new Sprite(0, 0, 64, SpriteSheet.Terrian);
 
 	public Sprite(int x, int y, int w, int h, SpriteSheet sheet) {
 		Pixels = new int[w * h];

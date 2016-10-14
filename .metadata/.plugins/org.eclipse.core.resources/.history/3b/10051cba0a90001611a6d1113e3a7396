@@ -1,0 +1,54 @@
+package Main;
+
+import java.awt.event.KeyEvent;
+
+import javax.swing.JFrame;
+
+import Graphics.Render.Screen;
+import Input.InputHandler;
+import Level.Level;
+
+public class Game {
+	private double Time = 0;
+	// private final Level level;
+	private int Width, Height;
+	private String gs = "Main";
+
+	public Game(int w, int h) {
+		Width = w;
+		Height = h;
+		// TODO: Set up test level image
+		// level = new Level(this, null);
+	}
+
+	public void KeyUpdate(JFrame Frame) {
+		Frame.requestFocus();
+		if (InputHandler.getKey(KeyEvent.VK_ESCAPE))
+			System.exit(0);
+		if (gs == "Playing") {
+		}
+	}
+
+	public void Render(Screen screen) {
+	}
+
+	public double getTime() {
+		return Time;
+	}
+
+	public String getGs() {
+		return gs;
+	}
+
+	public void setGs(String gs) {
+		this.gs = gs;
+	}
+
+	public int getWidth() {
+		return Width;
+	}
+
+	public int getHeight() {
+		return Height;
+	}
+}

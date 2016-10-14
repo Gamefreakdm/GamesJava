@@ -1,0 +1,53 @@
+package Main;
+
+import java.awt.event.KeyEvent;
+import java.io.File;
+import javax.swing.JFrame;
+import Graphics.Render.Screen;
+import Input.InputHandler;
+import Level.Level;
+
+public class Game {
+	private double Time = 0;
+	private int Width, Height;
+	private String gs = "Main";
+	private File level1t = new File("C:/Users/NanoT/Documents\GitHub\GamesJava\TBN\Levels");
+	private Level level1 = new Level(level1t);
+
+	public Game(int w, int h) {
+		Width = w;
+		Height = h;
+	}
+
+	public void KeyUpdate(JFrame Frame) {
+		Frame.requestFocus();
+		if (InputHandler.getKey(KeyEvent.VK_ESCAPE))
+			System.exit(0);
+		if (gs == "Playing") {
+		}
+	}
+
+	public void Render(Screen screen) {
+		level1.RenderT(screen);
+	}
+
+	public double getTime() {
+		return Time;
+	}
+
+	public String getGs() {
+		return gs;
+	}
+
+	public void setGs(String gs) {
+		this.gs = gs;
+	}
+
+	public int getWidth() {
+		return Width;
+	}
+
+	public int getHeight() {
+		return Height;
+	}
+}

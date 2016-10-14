@@ -1,0 +1,6 @@
+package Level;
+
+public class FileLevel {
+	public FileLevel() {
+	}
+}

@@ -17,7 +17,7 @@ public class Main extends Canvas implements Runnable {
 	private boolean Running = false;
 	private Thread mainThread = null;
 	private final String Title = "yay ";
-	private int Width = 800, Height = 600;
+	private final int Width = 768, Height = 576;
 	private static final long serialVersionUID = 1L;
 	private final InputHandler IH = new InputHandler();
 	private final JFrame Frame = new JFrame("Loading...");
@@ -29,7 +29,7 @@ public class Main extends Canvas implements Runnable {
 		m.addMouseListener(m.IH);
 		m.Frame.setSize(m.Width, m.Height);
 		m.Frame.setLocationRelativeTo(null);
-		m.Frame.setResizable(true);
+		m.Frame.setResizable(false);
 		m.Frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		m.Frame.setVisible(true);
 		m.Start();
@@ -38,8 +38,6 @@ public class Main extends Canvas implements Runnable {
 	private void Start() {
 		mainThread = new Thread(this);
 		mainThread.start();
-		game = new Game(Width, Height);
-		Running = true;
 	}
 
 	public void run() {
@@ -51,12 +49,13 @@ public class Main extends Canvas implements Runnable {
 		long nowTime = 0;
 		final double NS = 1000000000.0 / 60;
 		System.out.println("[System] Started");
+		Running = true;
+		game = new Game(Width, Height);
 		while (Running) {
 			nowTime = System.nanoTime();
 			Delta += (nowTime - lastTime) / NS;
 			lastTime = nowTime;
 			while (Delta >= 1) {
-				Update();
 				game.KeyUpdate(Frame);
 				Updates++;
 				Delta--;
@@ -73,23 +72,13 @@ public class Main extends Canvas implements Runnable {
 		Stop();
 	}
 
-	private void Update() {
-		if (Frame.getWidth() != Width || Frame.getHeight() != Height) {
-			Width = Frame.getWidth();
-			Height = Frame.getHeight();
-			bm = new BufferedImage(Width, Height, BufferedImage.TYPE_INT_RGB);
-			Pixels = ((DataBufferInt) bm.getRaster().getDataBuffer()).getData();
-			screen.UpdateSize(Width, Height, Pixels);
-		}
-	}
-
 	private void Render() {
 		final BufferStrategy bs = getBufferStrategy();
 		if (bs == null) {
-			createBufferStrategy(3);
 			bm = new BufferedImage(Width, Height, BufferedImage.TYPE_INT_RGB);
 			Pixels = ((DataBufferInt) bm.getRaster().getDataBuffer()).getData();
 			screen = new Screen(Width, Height, Pixels);
+			createBufferStrategy(3);
 			return;
 		}
 		screen.clearPixels();
@@ -118,16 +107,8 @@ public class Main extends Canvas implements Runnable {
 		return Width;
 	}
 
-	public void setWidth(int width) {
-		Width = width;
-	}
-
 	@Override
 	public int getHeight() {
 		return Height;
-	}
-
-	public void setHeight(int height) {
-		Height = height;
 	}
 }

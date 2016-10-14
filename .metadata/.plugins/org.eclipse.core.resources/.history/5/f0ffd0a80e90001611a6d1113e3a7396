@@ -1,0 +1,9 @@
+package Level;
+
+public class FileLevel {
+
+	public FileLevel() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

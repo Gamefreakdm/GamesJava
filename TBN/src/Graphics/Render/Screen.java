@@ -1,6 +1,5 @@
 package Graphics.Render;
 
-import Graphics.Image.Image;
 import Graphics.Image.Sprite;
 import Level.Tile.AnimatedTile;
 import Level.Tile.Tile;
@@ -45,31 +44,6 @@ public class Screen {
 		}
 	}
 
-	public void RenderIT() {
-	}
-
-	public void RenderImage(Image im, float xp, float yp) {
-		xp -= xOffset;
-		yp -= yOffset;
-		for (int y = 0; y < im.getHeight(); y++) {
-			int ya = (int) (y + yp);
-			if (ya >= Height)
-				continue;
-			if (ya < 0)
-				ya = 0;
-			for (int x = 0; x < im.getWidth(); x++) {
-				int xa = (int) (x + xp);
-				if (xa >= Width)
-					continue;
-				if (xa < 0)
-					xa = 0;
-				int Col = im.getPixels()[x + (y * im.getWidth())];
-				if (Col != 0XFFFF00FF)
-					Pixels[xa + (ya * Width)] = im.getPixels()[x + (y * im.getWidth())];
-			}
-		}
-	}
-
 	public void clearPixels() {
 		for (int i = 0; i < Pixels.length; i++)
 			Pixels[i] = 0;
@@ -97,7 +71,7 @@ public class Screen {
 		}
 	}
 
-	public void RenderAnTile(AnimatedTile ant, float xp, float yp) {
+	public void RenderATile(AnimatedTile ant, float xp, float yp) {
 		xp -= xOffset;
 		yp -= yOffset;
 		for (int y = 0; y < ant.getSprite().getHeight(); y++) {
@@ -115,46 +89,6 @@ public class Screen {
 				int Col = ant.getSprite().getPixels()[x + (y * ant.getSprite().getWidth())];
 				if (Col != 0XFFFF00FF)
 					Pixels[xa + (ya * Width)] = ant.getSprite().getPixels()[x + (y * ant.getSprite().getWidth())];
-			}
-		}
-	}
-
-	public void RenderCol(float xp, float yp, int w, int h, int Col) {
-		xp -= xOffset;
-		yp -= yOffset;
-		for (int y = 0; y < h; y++) {
-			int ya = (int) (y + yp);
-			if (ya >= Height)
-				continue;
-			if (ya < 0)
-				ya = 0;
-			for (int x = 0; x < w; x++) {
-				int xa = (int) (x + xp);
-				if (xa >= Width)
-					continue;
-				if (xa < 0)
-					xa = 0;
-				Pixels[xa + (ya * Width)] = Col;
-			}
-		}
-	}
-
-	public void RenderCol(float xp, float yp, int ss, int Col) {
-		xp -= xOffset;
-		yp -= yOffset;
-		for (int y = 0; y < ss; y++) {
-			int ya = (int) (y + yp);
-			if (ya >= Height)
-				continue;
-			if (ya < 0)
-				ya = 0;
-			for (int x = 0; x < ss; x++) {
-				int xa = (int) (x + xp);
-				if (xa >= Width)
-					continue;
-				if (xa < 0)
-					xa = 0;
-				Pixels[xa + (ya * Width)] = Col;
 			}
 		}
 	}
